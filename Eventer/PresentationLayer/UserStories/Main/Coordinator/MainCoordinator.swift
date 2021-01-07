@@ -31,19 +31,34 @@ final class MainCoordinator: BaseCoordinator<Void> {
             }
             
             let feedsModule = resolver.resolve(FeedsModule.self)!
-            feedsModule.view.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+            let feedsTabItem = UITabBarItem(title: nil,
+                                            image: UIImage(named: "Feeds"),
+                                            selectedImage: UIImage(named: "SelectedFeeds"))
+            feedsModule.view.tabBarItem = feedsTabItem
             
             let mapModule = resolver.resolve(MapModule.self)!
-            mapModule.view.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
+            let mapTabItem = UITabBarItem(title: nil,
+                                          image: UIImage(named: "Map"),
+                                          selectedImage: UIImage(named: "SelectedMap"))
+            mapModule.view.tabBarItem = mapTabItem
             
             let createEventModule = resolver.resolve(CreateEventModule.self)!
-            createEventModule.view.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 2)
+            let createEventTabItem = UITabBarItem(title: nil,
+                                                  image: UIImage(named: "CreateEvent"),
+                                                  selectedImage: UIImage(named: "SelectedCreateEvent"))
+            createEventModule.view.tabBarItem = createEventTabItem
             
             let favouritesModule = resolver.resolve(FavouritesModule.self)!
-            favouritesModule.view.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 3)
+            let favouritesTabItem = UITabBarItem(title: nil,
+                                                 image: UIImage(named: "Favourites"),
+                                                 selectedImage: UIImage(named: "SelectedFavourites"))
+            favouritesModule.view.tabBarItem = favouritesTabItem
             
             let profileModule = resolver.resolve(ProfileModule.self)!
-            profileModule.view.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 4)
+            let profileTabItem = UITabBarItem(title: nil,
+                                              image: UIImage(named: "Profile"),
+                                              selectedImage: UIImage(named: "SelectedProfile"))
+            profileModule.view.tabBarItem = profileTabItem
             
             let tabBarList = [
                 feedsModule.view,

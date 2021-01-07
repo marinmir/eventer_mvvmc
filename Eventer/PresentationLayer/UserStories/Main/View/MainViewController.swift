@@ -30,5 +30,29 @@ final class MainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupAppearance()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        centerTabBarItems()
+    }
+    
+    private func centerTabBarItems() {
+        if let controllers = viewControllers {
+            for vc in controllers {
+                vc.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+            }
+        }
+    }
+    
+    private func setupAppearance() {
+        //tabBar.tintColor = .darkViolet
+        tabBar.backgroundColor = .white
+        tabBar.barTintColor = .white
+        
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().backgroundColor = .white
     }
 }
