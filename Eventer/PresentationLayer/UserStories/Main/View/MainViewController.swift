@@ -47,12 +47,12 @@ final class MainViewController: UITabBarController {
     }
     
     private func setupAppearance() {
-        //tabBar.tintColor = .darkViolet
-        tabBar.backgroundColor = .white
-        tabBar.barTintColor = .white
+        tabBar.tintColor = Asset.Colors.darkViolet.color
+        tabBar.backgroundColor = Asset.Colors.white.color
+        tabBar.barTintColor = Asset.Colors.white.color
         
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().backgroundColor = .white
+        UINavigationBar.appearance().tintColor = Asset.Colors.white.color
+        UINavigationBar.appearance().backgroundColor = Asset.Colors.white.color
     }
 }

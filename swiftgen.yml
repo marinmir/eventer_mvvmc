@@ -24,12 +24,12 @@ output_dir: ./Eventer/Resources/Generated
 ##   - To know which params are supported for a template, use `swiftgen template doc xcassets swift5` to open the template documentation on GitHub.
 xcassets:
    inputs:
-     - Images.xcassets
+     - Assets.xcassets
    outputs:
      - templateName: swift5
        params:
          forceProvidesNamespaces: true
-       output: Images.swift
+       output: Assets.swift
 
 ## There are other parsers available for you to use depending on your needs, for example:
 ##  - `fonts` (if you have custom ttf/ttc font files)

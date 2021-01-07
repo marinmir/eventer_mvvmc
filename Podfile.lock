@@ -12,7 +12,7 @@ PODS:
   - Swinject (2.7.1)
 
 DEPENDENCIES:
-  - InoMvvmc (from `/Users/marinmir/InoMvvmc`)
+  - InoMvvmc (from `/Users/ymagin/InoMvvmc`)
   - RxCocoa (= 6.0.0)
   - RxSwift (= 6.0.0)
   - SwiftGen (~> 6.0)
@@ -28,7 +28,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   InoMvvmc:
-    :path: "/Users/marinmir/InoMvvmc"
+    :path: "/Users/ymagin/InoMvvmc"
 
 SPEC CHECKSUMS:
   InoMvvmc: 4a1c77baf87b1298cf8c5616de3f49b2552d5c6c
@@ -40,4 +40,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0e0d7602376d622682db8d5000f9a224bb94cd4a
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
