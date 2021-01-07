@@ -1,22 +1,22 @@
 //
-//  MainViewController.swift
+//  MapViewController.swift
 //  Eventer
 //
 //  Created by Ярослав Магин on 08/01/2021.
-//  Copyright © 2021 Marinmir Ltd.. All rights reserved.
+//  Copyright © 2021 Marinmir Ltd. All rights reserved.
 //
 
 import UIKit
 
-final class MainViewController: UITabBarController {
+final class MapViewController: UIViewController {
 
     // MARK: - Private properties
 
-    private let viewModel: MainViewModelBindable
+    private let viewModel: MapViewModelBindable
 
     // MARK: - Initializers
 
-    init(viewModel: MainViewModelBindable) {
+    init(viewModel: MapViewModelBindable) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -27,6 +27,15 @@ final class MainViewController: UITabBarController {
     }
 
     // MARK: - Public methods
+
+    override func loadView() {
+        super.loadView()
+
+        let view = MapView()
+        view.bind(to: viewModel)
+
+        self.view = view
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

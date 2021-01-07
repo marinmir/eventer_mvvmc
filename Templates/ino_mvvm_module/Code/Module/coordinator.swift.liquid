@@ -13,7 +13,9 @@ final class {{ module_info.name }}Coordinator: BaseCoordinator<Void> {
 	// Replace <Void> with some other result type if necessary
 
 	override func assemblies() -> [Assembly] {
-		return []
+		return [
+			{{ module_info.name }}ModuleAssembly()
+		]
 	}
 
 	override func start() {
