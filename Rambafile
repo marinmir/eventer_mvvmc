@@ -1,0 +1,23 @@
+### Headers settings
+company: Marinmir Ltd.
+
+### Xcode project settings
+project_name: Eventer
+xcodeproj_path: Eventer.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: Eventer
+
+# The file path for new modules
+project_file_path: Eventer/PresentationLayer/UserStories
+
+# The Xcode group path to new modules
+project_group_path: Eventer/PresentationLayer/UserStories
+
+### Dependencies settings section
+podfile_path: Podfile
+
+### Templates
+templates:
+- { name: ino_mvvm_module, local: './Generamba/ino_mvvm_module'}
