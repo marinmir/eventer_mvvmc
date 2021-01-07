@@ -6,6 +6,7 @@ target 'Eventer' do
   use_frameworks!
 
   # Pods for Eventer
+  pod 'SwiftGen', '~> 6.0'
   pod 'RxSwift', '6.0.0'
   pod 'RxCocoa', '6.0.0'
   pod 'Swinject'

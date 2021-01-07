@@ -112,6 +112,14 @@
 			path = ApplicationLayer;
 			sourceTree = "<group>";
 		};
+		00F68D5025A7BE2800259E4C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0EBBD8C525A79E68006489D5 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		0A99EAD56ED7277224EF23E8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,10 +149,10 @@
 		0EBBD8BB25A79E66006489D5 /* Eventer */ = {
 			isa = PBXGroup;
 			children = (
+				00F68D5025A7BE2800259E4C /* Resources */,
 				00F68D2225A7AB6300259E4C /* ApplicationLayer */,
 				0EBBD8BC25A79E66006489D5 /* AppDelegate.swift */,
 				0EBBD8BE25A79E66006489D5 /* SceneDelegate.swift */,
-				0EBBD8C525A79E68006489D5 /* Assets.xcassets */,
 				0EBBD8C725A79E68006489D5 /* LaunchScreen.storyboard */,
 				0EBBD8CA25A79E68006489D5 /* Info.plist */,
 				E4D31DF4B699CE7C89F35F68 /* PresentationLayer */,
@@ -415,6 +423,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0EBBD8CD25A79E68006489D5 /* Build configuration list for PBXNativeTarget "Eventer" */;
 			buildPhases = (
+				00F68D4F25A7BDAC00259E4C /* ShellScript */,
 				C6521257E1E8A0843AF6FBDF /* [CP] Check Pods Manifest.lock */,
 				0EBBD8B525A79E66006489D5 /* Sources */,
 				0EBBD8B625A79E66006489D5 /* Frameworks */,
@@ -476,6 +485,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		00F68D4F25A7BDAC00259E4C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
+		};
 		6064B969C5E973844A25C2FC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
