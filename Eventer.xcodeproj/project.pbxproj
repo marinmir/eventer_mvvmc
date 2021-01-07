@@ -3,30 +3,42 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00F68D2425A7AB7200259E4C /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F68D2325A7AB7200259E4C /* ApplicationCoordinator.swift */; };
+		0BBFE394C0FDFBA380E06AFF /* MainCoordinatorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EBBF477BBA5F91CE3B451C /* MainCoordinatorAssembly.swift */; };
 		0EBBD8BD25A79E66006489D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBBD8BC25A79E66006489D5 /* AppDelegate.swift */; };
 		0EBBD8BF25A79E66006489D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBBD8BE25A79E66006489D5 /* SceneDelegate.swift */; };
-		0EBBD8C125A79E66006489D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBBD8C025A79E66006489D5 /* ViewController.swift */; };
-		0EBBD8C425A79E66006489D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EBBD8C225A79E66006489D5 /* Main.storyboard */; };
 		0EBBD8C625A79E68006489D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EBBD8C525A79E68006489D5 /* Assets.xcassets */; };
 		0EBBD8C925A79E68006489D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EBBD8C725A79E68006489D5 /* LaunchScreen.storyboard */; };
+		1643B6B7A1009EA360B7FE36 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116F2964D347790AC532588E /* MainViewController.swift */; };
 		48F6E27309199118B90F32C2 /* Pods_Eventer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C6D8ECB8BAED3AD38C9E019 /* Pods_Eventer.framework */; };
+		4C42BDBD0F5F23C664DB6136 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36EAE26EED0962FD02B2B35 /* MainViewModel.swift */; };
+		75D157B982AFC023A37C19F1 /* MainModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306D413957137717DE30585 /* MainModule.swift */; };
+		93E1AEB9A3A17C25765C33E3 /* MainModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F14910C4FE7758D980A58D /* MainModuleAssembly.swift */; };
+		DACEBC4261B3C6E36212DF9C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4FA736CE5917BF0A6F0CBF /* MainView.swift */; };
+		FAE9734C9A0E18AE58614F35 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E8AD0119623378A71FE67 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00F68D2325A7AB7200259E4C /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		0EBBD8B925A79E66006489D5 /* Eventer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EBBD8BC25A79E66006489D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EBBD8BE25A79E66006489D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0EBBD8C025A79E66006489D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0EBBD8C325A79E66006489D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0EBBD8C525A79E68006489D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EBBD8C825A79E68006489D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0EBBD8CA25A79E68006489D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		116F2964D347790AC532588E /* MainViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		14F14910C4FE7758D980A58D /* MainModuleAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleAssembly.swift; sourceTree = "<group>"; };
+		6306D413957137717DE30585 /* MainModule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModule.swift; sourceTree = "<group>"; };
+		683E8AD0119623378A71FE67 /* MainCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		6C4FA736CE5917BF0A6F0CBF /* MainView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		6C6D8ECB8BAED3AD38C9E019 /* Pods_Eventer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eventer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A97058158FCF09FBC721362 /* Pods-Eventer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventer.debug.xcconfig"; path = "Target Support Files/Pods-Eventer/Pods-Eventer.debug.xcconfig"; sourceTree = "<group>"; };
+		A6EBBF477BBA5F91CE3B451C /* MainCoordinatorAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainCoordinatorAssembly.swift; sourceTree = "<group>"; };
+		B36EAE26EED0962FD02B2B35 /* MainViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		BE2A3D9051F8BE2CE4115CCA /* Pods-Eventer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventer.release.xcconfig"; path = "Target Support Files/Pods-Eventer/Pods-Eventer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00F68D2225A7AB6300259E4C /* ApplicationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				00F68D2325A7AB7200259E4C /* ApplicationCoordinator.swift */,
+			);
+			path = ApplicationLayer;
+			sourceTree = "<group>";
+		};
 		0EBBD8B025A79E66006489D5 = {
 			isa = PBXGroup;
 			children = (
@@ -63,15 +83,55 @@
 		0EBBD8BB25A79E66006489D5 /* Eventer */ = {
 			isa = PBXGroup;
 			children = (
+				00F68D2225A7AB6300259E4C /* ApplicationLayer */,
 				0EBBD8BC25A79E66006489D5 /* AppDelegate.swift */,
 				0EBBD8BE25A79E66006489D5 /* SceneDelegate.swift */,
-				0EBBD8C025A79E66006489D5 /* ViewController.swift */,
-				0EBBD8C225A79E66006489D5 /* Main.storyboard */,
 				0EBBD8C525A79E68006489D5 /* Assets.xcassets */,
 				0EBBD8C725A79E68006489D5 /* LaunchScreen.storyboard */,
 				0EBBD8CA25A79E68006489D5 /* Info.plist */,
+				E4D31DF4B699CE7C89F35F68 /* PresentationLayer */,
 			);
 			path = Eventer;
+			sourceTree = "<group>";
+		};
+		1307F40DFF9A802E1622D19F /* UserStories */ = {
+			isa = PBXGroup;
+			children = (
+				167F7936B10F583CA4D47F9F /* Main */,
+			);
+			name = UserStories;
+			path = UserStories;
+			sourceTree = "<group>";
+		};
+		167F7936B10F583CA4D47F9F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				341633DC484A2EBE00A223C9 /* Module */,
+				B12934BB5179AA7139DC8037 /* View */,
+				46D6A0D87C75597B8D2DF587 /* ViewModel */,
+				D47255E69C8F6080484E2549 /* Coordinator */,
+			);
+			name = Main;
+			path = Main;
+			sourceTree = "<group>";
+		};
+		341633DC484A2EBE00A223C9 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				6306D413957137717DE30585 /* MainModule.swift */,
+				14F14910C4FE7758D980A58D /* MainModuleAssembly.swift */,
+			);
+			name = Module;
+			path = Module;
+			sourceTree = "<group>";
+		};
+		46D6A0D87C75597B8D2DF587 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B36EAE26EED0962FD02B2B35 /* MainViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6D56FE3514C935FF084E6596 /* Frameworks */ = {
@@ -88,8 +148,36 @@
 				7A97058158FCF09FBC721362 /* Pods-Eventer.debug.xcconfig */,
 				BE2A3D9051F8BE2CE4115CCA /* Pods-Eventer.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B12934BB5179AA7139DC8037 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				116F2964D347790AC532588E /* MainViewController.swift */,
+				6C4FA736CE5917BF0A6F0CBF /* MainView.swift */,
+			);
+			name = View;
+			path = View;
+			sourceTree = "<group>";
+		};
+		D47255E69C8F6080484E2549 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				683E8AD0119623378A71FE67 /* MainCoordinator.swift */,
+				A6EBBF477BBA5F91CE3B451C /* MainCoordinatorAssembly.swift */,
+			);
+			name = Coordinator;
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		E4D31DF4B699CE7C89F35F68 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				1307F40DFF9A802E1622D19F /* UserStories */,
+			);
+			name = PresentationLayer;
+			path = PresentationLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,7 +242,6 @@
 			files = (
 				0EBBD8C925A79E68006489D5 /* LaunchScreen.storyboard in Resources */,
 				0EBBD8C625A79E68006489D5 /* Assets.xcassets in Resources */,
-				0EBBD8C425A79E66006489D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,23 +294,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EBBD8C125A79E66006489D5 /* ViewController.swift in Sources */,
 				0EBBD8BD25A79E66006489D5 /* AppDelegate.swift in Sources */,
 				0EBBD8BF25A79E66006489D5 /* SceneDelegate.swift in Sources */,
+				00F68D2425A7AB7200259E4C /* ApplicationCoordinator.swift in Sources */,
+				75D157B982AFC023A37C19F1 /* MainModule.swift in Sources */,
+				93E1AEB9A3A17C25765C33E3 /* MainModuleAssembly.swift in Sources */,
+				1643B6B7A1009EA360B7FE36 /* MainViewController.swift in Sources */,
+				DACEBC4261B3C6E36212DF9C /* MainView.swift in Sources */,
+				4C42BDBD0F5F23C664DB6136 /* MainViewModel.swift in Sources */,
+				FAE9734C9A0E18AE58614F35 /* MainCoordinator.swift in Sources */,
+				0BBFE394C0FDFBA380E06AFF /* MainCoordinatorAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0EBBD8C225A79E66006489D5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0EBBD8C325A79E66006489D5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0EBBD8C725A79E68006489D5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -354,8 +440,8 @@
 			baseConfigurationReference = 7A97058158FCF09FBC721362 /* Pods-Eventer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZK4JGKBN2J;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Eventer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -364,6 +450,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marinmir.Eventer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -374,8 +461,8 @@
 			baseConfigurationReference = BE2A3D9051F8BE2CE4115CCA /* Pods-Eventer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZK4JGKBN2J;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Eventer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -384,6 +471,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marinmir.Eventer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
