@@ -18,7 +18,7 @@ final class CreateEventModuleAssembly: Assembly {
         container.register(CreateEventModule.self) { resolver in
             let viewModel = resolver.resolve(CreateEventViewModel.self)!
             let view = CreateEventViewController(viewModel: viewModel)
-            
+
             return CreateEventModule(
                 view: view,
                 input: viewModel,

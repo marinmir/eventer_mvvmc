@@ -18,7 +18,7 @@ final class ProfileModuleAssembly: Assembly {
         container.register(ProfileModule.self) { resolver in
             let viewModel = resolver.resolve(ProfileViewModel.self)!
             let view = ProfileViewController(viewModel: viewModel)
-            
+
             return ProfileModule(
                 view: view,
                 input: viewModel,

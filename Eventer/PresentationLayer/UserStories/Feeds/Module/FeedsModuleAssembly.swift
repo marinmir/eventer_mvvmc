@@ -18,7 +18,7 @@ final class FeedsModuleAssembly: Assembly {
         container.register(FeedsModule.self) { resolver in
             let viewModel = resolver.resolve(FeedsViewModel.self)!
             let view = FeedsViewController(viewModel: viewModel)
-            
+
             return FeedsModule(
                 view: view,
                 input: viewModel,

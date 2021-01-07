@@ -18,7 +18,7 @@ final class FavouritesModuleAssembly: Assembly {
         container.register(FavouritesModule.self) { resolver in
             let viewModel = resolver.resolve(FavouritesViewModel.self)!
             let view = FavouritesViewController(viewModel: viewModel)
-            
+
             return FavouritesModule(
                 view: view,
                 input: viewModel,

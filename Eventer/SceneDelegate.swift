@@ -6,6 +6,7 @@
 //  Copyright © 2021 Мирошниченко Марина. All rights reserved.
 //
 
+import Firebase
 import UIKit
 
 @available(iOS 13.0, *)
@@ -19,10 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
+
+        FirebaseApp.configure()
+
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
-        
+
         applicationCoordinator.start()
     }
 
@@ -54,6 +57,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
 }
-

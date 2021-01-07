@@ -10,8 +10,8 @@ import Foundation
 import InoMvvmc
 import Swinject
 
-fileprivate enum ApplicationAssembly {
-    
+private enum ApplicationAssembly {
+
     static var assemblies: [Assembly] = {
         return  [
             MainCoordinatorAssembly()
@@ -20,20 +20,20 @@ fileprivate enum ApplicationAssembly {
 }
 
 class ApplicationCoordinator: BaseCoordinator<Void> {
-    
+
     override init() {
         super.init()
-        
+
         assembler = Assembler(assemblies())
     }
-    
+
     override func assemblies() -> [Assembly] {
         return ApplicationAssembly.assemblies
     }
-    
+
     override func start() {
         let coordinator = resolver.resolve(MainCoordinator.self)!
-        
+
         coordinate(to: coordinator)
     }
 }

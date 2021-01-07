@@ -18,7 +18,7 @@ final class MapModuleAssembly: Assembly {
         container.register(MapModule.self) { resolver in
             let viewModel = resolver.resolve(MapViewModel.self)!
             let view = MapViewController(viewModel: viewModel)
-            
+
             return MapModule(
                 view: view,
                 input: viewModel,

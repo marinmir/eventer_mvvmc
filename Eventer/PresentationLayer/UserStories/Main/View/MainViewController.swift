@@ -30,14 +30,14 @@ final class MainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupAppearance()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         centerTabBarItems()
     }
-    
+
     private func centerTabBarItems() {
         if let controllers = viewControllers {
             for vc in controllers {
@@ -45,12 +45,12 @@ final class MainViewController: UITabBarController {
             }
         }
     }
-    
+
     private func setupAppearance() {
         tabBar.tintColor = Asset.Colors.darkViolet.color
         tabBar.backgroundColor = Asset.Colors.white.color
         tabBar.barTintColor = Asset.Colors.white.color
-        
+
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().tintColor = Asset.Colors.white.color
         UINavigationBar.appearance().backgroundColor = Asset.Colors.white.color

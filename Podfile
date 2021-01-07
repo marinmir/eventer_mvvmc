@@ -6,6 +6,12 @@ target 'Eventer' do
   use_frameworks!
 
   # Pods for Eventer
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'FirebaseUI/Storage'
+  
+  pod 'SDWebImage', '~> 5.0'
   pod 'SwiftGen', '~> 6.0'
   pod 'RxSwift', '6.0.0'
   pod 'RxCocoa', '6.0.0'
