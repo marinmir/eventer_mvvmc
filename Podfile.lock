@@ -1,0 +1,39 @@
+PODS:
+  - InoMvvmc (0.1.0):
+    - RxSwift
+    - Swinject
+  - RxCocoa (6.0.0):
+    - RxRelay (= 6.0.0)
+    - RxSwift (= 6.0.0)
+  - RxRelay (6.0.0):
+    - RxSwift (= 6.0.0)
+  - RxSwift (6.0.0)
+  - Swinject (2.7.1)
+
+DEPENDENCIES:
+  - InoMvvmc (from `/Users/ymagin/InoMvvmc`)
+  - RxCocoa (= 6.0.0)
+  - RxSwift (= 6.0.0)
+  - Swinject
+
+SPEC REPOS:
+  trunk:
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - Swinject
+
+EXTERNAL SOURCES:
+  InoMvvmc:
+    :path: "/Users/ymagin/InoMvvmc"
+
+SPEC CHECKSUMS:
+  InoMvvmc: 4a1c77baf87b1298cf8c5616de3f49b2552d5c6c
+  RxCocoa: 3f79328fafa3645b34600f37c31e64c73ae3a80e
+  RxRelay: 8d593be109c06ea850df027351beba614b012ffb
+  RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
+
+PODFILE CHECKSUM: 035c1b06b437147e74f6d6ae7590c24269bdcb2f
+
+COCOAPODS: 1.10.0
