@@ -29,6 +29,9 @@ internal enum Asset {
     internal static let shadow = ColorAsset(name: "Shadow")
     internal static let white = ColorAsset(name: "White")
   }
+  internal static let crown = ImageAsset(name: "Crown")
+  internal static let eventDefault = ImageAsset(name: "EventDefault")
+  internal static let sadSmile = ImageAsset(name: "SadSmile")
   internal enum SelectedTabBars {
     internal static let selectedCreateEvent = ImageAsset(name: "SelectedCreateEvent")
     internal static let selectedFavourites = ImageAsset(name: "SelectedFavourites")
@@ -42,6 +45,30 @@ internal enum Asset {
     internal static let feeds = ImageAsset(name: "Feeds")
     internal static let map = ImageAsset(name: "Map")
     internal static let profile = ImageAsset(name: "Profile")
+  }
+  internal enum UIKit {
+    internal enum LikeButton {
+      internal static let likeButton = ImageAsset(name: "LikeButton")
+      internal static let selectedLikeButton = ImageAsset(name: "SelectedLikeButton")
+    }
+    internal enum SelectedTagsImages {
+      internal static let selectedArt = ImageAsset(name: "SelectedArt")
+      internal static let selectedCinema = ImageAsset(name: "SelectedCinema")
+      internal static let selectedFood = ImageAsset(name: "SelectedFood")
+      internal static let selectedMusic = ImageAsset(name: "SelectedMusic")
+      internal static let selectedSociety = ImageAsset(name: "SelectedSociety")
+      internal static let selectedSport = ImageAsset(name: "SelectedSport")
+    }
+    internal enum TagsImages {
+      internal static let art = ImageAsset(name: "Art")
+      internal static let cinema = ImageAsset(name: "Cinema")
+      internal static let food = ImageAsset(name: "Food")
+      internal static let music = ImageAsset(name: "Music")
+      internal static let society = ImageAsset(name: "Society")
+      internal static let sport = ImageAsset(name: "Sport")
+    }
+    internal static let filter = ImageAsset(name: "filter")
+    internal static let searchGlass = ImageAsset(name: "search_glass")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

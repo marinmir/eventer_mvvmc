@@ -6,6 +6,7 @@
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
+import RxCocoa
 import RxSwift
 import UIKit
 
@@ -19,6 +20,9 @@ final class {{ module_info.name }}View: UIView {
 
     init() {
         super.init(frame: .zero)
+
+        setupViews()
+        setConstraints()
     }
 
     @available(*, unavailable)
@@ -30,5 +34,15 @@ final class {{ module_info.name }}View: UIView {
 
     func bind(to viewModel: {{ module_info.name }}ViewModelBindable) {
         // Bindings UI controls to view model's input/output
+    }
+
+    // MARK: - Private methods
+
+    private func setupViews() {
+
+    }
+
+    private func setConstraints() {
+
     }
 }

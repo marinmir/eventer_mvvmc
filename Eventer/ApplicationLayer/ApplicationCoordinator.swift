@@ -10,15 +10,6 @@ import Foundation
 import InoMvvmc
 import Swinject
 
-private enum ApplicationAssembly {
-
-    static var assemblies: [Assembly] = {
-        return  [
-            MainCoordinatorAssembly()
-        ]
-    }()
-}
-
 class ApplicationCoordinator: BaseCoordinator<Void> {
 
     override init() {
@@ -28,11 +19,13 @@ class ApplicationCoordinator: BaseCoordinator<Void> {
     }
 
     override func assemblies() -> [Assembly] {
-        return ApplicationAssembly.assemblies
+        return [
+            ServicesAssembly()
+        ]
     }
 
     override func start() {
-        let coordinator = resolver.resolve(MainCoordinator.self)!
+        let coordinator = MainCoordinator()
 
         coordinate(to: coordinator)
     }

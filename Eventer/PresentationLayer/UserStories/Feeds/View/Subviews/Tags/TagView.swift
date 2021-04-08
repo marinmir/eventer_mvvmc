@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class TagView: UIView {
     // MARK: - Properties
     private var imageView = UIImageView()
@@ -48,13 +47,13 @@ class TagView: UIView {
     private func setAppearance() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
-        
+
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.isUserInteractionEnabled = false
         nameLabel.font = UIFont.boldSystemFont(ofSize: 20)
         nameLabel.sizeToFit()
         addSubview(nameLabel)
-        
+
         NSLayoutConstraint.activate([
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: tagContentOffset),
@@ -66,19 +65,19 @@ class TagView: UIView {
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -tagContentOffset),
             nameLabel.heightAnchor.constraint(equalToConstant: 28)
         ])
-        
+
     }
     
     private func setSelected() {
         imageView.image = selectedImage
-        backgroundColor = .darkViolet
+        backgroundColor = Asset.Colors.darkViolet.color
         nameLabel.textColor = .white
     }
-    
+
     private func setDeselected() {
         imageView.image = image
-        backgroundColor = .lightLavender
-        nameLabel.textColor = .darkViolet
+        backgroundColor = Asset.Colors.lightLavender.color
+        nameLabel.textColor = Asset.Colors.darkViolet.color
     }
-    
+
 }

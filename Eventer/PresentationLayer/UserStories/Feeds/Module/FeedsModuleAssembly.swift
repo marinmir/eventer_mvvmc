@@ -10,9 +10,9 @@ import Swinject
 
 final class FeedsModuleAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(FeedsViewModel.self) { _ in
-            // replace '_' with 'resolver' and inject dependencies if necessary
-            return FeedsViewModel()
+        container.register(FeedsViewModel.self) { resolver in
+            let eventsService = resolver.resolve(EventsService.self)!
+            return FeedsViewModel(eventsService: eventsService)
         }
 
         container.register(FeedsModule.self) { resolver in

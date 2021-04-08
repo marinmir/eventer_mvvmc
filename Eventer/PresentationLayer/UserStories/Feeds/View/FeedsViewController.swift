@@ -6,14 +6,20 @@
 //  Copyright © 2021 Marinmir Ltd. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 final class FeedsViewController: UIViewController {
-
     // MARK: - Private properties
 
     private let viewModel: FeedsViewModelBindable
-
+    private var searchResultsController = SearchResultsViewController(viewModel: SearchResultsViewModel())
+    private lazy var searchController: UISearchController = UISearchController(searchResultsController: searchResultsController)
+    
+    private let disposeBag = DisposeBag()
+    private var feedsSections: [FeedsSectionViewModel] = []
+    
     // MARK: - Initializers
 
     init(viewModel: FeedsViewModelBindable) {
@@ -29,19 +35,151 @@ final class FeedsViewController: UIViewController {
     // MARK: - Public methods
 
     override func loadView() {
-        super.loadView()
 
         let view = FeedsView()
         view.bind(to: viewModel)
 
         self.view = view
+        
+        view.eventsDataSource = self
+        view.tableDelegate = self
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupSearchController()
+        setupFilter()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        viewModel.tableSections.drive(onNext: { newSections in
+            self.feedsSections = newSections
+            (self.view as? FeedsView)?.refresh()
+        }).disposed(by: disposeBag)
+        
+        viewModel.needRefresh.onNext(())
+    }
+    
+    func didPresentSearchController(_ searchController: UISearchController) {
+        
+    }
+    
+    private func setupSearchController() {
+        //searchController.searchResultsUpdater = self
+        definesPresentationContext = true
+        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = NSLocalizedString("Search for...", comment: "")
+        //searchController.searchBar.delegate = self
+        //searchController.delegate = self
+        searchController.searchBar.tintColor = Asset.Colors.darkViolet.color
+        
+        searchController.searchBar.rx
+            .text
+            .orEmpty
+            .asDriver()
+            .debounce(.milliseconds(500))
+            .distinctUntilChanged()
+            .drive(onNext: { [unowned self] query in
+                //self.output.onSearchQueryChanged(for: query)
+                print(query)
+            }).disposed(by: disposeBag)
+        
+        navigationItem.titleView = searchController.searchBar
+        
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+    }
+    
+    private func setupFilter() {
+        searchController.searchBar.showsBookmarkButton = true
+        searchController.searchBar.setImage(Asset.UIKit.filter.image, for: .bookmark, state: .normal)
+        
+        searchController.searchBar.delegate = self
     }
 }
 
+extension FeedsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return feedsSections.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch feedsSections[indexPath.section] {
+            case .tagList(let tags):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: TagsCell.cellReuseIdentifier, for: indexPath) as? TagsCell else {
+                    return UITableViewCell()
+                }
+                
+                cell.setTags(tags)
+                return cell
+            case .popularEvents(let popularEvents):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: EventListCell.cellReuseIdentifier, for: indexPath) as? EventListCell else {
+                    return UITableViewCell()
+                }
+                
+                cell.configure(with: popularEvents)
+                
+                return cell
+            case .promotedEvents(let promotedEvents):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: EventListCell.cellReuseIdentifier, for: indexPath) as? EventListCell else {
+                    return UITableViewCell()
+                }
+                
+                cell.configure(with: promotedEvents)
+                
+                return cell
+            case .weekendEvents(let weekendEvents):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: EventListCell.cellReuseIdentifier, for: indexPath) as? EventListCell else {
+                    return UITableViewCell()
+                }
+                
+                cell.configure(with: weekendEvents)
+                
+                return cell
+        }
+    }
+}
+
+extension FeedsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch feedsSections[section] {
+            case .promotedEvents:
+                return FeedsSectionHeaderView(title: L10n.Feeds.Sections.promoted, image: Asset.crown.image)
+            case .popularEvents:
+                return FeedsSectionHeaderView(title: L10n.Feeds.Sections.popular)
+            case .weekendEvents:
+                return FeedsSectionHeaderView(title: L10n.Feeds.Sections.thisWeekend)
+            default:
+                return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+            case 0:
+                return CGFloat(60)
+            default:
+                return CGFloat(250)
+        }
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension FeedsViewController: UISearchBarDelegate {
+    
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        // TODO: open screen with filters
+    }
+
+}
 
 //import UIKit
 //

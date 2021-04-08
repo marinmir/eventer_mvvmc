@@ -20,7 +20,7 @@ class EventCollectionCell: UICollectionViewCell {
         super.init(frame: frame)
         setApperance()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -31,12 +31,12 @@ class EventCollectionCell: UICollectionViewCell {
     
     // MARK: - Private methods
     private func setApperance() {
-        layer.shadowColor = UIColor.shadow.cgColor
+        layer.shadowColor = Asset.Colors.shadow.color.cgColor
         layer.shadowRadius = 5
         layer.shadowOpacity = 0.2
         layer.shadowOffset = CGSize(width: shadowOffset, height: shadowOffset)
         layer.masksToBounds = false
-        
+
         eventCard.translatesAutoresizingMaskIntoConstraints = false
         eventCard.layer.masksToBounds = true
         contentView.addSubview(eventCard)
@@ -45,7 +45,7 @@ class EventCollectionCell: UICollectionViewCell {
             eventCard.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             eventCard.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             eventCard.topAnchor.constraint(equalTo: topAnchor),
-            eventCard.bottomAnchor.constraint(equalTo: bottomAnchor),
+            eventCard.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     

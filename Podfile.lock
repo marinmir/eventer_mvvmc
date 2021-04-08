@@ -327,6 +327,7 @@ PODS:
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.5.0)
   - InoMvvmc (0.1.0):
+    - RxCocoa
     - RxSwift
     - Swinject
   - leveldb-library (1.22)
@@ -345,6 +346,7 @@ PODS:
   - SDWebImage (5.10.2):
     - SDWebImage/Core (= 5.10.2)
   - SDWebImage/Core (5.10.2)
+  - SnapKit (5.0.1)
   - SwiftGen (6.4.0)
   - Swinject (2.7.1)
 
@@ -353,10 +355,11 @@ DEPENDENCIES:
   - Firebase/Firestore
   - FirebaseFirestoreSwift
   - FirebaseUI/Storage
-  - InoMvvmc (from `/Users/marinmir/InoMvvmc`)
+  - InoMvvmc (from `https://git.inostudio.net/ios-team/ino-mvvmc.git`)
   - RxCocoa (= 6.0.0)
   - RxSwift (= 6.0.0)
   - SDWebImage (~> 5.0)
+  - SnapKit (~> 5.0.0)
   - SwiftGen (~> 6.0)
   - Swinject
 
@@ -386,12 +389,18 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - SnapKit
     - SwiftGen
     - Swinject
 
 EXTERNAL SOURCES:
   InoMvvmc:
-    :path: "/Users/marinmir/InoMvvmc"
+    :git: https://git.inostudio.net/ios-team/ino-mvvmc.git
+
+CHECKOUT OPTIONS:
+  InoMvvmc:
+    :commit: 0f5e5a3f65a6049ca9d0b52fe7161c7c3aaa2b51
+    :git: https://git.inostudio.net/ios-team/ino-mvvmc.git
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -411,7 +420,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
-  InoMvvmc: 4a1c77baf87b1298cf8c5616de3f49b2552d5c6c
+  InoMvvmc: 4873b2de937c3108086525abc18b0c87f9f2b4d5
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
@@ -419,9 +428,10 @@ SPEC CHECKSUMS:
   RxRelay: 8d593be109c06ea850df027351beba614b012ffb
   RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
   SDWebImage: b969dcfc02c40a5da71eac0b03b8f1a0c794a86f
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: 79accb7fcd32f8995e5fc06b329078ecb26046fb
+PODFILE CHECKSUM: 36a7c3629aa56066d501409a8c5406f852b60c65
 
 COCOAPODS: 1.10.1

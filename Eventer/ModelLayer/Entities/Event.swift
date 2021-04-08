@@ -17,6 +17,6 @@ struct Event: Codable {
     var cost: Double
     var description: String
     var titleImage: String
-    var visitors: Visitors
+    var visitors: Visitors?
 
 }

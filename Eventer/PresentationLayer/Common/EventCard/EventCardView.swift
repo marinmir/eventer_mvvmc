@@ -54,7 +54,10 @@ class EventCardView: UIView {
 
         dateView.configure(dateTime: event.dateTime)
 
-        visitorsPreview.configure(visitors: event.visitors)
+        if let visitors = event.visitors {
+            visitorsPreview.configure(visitors: visitors)
+        }
+        
     }
 
     // MARK: - Private methods
@@ -85,8 +88,8 @@ class EventCardView: UIView {
         addSubview(visitorsPreview)
 
         likeButton.translatesAutoresizingMaskIntoConstraints = false
-        likeButton.setImage(UIImage(named: "LikeButton"), for: .normal)
-        likeButton.setImage(UIImage(named: "SelectedLikeButton"), for: .selected)
+        likeButton.setImage(Asset.UIKit.LikeButton.likeButton.image, for: .normal)
+        likeButton.setImage(Asset.UIKit.LikeButton.selectedLikeButton.image, for: .selected)
         likeButton.isUserInteractionEnabled = true
         likeButton.layer.cornerRadius = likeButtonSide/2
         likeButton.rx.tap

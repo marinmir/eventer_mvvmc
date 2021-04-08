@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  Eventer
+
+  Created by Ярослав Магин on 22.03.2021.
+  Copyright © 2021 Мирошниченко Марина. All rights reserved.
+*/
+
+// SEARCH
+"search.placeholder" = "Search for...";
+
+// FEEDS
+"feeds.refresh_title" = "Getting new events...";
+"feeds.sections.popular" = "Popular";
+"feeds.sections.promoted" = "Promoted";
+"feeds.sections.thisWeekend" = "This weekend";
+
+// TAGS
+"tags.art" = "Art";
+"tags.food" = "Food";
+"tags.cinema" = "Cinema";
+"tags.music" = "Music";
+"tags.sport" = "Sport";
+"tags.society" = "Society";

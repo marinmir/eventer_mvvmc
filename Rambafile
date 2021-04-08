@@ -18,6 +18,8 @@ project_group_path: Eventer/PresentationLayer/UserStories
 ### Dependencies settings section
 podfile_path: Podfile
 
-### Templates
+catalogs:
+- 'https://git.inostudio.net/ino/generamba-catalog'
+
 templates:
-- { name: ino_mvvm_module, local: './Generamba/ino_mvvm_module'}
+- { name: ino_mvvm_module }

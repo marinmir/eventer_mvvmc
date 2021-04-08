@@ -16,6 +16,7 @@ target 'Eventer' do
   pod 'RxSwift', '6.0.0'
   pod 'RxCocoa', '6.0.0'
   pod 'Swinject'
-  pod 'InoMvvmc', :path => ENV['HOME'] + '/InoMvvmc'
+  pod 'InoMvvmc', :git => 'https://git.inostudio.net/ios-team/ino-mvvmc.git'
+  pod 'SnapKit', '~> 5.0.0'
 
 end

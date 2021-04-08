@@ -7,18 +7,46 @@
 //
 
 import RxSwift
+import RxCocoa
+import SnapKit
 import UIKit
 
 final class FeedsView: UIView {
 
+    var eventsDataSource: UITableViewDataSource? {
+        get {
+            return eventsList.dataSource
+        }
+        
+        set {
+            eventsList.dataSource = newValue
+        }
+    }
+    
+    var tableDelegate: UITableViewDelegate? {
+        get {
+            return eventsList.delegate
+        }
+        
+        set {
+            eventsList.delegate = newValue
+        }
+    }
+    
     // MARK: - Private properties
 
     private let disposeBag = DisposeBag()
 
+    private let refreshControl = UIRefreshControl()
+    private let eventsList = UITableView(frame: .zero, style: .grouped)
+    
     // MARK: - Initializers
 
     init() {
         super.init(frame: .zero)
+        
+        setupViews()
+        setConstraints()
     }
 
     @available(*, unavailable)
@@ -29,7 +57,38 @@ final class FeedsView: UIView {
     // MARK: - Public methods
 
     func bind(to viewModel: FeedsViewModelBindable) {
-        // Bindings UI controls to view model's input/output
+        refreshControl.rx.controlEvent(.valueChanged)
+            .bind(to: viewModel.needRefresh)
+            .disposed(by: disposeBag)
+    }
+    
+    func refresh() {
+        refreshControl.endRefreshing()
+        eventsList.reloadData()
+    }
+    
+    // MARK: - Private methods
+    
+    private func setupViews() {
+        backgroundColor = .white
+        
+        refreshControl.tintColor = Asset.Colors.lightLavender.color
+        refreshControl.attributedTitle = NSAttributedString(string: L10n.Feeds.refreshTitle,
+                                                            attributes: [.foregroundColor: Asset.Colors.darkViolet.color])
+        
+        eventsList.refreshControl = refreshControl
+        eventsList.backgroundColor = .white
+        eventsList.separatorStyle = .none
+        eventsList.allowsSelection = false
+        eventsList.register(EventListCell.self, forCellReuseIdentifier: EventListCell.cellReuseIdentifier)
+        eventsList.register(TagsCell.self, forCellReuseIdentifier: TagsCell.cellReuseIdentifier)
+        addSubview(eventsList)
+    }
+    
+    private func setConstraints() {
+        eventsList.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 

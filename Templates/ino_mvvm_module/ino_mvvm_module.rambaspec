@@ -23,4 +23,5 @@ code_files:
 
 # Coordinator
 - {name: Coordinator/Coordinator.swift, path: Code/Module/coordinator.swift.liquid}
-- {name: Coordinator/CoordinatorAssembly.swift, path: Code/Module/coordinatorassembly.swift.liquid}
+# possibly we don't need it
+#- {name: Coordinator/CoordinatorAssembly.swift, path: Code/Module/coordinatorassembly.swift.liquid}

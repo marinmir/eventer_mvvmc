@@ -61,14 +61,14 @@ final class MainCoordinator: BaseCoordinator<Void> {
             profileModule.view.tabBarItem = profileTabItem
 
             let tabBarList = [
-                feedsModule.view,
+                UINavigationController(rootViewController: feedsModule.view),
                 mapModule.view,
                 createEventModule.view,
                 favouritesModule.view,
                 profileModule.view
             ]
 
-            tabBarController.viewControllers = tabBarList
+            tabBarController.setViewControllers(tabBarList, animated: true)
 
             window.rootViewController = tabBarController
         }

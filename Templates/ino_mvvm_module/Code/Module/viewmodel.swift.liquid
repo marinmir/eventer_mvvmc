@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxCocoa
 import RxSwift
 
 /// Describes view model's input streams/single methods
@@ -17,7 +18,7 @@ protocol {{ module_info.name }}ViewModelOutput {}
 
 protocol {{ module_info.name }}ViewModelBindable: {{ module_info.name }}ViewModelInput & {{ module_info.name }}ViewModelOutput {}
 
-final class {{ module_info.name }}ViewModel {
+final class {{ module_info.name }}ViewModel: {{ module_info.name }}ModuleInput & {{ module_info.name }}ModuleOutput {
     private let disposeBag = DisposeBag()
 }
 
@@ -26,11 +27,3 @@ final class {{ module_info.name }}ViewModel {
 extension {{ module_info.name }}ViewModel: {{ module_info.name }}ViewModelBindable {
 	// Describe all bindings here
 }
-
-// MARK: - {{ module_info.name }}ModuleInput implementation
-
-extension {{ module_info.name }}ViewModel: {{ module_info.name }}ModuleInput {}
-
-// MARK: - {{ module_info.name }}ModuleOutput implementation
-
-extension {{ module_info.name }}ViewModel: {{ module_info.name }}ModuleOutput {}

@@ -12,7 +12,7 @@ class TagsCell: UITableViewCell {
     // MARK: - Properties
     static let cellReuseIdentifier = String(describing: TagsCell.self)
     
-    private let tags = Tags.tags
+    private var tags = Tags.tags
     
     private let tagsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -33,6 +33,12 @@ class TagsCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public methods
+    
+    func setTags(_ tags: [Tag]) {
+        self.tags = tags
     }
     
     // MARK: - Private methods
