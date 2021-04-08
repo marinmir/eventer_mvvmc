@@ -326,9 +326,7 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.5.0)
-  - InoMvvmc (0.1.0):
-    - RxCocoa
-    - RxSwift
+  - InoMvvmc (0.2.0):
     - Swinject
   - leveldb-library (1.22)
   - nanopb (1.30906.0):
@@ -355,7 +353,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - FirebaseFirestoreSwift
   - FirebaseUI/Storage
-  - InoMvvmc (from `https://git.inostudio.net/ios-team/ino-mvvmc.git`)
+  - InoMvvmc (from `https://github.com/YarMag/ino_mvvmc.git`)
   - RxCocoa (= 6.0.0)
   - RxSwift (= 6.0.0)
   - SDWebImage (~> 5.0)
@@ -395,12 +393,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   InoMvvmc:
-    :git: https://git.inostudio.net/ios-team/ino-mvvmc.git
+    :git: https://github.com/YarMag/ino_mvvmc.git
 
 CHECKOUT OPTIONS:
   InoMvvmc:
-    :commit: 0f5e5a3f65a6049ca9d0b52fe7161c7c3aaa2b51
-    :git: https://git.inostudio.net/ios-team/ino-mvvmc.git
+    :commit: 3361e762aa77c154a5fb35694b1ef4e2d4d0e6f0
+    :git: https://github.com/YarMag/ino_mvvmc.git
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -420,7 +418,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
-  InoMvvmc: 4873b2de937c3108086525abc18b0c87f9f2b4d5
+  InoMvvmc: c56549453298da7d29009934434ebb2fad526c0e
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
@@ -432,6 +430,6 @@ SPEC CHECKSUMS:
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: 36a7c3629aa56066d501409a8c5406f852b60c65
+PODFILE CHECKSUM: 171af6cbfc1f68ff8571c3ff08a24f0182a13099
 
 COCOAPODS: 1.10.1
