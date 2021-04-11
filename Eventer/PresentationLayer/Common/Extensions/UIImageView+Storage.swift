@@ -15,6 +15,6 @@ extension UIImageView {
     func loadImage(url: String) {
         let ref = Storage.storage().reference(withPath: url)
         sd_imageIndicator = SDWebImageActivityIndicator.gray
-        sd_setImage(with: ref, placeholderImage: UIImage())
+        sd_setImage(with: ref, placeholderImage: Asset.eventDefault.image)
     }
 }

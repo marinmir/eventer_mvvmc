@@ -72,7 +72,7 @@ final class FeedsViewController: UIViewController {
         //searchController.searchResultsUpdater = self
         definesPresentationContext = true
         searchController.obscuresBackgroundDuringPresentation = true
-        searchController.searchBar.placeholder = NSLocalizedString("Search for...", comment: "")
+        searchController.searchBar.placeholder = L10n.Search.placeholder
         //searchController.searchBar.delegate = self
         //searchController.delegate = self
         searchController.searchBar.tintColor = Asset.Colors.darkViolet.color

@@ -27,12 +27,10 @@ class EventCardView: UIView {
 
     private let placeLabel = UILabel()
     private let visitorsPreview = VisitorsPreview()
-    private let likeButton = UIButton()
+    private let likeButton = LikeButton()
 
-    private let likeButtonSide: CGFloat = 35
     private let disposeBag = DisposeBag()
     private let sideOffset: CGFloat = 10
-    private let likeButtonContentInsets: CGFloat = 5
 
     // MARK: - Public methods
     init() {
@@ -92,21 +90,9 @@ class EventCardView: UIView {
         addSubview(visitorsPreview)
 
         likeButton.translatesAutoresizingMaskIntoConstraints = false
-        likeButton.setImage(Asset.UIKit.LikeButton.likeButton.image, for: .normal)
-        likeButton.setImage(Asset.UIKit.LikeButton.selectedLikeButton.image, for: .selected)
-        likeButton.isUserInteractionEnabled = true
-        likeButton.layer.cornerRadius = likeButtonSide/2
-        likeButton.rx.tap
-            .asDriver()
-            .debounce(.milliseconds(200))
-            .drive(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.didTapLike()})
-            .disposed(by: disposeBag)
-        likeButton.contentEdgeInsets = UIEdgeInsets(top: likeButtonContentInsets,
-                                              left: likeButtonContentInsets,
-                                              bottom: likeButtonContentInsets,
-                                              right: likeButtonContentInsets)
+        likeButton.didTap.emit(onNext: {
+            
+        }).disposed(by: disposeBag)
         addSubview(likeButton)
 
         NSLayoutConstraint.activate([
@@ -134,19 +120,12 @@ class EventCardView: UIView {
             visitorsPreview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -sideOffset),
 
             likeButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -sideOffset),
-            likeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -sideOffset),
-            likeButton.widthAnchor.constraint(equalToConstant: likeButtonSide),
-            likeButton.heightAnchor.constraint(equalToConstant: likeButtonSide)
+            likeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -sideOffset)
         ])
     }
 
     private func didTapLike() {
         likeButton.isSelected.toggle()
-
-        UIView.animate(withDuration: 0.5) {
-            self.likeButton.backgroundColor = Asset.Colors.lightLavender.color
-            self.likeButton.backgroundColor = .clear
-        }
     }
 
 }

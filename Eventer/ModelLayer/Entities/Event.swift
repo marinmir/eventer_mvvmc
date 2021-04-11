@@ -10,7 +10,7 @@ import UIKit
 
 struct Event: Codable {
     // MARK: - Properties
-    var id: Date?
+    var id: String?
     var title: String?
     var place: String?
     var dateTime: Date?
