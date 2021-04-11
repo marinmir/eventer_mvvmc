@@ -7,30 +7,54 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseFirestoreSwift
 import RxSwift
 
 class EventsServiceImpl: EventsService {
-    func loadAllEvents() -> Single<[EventType : [Event]]> {
+    private let database = Firestore.firestore()
+    private let disposeBag = DisposeBag()
+    
+    func loadEvents() -> Single<[EventType: [Event]]> {
         return Single.create { single in
             
-            let events: [EventType: [Event]] = [
-                EventType.promoted: [
-                    Event(id: Date(), title: "Title1", place: "Place1", dateTime: Date(), cost: 100, description: "Desc1", titleImage: "", visitors: nil),
-                    Event(id: Date(), title: "Title2", place: "Place2", dateTime: Date(), cost: 200, description: "Desc2", titleImage: "", visitors: nil),
-                ],
-                .popular: [
-                    Event(id: Date(), title: "Title3", place: "Place3", dateTime: Date(), cost: 300, description: "Desc3", titleImage: "", visitors: nil),
-                ],
-                .thisWeek: [
-                    Event(id: Date(), title: "Title4", place: "Place4", dateTime: Date(), cost: 400, description: "Desc4", titleImage: "", visitors: nil),
-                ]
-            ]
-            
-            single(.success(events))
+            Observable.zip(
+                self.loadFirebaseEvents(for: "/popular").asObservable().materialize(),
+                self.loadFirebaseEvents(for: "/promoted").asObservable().materialize(),
+                self.loadFirebaseEvents(for: "/thisWeek").asObservable().materialize()
+            ).subscribe(onNext: { popularEvents, promotedEvents, thisWeekEvents in
+                var result: [EventType: [Event]] = [:]
+                if let popularEvents = popularEvents.element {
+                    result[.popular] = popularEvents
+                }
+                if let promotedEvents = promotedEvents.element {
+                    result[.promoted] = promotedEvents
+                }
+                if let thisWeekEvents = thisWeekEvents.element {
+                    result[.thisWeek] = thisWeekEvents
+                }
+                single(.success(result))
+            }).disposed(by: self.disposeBag)
             
             return Disposables.create()
         }
     }
     
-    
+    private func loadFirebaseEvents(for path: String) -> Single<[Event]> {
+        return Single.create { single in
+            
+            let docRef = self.database.collection(path)
+            
+            docRef.getDocuments { querySnapshot, error in
+                if let querySnapshot = querySnapshot {
+                    let events = querySnapshot.documents.compactMap { try? $0.data(as: Event.self) }
+                    single(.success(events))
+                } else if let error = error {
+                    single(.failure(error))
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
 }

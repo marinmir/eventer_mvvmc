@@ -34,7 +34,7 @@ final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
         self.eventsService = eventsService
         
         needRefreshRelay
-            .flatMapLatest({ self.eventsService.loadAllEvents() })
+            .flatMapLatest({ self.eventsService.loadEvents() })
             .subscribe(onNext: { events in
                 var sections = [FeedsSectionViewModel]()
                 sections.append(.tagList(tags: Tags.tags))

@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol EventsService {
-    func loadAllEvents() -> Single<[EventType: [Event]]>
+    func loadEvents() -> Single<[EventType: [Event]]>
 }

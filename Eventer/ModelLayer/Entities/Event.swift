@@ -10,13 +10,13 @@ import UIKit
 
 struct Event: Codable {
     // MARK: - Properties
-    var id: Date
-    var title: String
-    var place: String
-    var dateTime: Date
-    var cost: Double
-    var description: String
-    var titleImage: String
+    var id: Date?
+    var title: String?
+    var place: String?
+    var dateTime: Date?
+    var cost: Double?
+    var description: String?
+    var titleImage: String?
     var visitors: Visitors?
 
 }

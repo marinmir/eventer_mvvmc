@@ -45,15 +45,19 @@ class EventCardView: UIView {
     }
 
     func configure(_ event: Event) {
-        titleImageView.loadImage(url: event.titleImage)
+        if let titleImage = event.titleImage {
+            titleImageView.loadImage(url: titleImage)
+        } else {
+            titleImageView.image = Asset.eventDefault.image
+        }
 
         titleLabel.text = event.title
 
-        let time = CustomDateFormatter.getTime(from: event.dateTime)
-        placeLabel.text = "\(event.place), \(time)"
-
-        dateView.configure(dateTime: event.dateTime)
-
+        if let time = event.dateTime {
+            placeLabel.text = "\(event.place ?? ""), \(CustomDateFormatter.getTime(from: time))"
+            dateView.configure(dateTime: time)
+        }
+        
         if let visitors = event.visitors {
             visitorsPreview.configure(visitors: visitors)
         }
