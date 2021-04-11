@@ -47,6 +47,11 @@ internal enum Asset {
     internal static let profile = ImageAsset(name: "Profile")
   }
   internal enum UIKit {
+    internal enum Event {
+      internal static let calendar = ImageAsset(name: "calendar")
+      internal static let compass = ImageAsset(name: "compass")
+      internal static let ticket = ImageAsset(name: "ticket")
+    }
     internal enum LikeButton {
       internal static let likeButton = ImageAsset(name: "LikeButton")
       internal static let selectedLikeButton = ImageAsset(name: "SelectedLikeButton")

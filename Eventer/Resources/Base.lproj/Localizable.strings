@@ -22,3 +22,6 @@
 "tags.music" = "Music";
 "tags.sport" = "Sport";
 "tags.society" = "Society";
+
+// EVENT DETAILS
+"event.details.organizer" = "Organizer";

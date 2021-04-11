@@ -11,6 +11,13 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
 
+  internal enum Event {
+    internal enum Details {
+      /// Organizer
+      internal static let organizer = L10n.tr("Localizable", "event.details.organizer")
+    }
+  }
+
   internal enum Feeds {
     /// Getting new events...
     internal static let refreshTitle = L10n.tr("Localizable", "feeds.refresh_title")
