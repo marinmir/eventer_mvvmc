@@ -53,7 +53,7 @@ final class MainViewController: UITabBarController {
         tabBar.barTintColor = Asset.Colors.white.color
 
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().tintColor = Asset.Colors.white.color
+        //UINavigationBar.appearance().tintColor = Asset.Colors.white.color
         UINavigationBar.appearance().backgroundColor = Asset.Colors.white.color
     }
 }

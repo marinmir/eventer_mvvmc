@@ -45,15 +45,48 @@ final class EventFullSizeCard: UIView {
     
     // MARK: - Public methods
     
-    func configure(with event: Event) {
+    func configure(with event: EventCardViewModel) {
         titleLabel.text = event.title
         
-        //dateField.configure(with: EventInfoFieldItem(title: <#T##String#>, subtitle: <#T##String?#>, image: <#T##UIImage#>))
+        dateField.configure(with:
+                                EventInfoFieldItem(
+                                    title: event.date,
+                                    subtitle: "",
+                                    image: Asset.UIKit.Event.calendar.image
+                                )
+        )
+        
+        placeField.configure(with:
+                                EventInfoFieldItem(
+                                    title: event.location,
+                                    subtitle: "",
+                                    image: Asset.UIKit.Event.compass.image
+                                )
+        )
+        
+        priceField.configure(with:
+                                EventInfoFieldItem(
+                                    title: event.price,
+                                    subtitle: "",
+                                    image: Asset.UIKit.Event.ticket.image
+                                )
+        )
+        
+        if let visitors = event.visitorsPreview {
+            visitorsPreview.configure(visitors: visitors)
+        }
+        
+        descriptionText.text = event.eventDescription
     }
     
     // MARK: - Private methods
     
     private func setupViews() {
+        backgroundColor = Asset.Colors.white.color
+        layer.cornerRadius = 10
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        layer.masksToBounds = true
+        
         addSubview(scroll)
         
         contentStack.axis = .vertical
@@ -100,6 +133,7 @@ final class EventFullSizeCard: UIView {
         
         contentStack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+            make.width.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in

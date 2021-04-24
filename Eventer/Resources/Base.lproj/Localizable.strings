@@ -25,3 +25,6 @@
 
 // EVENT DETAILS
 "event.details.organizer" = "Organizer";
+"event.free" = "Free";
+"event.going" = "%i going";
+"event.noVisitors" = "No visitors";

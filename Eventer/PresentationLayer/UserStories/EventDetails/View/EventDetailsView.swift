@@ -16,6 +16,7 @@ final class EventDetailsView: UIView {
     // MARK: - Private properties
 
     private let titleImage = UIImageView()
+    private let eventCardView = EventFullSizeCard()
     
     private let disposeBag = DisposeBag()
 
@@ -36,16 +37,31 @@ final class EventDetailsView: UIView {
     // MARK: - Public methods
 
     func bind(to viewModel: EventDetailsViewModelBindable) {
-        // Bindings UI controls to view model's input/output
+        if let imageUrl = viewModel.eventDetails.titleImage {
+            titleImage.loadImage(url: imageUrl)
+        } else {
+            titleImage.image = Asset.eventDefault.image
+        }
+        
+        eventCardView.configure(with: viewModel.eventDetails)
     }
 
     // MARK: - Private methods
 
     private func setupViews() {
-
+        addSubview(titleImage)
+        addSubview(eventCardView)
     }
 
     private func setConstraints() {
-
+        titleImage.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(300)
+        }
+        
+        eventCardView.snp.makeConstraints { make in
+            make.top.equalTo(titleImage.snp.bottom).offset(-10)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
     }
 }

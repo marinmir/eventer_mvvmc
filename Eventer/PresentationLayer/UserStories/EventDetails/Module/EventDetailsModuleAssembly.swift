@@ -10,13 +10,12 @@ import Swinject
 
 final class EventDetailsModuleAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(EventDetailsViewModel.self) { _ in
-            // replace '_' with 'resolver' and inject dependencies if necessary
-            return EventDetailsViewModel()
+        container.register(EventDetailsViewModel.self) { (resolver, event: Event) in
+            return EventDetailsViewModel(event: event)
         }
 
-        container.register(EventDetailsModule.self) { resolver in
-            let viewModel = resolver.resolve(EventDetailsViewModel.self)!
+        container.register(EventDetailsModule.self) { (resolver, event: Event) in
+            let viewModel = resolver.resolve(EventDetailsViewModel.self, argument: event)!
             let view = EventDetailsViewController(viewModel: viewModel)
             
             return EventDetailsModule(

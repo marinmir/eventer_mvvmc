@@ -14,6 +14,9 @@ import RxSwift
 protocol FeedsViewModelInput {
     var needRefresh: Binder<Void> { get }
     var openSearch: Binder<Void> { get }
+    
+    func didTapEvent(_ event: Event)
+    func didTapEvent(at index: Int, in section: Int)
 }
 
 /// Describes view model's output streams needed to update UI
@@ -24,6 +27,8 @@ protocol FeedsViewModelOutput {
 protocol FeedsViewModelBindable: FeedsViewModelInput & FeedsViewModelOutput {}
 
 final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
+    var onEventDetailsRequested: ((Event) -> Void)?
+    
     private let disposeBag = DisposeBag()
     private let needRefreshRelay = PublishRelay<Void>()
     private let tableSectionsRelay = BehaviorRelay<[FeedsSectionViewModel]>(value: [])
@@ -66,5 +71,24 @@ extension FeedsViewModel: FeedsViewModelBindable {
     
     var tableSections: Driver<[FeedsSectionViewModel]> {
         return tableSectionsRelay.asDriver()
+    }
+    
+    func didTapEvent(_ event: Event) {
+        onEventDetailsRequested?(event)
+    }
+    
+    func didTapEvent(at index: Int, in section: Int) {
+        let section = tableSectionsRelay.value[section]
+        
+        switch section {
+            case .popularEvents(let events):
+                onEventDetailsRequested?(events[index])
+            case .promotedEvents(let events):
+                onEventDetailsRequested?(events[index])
+            case .weekendEvents(let events):
+                onEventDetailsRequested?(events[index])
+            default:
+                break
+        }
     }
 }

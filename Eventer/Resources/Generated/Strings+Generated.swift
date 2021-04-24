@@ -12,6 +12,14 @@ import Foundation
 internal enum L10n {
 
   internal enum Event {
+    /// Free
+    internal static let free = L10n.tr("Localizable", "event.free")
+    /// %i going
+    internal static func going(_ p1: Int) -> String {
+      return L10n.tr("Localizable", "event.going", p1)
+    }
+    /// No visitors
+    internal static let noVisitors = L10n.tr("Localizable", "event.noVisitors")
     internal enum Details {
       /// Organizer
       internal static let organizer = L10n.tr("Localizable", "event.details.organizer")

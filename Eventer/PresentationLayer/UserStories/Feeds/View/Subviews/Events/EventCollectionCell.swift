@@ -11,6 +11,9 @@ import UIKit
 class EventCollectionCell: UICollectionViewCell {
     // MARK: - Properties
     static let cellReuseIdentifier = String(describing: EventCollectionCell.self)
+    
+    var didTapCell: (() -> Void)?
+    
     private let eventCard = EventCardView()
     
     private let shadowOffset = 5
@@ -18,7 +21,7 @@ class EventCollectionCell: UICollectionViewCell {
     // MARK: - Public methods
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setApperance()
+        setAppearance()
     }
 
     required init?(coder: NSCoder) {
@@ -30,7 +33,7 @@ class EventCollectionCell: UICollectionViewCell {
     }
     
     // MARK: - Private methods
-    private func setApperance() {
+    private func setAppearance() {
         layer.shadowColor = Asset.Colors.shadow.color.cgColor
         layer.shadowRadius = 5
         layer.shadowOpacity = 0.2
@@ -41,6 +44,8 @@ class EventCollectionCell: UICollectionViewCell {
         eventCard.layer.masksToBounds = true
         contentView.addSubview(eventCard)
         
+        eventCard.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTap)))
+        
         NSLayoutConstraint.activate([
             eventCard.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             eventCard.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -49,4 +54,7 @@ class EventCollectionCell: UICollectionViewCell {
         ])
     }
     
+    @objc private func onTap() {
+        didTapCell?()
+    }
 }

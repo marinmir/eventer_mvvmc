@@ -12,6 +12,8 @@ import UIKit
 
 final class MainCoordinator: BaseCoordinator<Void> {
 
+    private var tabBarController: UITabBarController?
+    
 	override func assemblies() -> [Assembly] {
 		return [
             MainModuleAssembly(),
@@ -29,11 +31,14 @@ final class MainCoordinator: BaseCoordinator<Void> {
             guard let tabBarController = mainModule.view as? UITabBarController else {
                 return
             }
-
+            
+            self.tabBarController = tabBarController
+            
             let feedsModule = resolver.resolve(FeedsModule.self)!
             let feedsTabItem = UITabBarItem(title: nil,
                                             image: Asset.TabBars.feeds.image,
                                             selectedImage: Asset.SelectedTabBars.selectedFeeds.image)
+            feedsModule.output.onEventDetailsRequested = onEventDetailsRequested
             feedsModule.view.tabBarItem = feedsTabItem
 
             let mapModule = resolver.resolve(MapModule.self)!
@@ -73,4 +78,17 @@ final class MainCoordinator: BaseCoordinator<Void> {
             window.rootViewController = tabBarController
         }
 	}
+    
+    private func onEventDetailsRequested(event: Event) {
+        if let navigationController = getActiveNavigationController() {
+            let eventDetailsCoordinator = EventDetailsCoordinator(navigationController: navigationController, event: event)
+            
+            coordinate(to: eventDetailsCoordinator)
+        }
+        
+    }
+    
+    private func getActiveNavigationController() -> UINavigationController? {
+        return tabBarController?.selectedViewController as? UINavigationController
+    }
 }

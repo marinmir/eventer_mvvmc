@@ -12,9 +12,11 @@ import Swinject
 final class EventDetailsCoordinator: BaseCoordinator<Void> {
 	// Replace <Void> with some other result type if necessary
     private let navigationController: UINavigationController
+    private let event: Event
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, event: Event) {
         self.navigationController = navigationController
+        self.event = event
     }
 
 	override func assemblies() -> [Assembly] {
@@ -24,6 +26,8 @@ final class EventDetailsCoordinator: BaseCoordinator<Void> {
 	}
 
 	override func start() {
-		// Implement actual start from window/nav controller/tab bar controller here
+        let module = resolver.resolve(EventDetailsModule.self, argument: event)!
+        
+        navigationController.pushViewController(module.view, animated: true)
 	}
 }

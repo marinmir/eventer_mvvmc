@@ -14,12 +14,21 @@ import RxSwift
 protocol EventDetailsViewModelInput {}
 
 /// Describes view model's output streams needed to update UI
-protocol EventDetailsViewModelOutput {}
+protocol EventDetailsViewModelOutput {
+    var eventDetails: EventCardViewModel { get }
+}
 
 protocol EventDetailsViewModelBindable: EventDetailsViewModelInput & EventDetailsViewModelOutput {}
 
 final class EventDetailsViewModel: EventDetailsModuleInput & EventDetailsModuleOutput {
+    let eventDetails: EventCardViewModel
+    
     private let disposeBag = DisposeBag()
+    
+    
+    init(event: Event) {
+        eventDetails = EventCardViewModel(event: event)
+    }
 }
 
 // MARK: - EventDetailsViewModelBindable implementation

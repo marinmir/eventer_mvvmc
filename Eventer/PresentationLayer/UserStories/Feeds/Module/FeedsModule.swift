@@ -11,6 +11,8 @@ import InoMvvmc
 
 protocol FeedsModuleInput: AnyObject {}
 
-protocol FeedsModuleOutput: AnyObject {}
+protocol FeedsModuleOutput: AnyObject {
+    var onEventDetailsRequested: ((Event) -> Void)? { get set }
+}
 
 final class FeedsModule: BaseModule<FeedsModuleInput, FeedsModuleOutput> {}

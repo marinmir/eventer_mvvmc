@@ -90,7 +90,6 @@ final class FeedsViewController: UIViewController {
         
         navigationItem.titleView = searchController.searchBar
         
-        
         searchController.hidesNavigationBarDuringPresentation = false
     }
     
@@ -99,6 +98,10 @@ final class FeedsViewController: UIViewController {
         searchController.searchBar.setImage(Asset.UIKit.filter.image, for: .bookmark, state: .normal)
         
         searchController.searchBar.delegate = self
+    }
+    
+    private func didTapEvent(event: Event) {
+        viewModel.didTapEvent(event)
     }
 }
 
@@ -126,6 +129,7 @@ extension FeedsViewController: UITableViewDataSource {
                 }
                 
                 cell.configure(with: popularEvents)
+                cell.didTapEvent = didTapEvent
                 
                 return cell
             case .promotedEvents(let promotedEvents):
@@ -134,6 +138,7 @@ extension FeedsViewController: UITableViewDataSource {
                 }
                 
                 cell.configure(with: promotedEvents)
+                cell.didTapEvent = didTapEvent
                 
                 return cell
             case .weekendEvents(let weekendEvents):
@@ -142,9 +147,14 @@ extension FeedsViewController: UITableViewDataSource {
                 }
                 
                 cell.configure(with: weekendEvents)
+                cell.didTapEvent = didTapEvent
                 
                 return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didTapEvent(at: indexPath.row, in: indexPath.section)
     }
 }
 

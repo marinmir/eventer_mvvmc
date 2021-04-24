@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		006D0079262DA34A00C545E8 /* EventCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D0078262DA34A00C545E8 /* EventCardViewModel.swift */; };
 		0079F10D2607F795006A4A1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0079F10B2607F795006A4A1E /* Localizable.strings */; };
 		0079F1102607F881006A4A1E /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079F10F2607F881006A4A1E /* Strings+Generated.swift */; };
 		0079F1132607FE6E006A4A1E /* FeedsSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079F1122607FE6E006A4A1E /* FeedsSectionViewModel.swift */; };
@@ -92,6 +93,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		006D0078262DA34A00C545E8 /* EventCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardViewModel.swift; sourceTree = "<group>"; };
 		0079F10C2607F795006A4A1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Localizable.strings; sourceTree = "<group>"; };
 		0079F10F2607F881006A4A1E /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		0079F1122607FE6E006A4A1E /* FeedsSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsSectionViewModel.swift; sourceTree = "<group>"; };
@@ -194,6 +196,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		006D0077262DA33B00C545E8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				006D0078262DA34A00C545E8 /* EventCardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		0079F10A2607F787006A4A1E /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +295,7 @@
 		0EF5970D25A7CC0D00B8458B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				006D0077262DA33B00C545E8 /* ViewModels */,
 				00DF258A25F6CD9D009ADFFE /* SearchBar */,
 				0EF5970E25A7CC0D00B8458B /* Constants */,
 				0EF5971125A7CC0D00B8458B /* EventCard */,
@@ -934,6 +945,7 @@
 				0EF5971B25A7CC0D00B8458B /* DateView.swift in Sources */,
 				0B62AC1BB472A1A1E0DEE604 /* FeedsModule.swift in Sources */,
 				E8FBFB832EE4067B8D6A8F33 /* FeedsModuleAssembly.swift in Sources */,
+				006D0079262DA34A00C545E8 /* EventCardViewModel.swift in Sources */,
 				C09970E1D129E05F6EF8A3D5 /* FeedsViewController.swift in Sources */,
 				3BEA35A967DBB6F650D56BC6 /* FeedsView.swift in Sources */,
 				0EF5972225A7D02500B8458B /* CustomDateFormatter.swift in Sources */,

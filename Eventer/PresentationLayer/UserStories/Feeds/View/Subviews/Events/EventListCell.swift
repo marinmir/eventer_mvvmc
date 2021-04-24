@@ -12,6 +12,9 @@ class EventListCell: UITableViewCell {
     // MARK: - Properties
     static let cellReuseIdentifier = String(describing: EventListCell.self)
     
+    var didTapEvent: ((Event) -> Void)?
+    
+    // MARK: - Private properties
     private var events: [Event] = []
     
     private let eventsCollectionView: UICollectionView = {
@@ -71,7 +74,14 @@ extension EventListCell: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         cell.configure(with: events[indexPath.row])
+        cell.didTapCell = { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            self.didTapEvent?(self.events[indexPath.row])
+        }
+        
         return cell
     }
-    
 }
