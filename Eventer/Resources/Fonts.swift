@@ -10,15 +10,15 @@ import UIKit
 
 extension UIFont {
     static var h1: UIFont {
-        return .systemFont(ofSize: 18)
+        return .boldSystemFont(ofSize: 18)
     }
     
     static var h2: UIFont {
-        return .systemFont(ofSize: 16)
+        return .boldSystemFont(ofSize: 16)
     }
     
     static var h3: UIFont {
-        return .systemFont(ofSize: 14)
+        return .boldSystemFont(ofSize: 14)
     }
     
     static var p1: UIFont {

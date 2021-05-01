@@ -92,9 +92,12 @@ final class EventFullSizeCard: UIView {
         contentStack.axis = .vertical
         contentStack.distribution = .fill
         contentStack.alignment = .leading
-        contentStack.layoutMargins = UIEdgeInsets(top: 24, left: 16, bottom: 20, right: 16)
+        contentStack.layoutMargins = UIEdgeInsets(top: 12, left: 16, bottom: 20, right: 16)
         contentStack.isLayoutMarginsRelativeArrangement = true
         scroll.addSubview(contentStack)
+        
+        titleLabel.font = .h1
+        titleLabel.textColor = Asset.Colors.black.color
         
         topContainer.addSubview(titleLabel)
         topContainer.addSubview(likeButton)
@@ -112,6 +115,7 @@ final class EventFullSizeCard: UIView {
         contentStack.setCustomSpacing(20, after: visitorsPreview)
         
         descriptionTitle.font = .h2
+        descriptionTitle.text = L10n.Event.about
         descriptionTitle.textColor = Asset.Colors.black.color
         contentStack.addArrangedSubview(descriptionTitle)
         contentStack.setCustomSpacing(8, after: descriptionTitle)
@@ -136,14 +140,18 @@ final class EventFullSizeCard: UIView {
             make.width.equalToSuperview()
         }
         
+        topContainer.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+        }
+        
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(likeButton.snp.centerY)
-            make.trailing.equalTo(likeButton.snp.leading).offset(-16)
+            make.leading.equalToSuperview()
         }
         
         likeButton.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.equalToSuperview().offset(-32)
         }
     }
 }

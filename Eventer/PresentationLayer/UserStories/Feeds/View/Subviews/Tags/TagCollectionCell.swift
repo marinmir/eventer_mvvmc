@@ -16,14 +16,14 @@ class TagCollectionCell: UICollectionViewCell {
     // MARK: - Public methods
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setApperance()
+        setAppearance()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with tag: Tag) {
+    func configure(with tag: TagViewModel) {
         tagView.configure(with: tag)
     }
     
@@ -32,7 +32,7 @@ class TagCollectionCell: UICollectionViewCell {
     }
     
     // MARK: - Private methods
-    private func setApperance() {
+    private func setAppearance() {
         tagView.translatesAutoresizingMaskIntoConstraints = false
         tagView.layer.cornerRadius = 20
         tagView.layer.masksToBounds = true
@@ -43,7 +43,7 @@ class TagCollectionCell: UICollectionViewCell {
             tagView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             tagView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             tagView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            tagView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            tagView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
     

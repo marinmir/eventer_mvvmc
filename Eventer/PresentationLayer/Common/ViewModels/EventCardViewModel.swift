@@ -36,7 +36,7 @@ final class EventCardViewModel {
     
     var price: String {
         if let price = event.cost {
-            return String(format: "%d.2f", price)
+            return String(format: "%.2f ₽", price)
         } else {
             return L10n.Event.free
         }

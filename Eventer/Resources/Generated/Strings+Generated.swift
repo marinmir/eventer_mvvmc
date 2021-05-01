@@ -12,6 +12,8 @@ import Foundation
 internal enum L10n {
 
   internal enum Event {
+    /// About
+    internal static let about = L10n.tr("Localizable", "event.about")
     /// Free
     internal static let free = L10n.tr("Localizable", "event.free")
     /// %i going

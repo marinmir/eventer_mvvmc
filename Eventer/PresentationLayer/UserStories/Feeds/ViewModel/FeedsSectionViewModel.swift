@@ -9,7 +9,7 @@
 import Foundation
 
 enum FeedsSectionViewModel {
-    case tagList(tags: [Tag])
+    case tagList(tags: [TagViewModel])
     case popularEvents(_ events: [Event])
     case weekendEvents(_ events: [Event])
     case promotedEvents(_ events: [Event])

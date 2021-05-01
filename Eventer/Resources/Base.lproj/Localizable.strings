@@ -28,3 +28,4 @@
 "event.free" = "Free";
 "event.going" = "%i going";
 "event.noVisitors" = "No visitors";
+"event.about" = "About";

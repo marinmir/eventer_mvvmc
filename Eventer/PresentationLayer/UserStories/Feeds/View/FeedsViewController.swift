@@ -103,6 +103,10 @@ final class FeedsViewController: UIViewController {
     private func didTapEvent(event: Event) {
         viewModel.didTapEvent(event)
     }
+    
+    private func didToggleTag(_ tag: TagViewModel) {
+        viewModel.didToggleTag(tag)
+    }
 }
 
 extension FeedsViewController: UITableViewDataSource {
@@ -122,6 +126,8 @@ extension FeedsViewController: UITableViewDataSource {
                 }
                 
                 cell.setTags(tags)
+                cell.didToggleTag = didToggleTag
+                
                 return cell
             case .popularEvents(let popularEvents):
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: EventListCell.cellReuseIdentifier, for: indexPath) as? EventListCell else {

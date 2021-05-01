@@ -28,3 +28,4 @@
 "event.free" = "Бесплатно";
 "event.going" = "%i идет";
 "event.noVisitors" = "Еще нет посетителей";
+"event.about" = "О событии";

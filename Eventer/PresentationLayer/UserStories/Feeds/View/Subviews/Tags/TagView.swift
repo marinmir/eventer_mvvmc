@@ -31,12 +31,11 @@ class TagView: UIView {
     }
     
     // MARK: Public methods
-    func configure(with tag: Tag) {
-        image = tag.image
-        selectedImage = tag.selectedImage
-        nameLabel.text = tag.name
-        
-        setDeselected()
+    func configure(with tag: TagViewModel) {
+        image = tag.tag.image
+        selectedImage = tag.tag.selectedImage
+        nameLabel.text = tag.tag.name
+        isSelected = tag.isSelected
     }
     
     func toggle() {

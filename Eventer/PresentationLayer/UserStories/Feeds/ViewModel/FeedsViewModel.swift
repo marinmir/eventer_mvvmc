@@ -15,6 +15,7 @@ protocol FeedsViewModelInput {
     var needRefresh: Binder<Void> { get }
     var openSearch: Binder<Void> { get }
     
+    func didToggleTag(_ tag: TagViewModel)
     func didTapEvent(_ event: Event)
     func didTapEvent(at index: Int, in section: Int)
 }
@@ -34,25 +35,65 @@ final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
     private let tableSectionsRelay = BehaviorRelay<[FeedsSectionViewModel]>(value: [])
     private let openSearchRelay = PublishRelay<Void>()
     private let eventsService: EventsService
+    private let tagsViewModels: [TagViewModel]
+    private var events: [EventType: [Event]] = [:]
     
     init(eventsService: EventsService) {
         self.eventsService = eventsService
+        tagsViewModels = Tags.tags.map { TagViewModel(tag: $0) }
         
         needRefreshRelay
             .flatMapLatest({ self.eventsService.loadEvents() })
             .subscribe(onNext: { events in
+                self.events = events
                 var sections = [FeedsSectionViewModel]()
-                sections.append(.tagList(tags: Tags.tags))
+                sections.append(.tagList(tags: self.tagsViewModels))
                 
-                if let promotedEvents = events[.promoted] {
-                    sections.append(.promotedEvents(promotedEvents))
+                let selectedTagsIds = Set(self.tagsViewModels.filter({ $0.isSelected }).compactMap({ $0.tag.id }))
+                
+                if selectedTagsIds.isEmpty {
+                    if let promotedEvents = events[.promoted] {
+                        sections.append(.promotedEvents(promotedEvents))
+                    }
+                    if let popularEvents = events[.popular] {
+                        sections.append(.popularEvents(popularEvents))
+                    }
+                    if let weekendEvents = events[.thisWeek] {
+                        sections.append(.weekendEvents(weekendEvents))
+                    }
+                } else {
+                    if let promotedEvents = events[.promoted] {
+                        let filteredEvents = promotedEvents.filter {
+                            $0.tags?.contains(where: { tag in
+                                                selectedTagsIds.contains(tag) }) ?? false
+                        }
+                        
+                        if !filteredEvents.isEmpty {
+                            sections.append(.promotedEvents(filteredEvents))
+                        }
+                    }
+                    if let popularEvents = events[.popular] {
+                        let filteredEvents = popularEvents.filter {
+                            $0.tags?.contains(where: { tag in
+                                                selectedTagsIds.contains(tag) }) ?? false
+                        }
+                        
+                        if !filteredEvents.isEmpty {
+                            sections.append(.popularEvents(filteredEvents))
+                        }
+                    }
+                    if let weekendEvents = events[.thisWeek] {
+                        let filteredEvents = weekendEvents.filter {
+                            $0.tags?.contains(where: { tag in
+                                                selectedTagsIds.contains(tag) }) ?? false
+                        }
+                        
+                        if !filteredEvents.isEmpty {
+                            sections.append(.weekendEvents(filteredEvents))
+                        }
+                    }
                 }
-                if let popularEvents = events[.popular] {
-                    sections.append(.popularEvents(popularEvents))
-                }
-                if let weekendEvents = events[.thisWeek] {
-                    sections.append(.weekendEvents(weekendEvents))
-                }
+                
                 self.tableSectionsRelay.accept(sections)
             }).disposed(by: disposeBag)
     }
@@ -75,6 +116,12 @@ extension FeedsViewModel: FeedsViewModelBindable {
     
     func didTapEvent(_ event: Event) {
         onEventDetailsRequested?(event)
+    }
+    
+    func didToggleTag(_ tag: TagViewModel) {
+        tag.isSelected.toggle()
+        
+        needRefreshRelay.accept(())
     }
     
     func didTapEvent(at index: Int, in section: Int) {

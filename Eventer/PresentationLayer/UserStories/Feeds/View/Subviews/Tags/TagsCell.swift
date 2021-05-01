@@ -12,7 +12,10 @@ class TagsCell: UITableViewCell {
     // MARK: - Properties
     static let cellReuseIdentifier = String(describing: TagsCell.self)
     
-    private var tags = Tags.tags
+    var didToggleTag: ((TagViewModel) -> Void)?
+    
+    // MARK: - Private properties
+    private var tags: [TagViewModel] = []
     
     private let tagsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -37,7 +40,7 @@ class TagsCell: UITableViewCell {
     
     // MARK: - Public methods
     
-    func setTags(_ tags: [Tag]) {
+    func setTags(_ tags: [TagViewModel]) {
         self.tags = tags
     }
     
@@ -79,6 +82,7 @@ extension TagsCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? TagCollectionCell else { return }
         cell.toggle()
+        didToggleTag?(tags[indexPath.row])
     }
     
 }
@@ -89,8 +93,8 @@ extension TagsCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = tags[indexPath.row]
-        let itemSize = item.name.size(withAttributes: [
-            .font : UIFont.boldSystemFont(ofSize: 20)
+        let itemSize = item.tag.name.size(withAttributes: [
+            .font: UIFont.boldSystemFont(ofSize: 20)
         ])
         let size =  CGSize(width: itemSize.width + tagContentAdditionalSpace, height: itemSize.height + 20)
         return size

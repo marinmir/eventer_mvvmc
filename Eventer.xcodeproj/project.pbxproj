@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00625F2D263578D3004DBC35 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00625F2C263578D3004DBC35 /* TagViewModel.swift */; };
 		006D0079262DA34A00C545E8 /* EventCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D0078262DA34A00C545E8 /* EventCardViewModel.swift */; };
 		0079F10D2607F795006A4A1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0079F10B2607F795006A4A1E /* Localizable.strings */; };
 		0079F1102607F881006A4A1E /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079F10F2607F881006A4A1E /* Strings+Generated.swift */; };
@@ -93,6 +94,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00625F2C263578D3004DBC35 /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		006D0078262DA34A00C545E8 /* EventCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardViewModel.swift; sourceTree = "<group>"; };
 		0079F10C2607F795006A4A1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Localizable.strings; sourceTree = "<group>"; };
 		0079F10F2607F881006A4A1E /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
@@ -747,6 +749,7 @@
 			children = (
 				2976CADDE26CCEC2072F3FA2 /* FeedsViewModel.swift */,
 				0079F1122607FE6E006A4A1E /* FeedsSectionViewModel.swift */,
+				00625F2C263578D3004DBC35 /* TagViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -925,6 +928,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EBBD8BD25A79E66006489D5 /* AppDelegate.swift in Sources */,
+				00625F2D263578D3004DBC35 /* TagViewModel.swift in Sources */,
 				0EF5974525A7D62600B8458B /* TagView.swift in Sources */,
 				0EBBD8BF25A79E66006489D5 /* SceneDelegate.swift in Sources */,
 				00F68D2425A7AB7200259E4C /* ApplicationCoordinator.swift in Sources */,
