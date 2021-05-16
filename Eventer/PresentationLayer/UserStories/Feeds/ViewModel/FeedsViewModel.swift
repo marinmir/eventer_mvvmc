@@ -18,6 +18,7 @@ protocol FeedsViewModelInput {
     func didToggleTag(_ tag: TagViewModel)
     func didTapEvent(_ event: Event)
     func didTapEvent(at index: Int, in section: Int)
+    func didTapFilters()
 }
 
 /// Describes view model's output streams needed to update UI
@@ -29,6 +30,7 @@ protocol FeedsViewModelBindable: FeedsViewModelInput & FeedsViewModelOutput {}
 
 final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
     var onEventDetailsRequested: ((Event) -> Void)?
+    var onFiltersRequested: (([FeedFilter]) -> Void)?
     
     private let disposeBag = DisposeBag()
     private let needRefreshRelay = PublishRelay<Void>()
@@ -37,6 +39,7 @@ final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
     private let eventsService: EventsService
     private let tagsViewModels: [TagViewModel]
     private var events: [EventType: [Event]] = [:]
+    private var activeFilters: [FeedFilter] = []
     
     init(eventsService: EventsService) {
         self.eventsService = eventsService
@@ -137,5 +140,13 @@ extension FeedsViewModel: FeedsViewModelBindable {
             default:
                 break
         }
+    }
+    
+    func didTapFilters() {
+        onFiltersRequested?(activeFilters)
+    }
+    
+    func onFiltersApplied(filters: [FeedFilter]) {
+        
     }
 }

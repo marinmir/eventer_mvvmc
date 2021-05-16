@@ -41,6 +41,55 @@ internal enum L10n {
     }
   }
 
+  internal enum Filter {
+    /// Apply
+    internal static let apply = L10n.tr("Localizable", "filter.apply")
+    /// Reset
+    internal static let reset = L10n.tr("Localizable", "filter.reset")
+    /// Filters
+    internal static let title = L10n.tr("Localizable", "filter.title")
+    internal enum Date {
+      /// Pick a date
+      internal static let choose = L10n.tr("Localizable", "filter.date.choose")
+      /// This week
+      internal static let thisWeek = L10n.tr("Localizable", "filter.date.thisWeek")
+      /// Date
+      internal static let title = L10n.tr("Localizable", "filter.date.title")
+      /// Today
+      internal static let today = L10n.tr("Localizable", "filter.date.today")
+      /// Tomorrow
+      internal static let tomorrow = L10n.tr("Localizable", "filter.date.tomorrow")
+    }
+    internal enum Location {
+      /// Current location
+      internal static let current = L10n.tr("Localizable", "filter.location.current")
+      /// Other
+      internal static let other = L10n.tr("Localizable", "filter.location.other")
+      /// Location
+      internal static let title = L10n.tr("Localizable", "filter.location.title")
+    }
+    internal enum Price {
+      /// From
+      internal static let from = L10n.tr("Localizable", "filter.price.from")
+      /// Price
+      internal static let title = L10n.tr("Localizable", "filter.price.title")
+      /// To
+      internal static let to = L10n.tr("Localizable", "filter.price.to")
+    }
+    internal enum TimeOfDay {
+      /// Day
+      internal static let day = L10n.tr("Localizable", "filter.timeOfDay.day")
+      /// Evening
+      internal static let evening = L10n.tr("Localizable", "filter.timeOfDay.evening")
+      /// Morning
+      internal static let morning = L10n.tr("Localizable", "filter.timeOfDay.morning")
+      /// Night
+      internal static let night = L10n.tr("Localizable", "filter.timeOfDay.night")
+      /// Time of day
+      internal static let title = L10n.tr("Localizable", "filter.timeOfDay.title")
+    }
+  }
+
   internal enum Search {
     /// Search for...
     internal static let placeholder = L10n.tr("Localizable", "search.placeholder")

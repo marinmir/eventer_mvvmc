@@ -29,3 +29,24 @@
 "event.going" = "%i идет";
 "event.noVisitors" = "Еще нет посетителей";
 "event.about" = "О событии";
+
+// FILTERS
+"filter.title" = "Фильтры";
+"filter.location.title" = "Местность";
+"filter.location.current" = "Текущий город";
+"filter.location.other" = "Другое";
+"filter.date.title" = "Дата";
+"filter.date.today" = "Сегодня";
+"filter.date.tomorrow" = "Завтра";
+"filter.date.thisWeek" = "На этой неделе";
+"filter.date.choose" = "Выбрать дату";
+"filter.timeOfDay.title" = "Время суток";
+"filter.timeOfDay.morning" = "Утро";
+"filter.timeOfDay.day" = "День";
+"filter.timeOfDay.evening" = "Вечер";
+"filter.timeOfDay.night" = "Ночь";
+"filter.price.title" = "Цена";
+"filter.price.from" = "От";
+"filter.price.to" = "До";
+"filter.apply" = "Применить";
+"filter.reset" = "Сбросить";

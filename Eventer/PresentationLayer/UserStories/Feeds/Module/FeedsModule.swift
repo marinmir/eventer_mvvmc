@@ -9,10 +9,13 @@
 import Foundation
 import InoMvvmc
 
-protocol FeedsModuleInput: AnyObject {}
+protocol FeedsModuleInput: AnyObject {
+    func onFiltersApplied(filters: [FeedFilter])
+}
 
 protocol FeedsModuleOutput: AnyObject {
     var onEventDetailsRequested: ((Event) -> Void)? { get set }
+    var onFiltersRequested: (([FeedFilter]) -> Void)? { get set }
 }
 
 final class FeedsModule: BaseModule<FeedsModuleInput, FeedsModuleOutput> {}

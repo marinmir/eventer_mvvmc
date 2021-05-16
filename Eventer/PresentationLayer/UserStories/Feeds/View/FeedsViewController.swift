@@ -192,7 +192,7 @@ extension FeedsViewController: UITableViewDelegate {
 extension FeedsViewController: UISearchBarDelegate {
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        // TODO: open screen with filters
+        viewModel.didTapFilters()
     }
 
 }

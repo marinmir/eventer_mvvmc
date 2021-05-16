@@ -29,3 +29,24 @@
 "event.going" = "%i going";
 "event.noVisitors" = "No visitors";
 "event.about" = "About";
+
+// FILTERS
+"filter.title" = "Filters";
+"filter.location.title" = "Location";
+"filter.location.current" = "Current location";
+"filter.location.other" = "Other";
+"filter.date.title" = "Date";
+"filter.date.today" = "Today";
+"filter.date.tomorrow" = "Tomorrow";
+"filter.date.thisWeek" = "This week";
+"filter.date.choose" = "Pick a date";
+"filter.timeOfDay.title" = "Time of day";
+"filter.timeOfDay.morning" = "Morning";
+"filter.timeOfDay.day" = "Day";
+"filter.timeOfDay.evening" = "Evening";
+"filter.timeOfDay.night" = "Night";
+"filter.price.title" = "Price";
+"filter.price.from" = "From";
+"filter.price.to" = "To";
+"filter.apply" = "Apply";
+"filter.reset" = "Reset";

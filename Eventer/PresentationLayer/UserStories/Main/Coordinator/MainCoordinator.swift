@@ -33,12 +33,14 @@ final class MainCoordinator: BaseCoordinator<Void> {
             }
             
             self.tabBarController = tabBarController
+            tabBarController.view.backgroundColor = Asset.Colors.white.color
             
             let feedsModule = resolver.resolve(FeedsModule.self)!
             let feedsTabItem = UITabBarItem(title: nil,
                                             image: Asset.TabBars.feeds.image,
                                             selectedImage: Asset.SelectedTabBars.selectedFeeds.image)
             feedsModule.output.onEventDetailsRequested = onEventDetailsRequested
+            feedsModule.output.onFiltersRequested = onFiltersRequested
             feedsModule.view.tabBarItem = feedsTabItem
 
             let mapModule = resolver.resolve(MapModule.self)!
@@ -85,7 +87,23 @@ final class MainCoordinator: BaseCoordinator<Void> {
             
             coordinate(to: eventDetailsCoordinator)
         }
-        
+    }
+    
+    private func onFiltersRequested(activeFilters: [FeedFilter]) {
+        if let navigationController = getActiveNavigationController() {
+            let filtersCoordinator = FeedFiltersCoordinator(navigationController: navigationController, initialFilters: activeFilters)
+            
+            filtersCoordinator.onComplete = { result in
+                switch result {
+                    case .cancelled:
+                        break
+                    case .appliedFilters(let filters):
+                        break
+                }
+            }
+            
+            coordinate(to: filtersCoordinator)
+        }
     }
     
     private func getActiveNavigationController() -> UINavigationController? {
