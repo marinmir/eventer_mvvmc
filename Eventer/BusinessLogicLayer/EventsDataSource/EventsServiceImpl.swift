@@ -14,6 +14,11 @@ import RxSwift
 class EventsServiceImpl: EventsService {
     private let database = Firestore.firestore()
     private let disposeBag = DisposeBag()
+    private let loadedEventsObservable = BehaviorSubject<[Event]>(value: [])
+    
+    var loadedEvents: Observable<[Event]> {
+        return loadedEventsObservable.asObservable()
+    }
     
     func loadEvents() -> Single<[EventType: [Event]]> {
         return Single.create { single in
@@ -33,6 +38,15 @@ class EventsServiceImpl: EventsService {
                 if let thisWeekEvents = thisWeekEvents.element {
                     result[.thisWeek] = thisWeekEvents
                 }
+                
+                if !popularEvents.isCompleted && !promotedEvents.isCompleted && !thisWeekEvents.isCompleted {
+                    self.loadedEventsObservable.onNext(
+                        (popularEvents.element ?? []) +
+                            (promotedEvents.element ?? []) +
+                            (thisWeekEvents.element ?? [])
+                    )
+                }
+                
                 single(.success(result))
             }).disposed(by: self.disposeBag)
             

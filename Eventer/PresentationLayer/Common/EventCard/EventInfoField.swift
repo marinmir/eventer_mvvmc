@@ -37,6 +37,11 @@ final class EventInfoField: UIView {
     // MARK: - Public properties
     
     func configure(with item: EventInfoFieldItem) {
+        for subview in labelsStack.arrangedSubviews {
+            labelsStack.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
+        
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 14)
         titleLabel.textColor = Asset.Colors.black.color

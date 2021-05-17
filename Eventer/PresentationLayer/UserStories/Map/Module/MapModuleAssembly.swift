@@ -10,9 +10,9 @@ import Swinject
 
 final class MapModuleAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(MapViewModel.self) { _ in
-            // replace '_' with 'resolver' and inject dependencies if necessary
-            return MapViewModel()
+        container.register(MapViewModel.self) { resolver in
+            let eventsService = resolver.resolve(EventsService.self)!
+            return MapViewModel(eventsService: eventsService)
         }
 
         container.register(MapModule.self) { resolver in

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0005AA8126519CE300701F02 /* BubblesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0005AA8026519CE300701F02 /* BubblesTableCell.swift */; };
 		0005AA862651AD7E00701F02 /* PriceFilterTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0005AA852651AD7E00701F02 /* PriceFilterTableCell.swift */; };
+		002800862653180D0033B433 /* EventLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002800852653180D0033B433 /* EventLocation.swift */; };
+		0028008926531D040033B433 /* EventAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028008826531D040033B433 /* EventAnnotation.swift */; };
 		004C255C263FEA950011EAEF /* BubblesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C255B263FEA950011EAEF /* BubblesCollectionView.swift */; };
 		004C255F263FEB050011EAEF /* BubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C255E263FEB050011EAEF /* BubbleViewCell.swift */; };
 		004C2562263FEDB00011EAEF /* BubbleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C2561263FEDB00011EAEF /* BubbleViewModel.swift */; };
@@ -108,6 +110,8 @@
 /* Begin PBXFileReference section */
 		0005AA8026519CE300701F02 /* BubblesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesTableCell.swift; sourceTree = "<group>"; };
 		0005AA852651AD7E00701F02 /* PriceFilterTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFilterTableCell.swift; sourceTree = "<group>"; };
+		002800852653180D0033B433 /* EventLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocation.swift; sourceTree = "<group>"; };
+		0028008826531D040033B433 /* EventAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAnnotation.swift; sourceTree = "<group>"; };
 		004C255B263FEA950011EAEF /* BubblesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesCollectionView.swift; sourceTree = "<group>"; };
 		004C255E263FEB050011EAEF /* BubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleViewCell.swift; sourceTree = "<group>"; };
 		004C2561263FEDB00011EAEF /* BubbleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleViewModel.swift; sourceTree = "<group>"; };
@@ -433,6 +437,7 @@
 				0EF5972925A7D0B100B8458B /* Event.swift */,
 				0EF5972A25A7D0B100B8458B /* Visitors.swift */,
 				0079E5AF263ED971003744FF /* TimeOfDay.swift */,
+				002800852653180D0033B433 /* EventLocation.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -619,6 +624,7 @@
 			children = (
 				D3B2620F8C4A61B3606AF992 /* MapViewController.swift */,
 				64D89FD51A03082A6B17B72B /* MapView.swift */,
+				0028008826531D040033B433 /* EventAnnotation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1044,6 +1050,8 @@
 				0B62AC1BB472A1A1E0DEE604 /* FeedsModule.swift in Sources */,
 				E8FBFB832EE4067B8D6A8F33 /* FeedsModuleAssembly.swift in Sources */,
 				006D0079262DA34A00C545E8 /* EventCardViewModel.swift in Sources */,
+				002800862653180D0033B433 /* EventLocation.swift in Sources */,
+				0028008926531D040033B433 /* EventAnnotation.swift in Sources */,
 				C09970E1D129E05F6EF8A3D5 /* FeedsViewController.swift in Sources */,
 				004C255C263FEA950011EAEF /* BubblesCollectionView.swift in Sources */,
 				3BEA35A967DBB6F650D56BC6 /* FeedsView.swift in Sources */,

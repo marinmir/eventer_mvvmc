@@ -19,5 +19,5 @@ struct Event: Codable {
     var titleImage: String?
     var visitors: Visitors?
     var tags: [String]?
-
+    var location: EventLocation
 }

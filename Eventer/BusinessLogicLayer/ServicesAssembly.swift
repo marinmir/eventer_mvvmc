@@ -13,6 +13,6 @@ final class ServicesAssembly: Assembly {
     func assemble(container: Container) {
         container.register(EventsService.self) { _ in
             return EventsServiceImpl()
-        }
+        }.inObjectScope(.container)
     }
 }

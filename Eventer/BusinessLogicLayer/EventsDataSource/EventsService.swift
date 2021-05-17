@@ -10,5 +10,7 @@ import Foundation
 import RxSwift
 
 protocol EventsService {
+    var loadedEvents: Observable<[Event]> { get }
+    
     func loadEvents() -> Single<[EventType: [Event]]>
 }

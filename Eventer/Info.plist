@@ -54,5 +54,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Нам необходимо знать ваше местоположение, чтобы найти интересные события рядом с вами.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Нам необходимо знать ваше местоположение, чтобы найти интересные события рядом с вами.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Нам необходимо знать ваше местоположение, чтобы найти интересные события рядом с вами.</string>
 </dict>
 </plist>
