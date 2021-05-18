@@ -11,7 +11,8 @@ import Swinject
 final class EventDetailsModuleAssembly: Assembly {
     func assemble(container: Container) {
         container.register(EventDetailsViewModel.self) { (resolver, event: Event) in
-            return EventDetailsViewModel(event: event)
+            let eventsService = resolver.resolve(EventsService.self)!
+            return EventDetailsViewModel(event: event, eventsService: eventsService)
         }
 
         container.register(EventDetailsModule.self) { (resolver, event: Event) in

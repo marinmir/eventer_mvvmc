@@ -25,9 +25,8 @@ final class EventDetailsViewModel: EventDetailsModuleInput & EventDetailsModuleO
     
     private let disposeBag = DisposeBag()
     
-    
-    init(event: Event) {
-        eventDetails = EventCardViewModel(event: event)
+    init(event: Event, eventsService: EventsService) {
+        eventDetails = EventCardViewModel(event: event, didTapLike: eventsService.toggleFavorite)
     }
 }
 

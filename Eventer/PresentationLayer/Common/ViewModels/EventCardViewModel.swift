@@ -10,6 +10,8 @@ import Foundation
 
 final class EventCardViewModel {
     // MARK: - Public properties
+    var didTapLike: ((Event) -> Void)?
+    
     var title: String {
         return event.title ?? ""
     }
@@ -18,12 +20,24 @@ final class EventCardViewModel {
         return event.titleImage
     }
     
+    var pureDate: Date {
+        return event.dateTime ?? Date()
+    }
+    
     var date: String {
         guard let date = event.dateTime else {
             return ""
         }
         
         return dateFormatter.string(from: date)
+    }
+    
+    var time: String {
+        guard let date = event.dateTime else {
+            return ""
+        }
+        
+        return CustomDateFormatter.getTime(from: date)
     }
     
     var location: String {
@@ -54,8 +68,9 @@ final class EventCardViewModel {
         return event.visitors
     }
     
+    let event: Event
+    
     // MARK: - Private properties
-    private let event: Event
     
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -67,8 +82,12 @@ final class EventCardViewModel {
     
     // MARK: - Initializers
     
-    init(event: Event) {
+    init(event: Event, didTapLike: ((Event) -> Void)?) {
         self.event = event
-        
+        self.didTapLike = didTapLike
+    }
+    
+    func onTapLike() {
+        didTapLike?(event)
     }
 }

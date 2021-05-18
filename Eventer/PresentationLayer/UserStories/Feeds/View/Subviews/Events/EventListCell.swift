@@ -15,7 +15,7 @@ class EventListCell: UITableViewCell {
     var didTapEvent: ((Event) -> Void)?
     
     // MARK: - Private properties
-    private var events: [Event] = []
+    private var events: [EventCardViewModel] = []
     
     private let eventsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -37,7 +37,7 @@ class EventListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with events: [Event]) {
+    func configure(with events: [EventCardViewModel]) {
         self.events = events
         eventsCollectionView.reloadData()
     }
@@ -79,7 +79,7 @@ extension EventListCell: UICollectionViewDelegate, UICollectionViewDataSource {
                 return
             }
             
-            self.didTapEvent?(self.events[indexPath.row])
+            self.didTapEvent?(self.events[indexPath.row].event)
         }
         
         return cell

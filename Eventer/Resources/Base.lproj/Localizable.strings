@@ -50,3 +50,6 @@
 "filter.price.to" = "To";
 "filter.apply" = "Apply";
 "filter.reset" = "Reset";
+
+// FAVORITES
+"favorites.title" = "Favorites";

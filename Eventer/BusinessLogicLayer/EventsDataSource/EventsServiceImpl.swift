@@ -15,9 +15,23 @@ class EventsServiceImpl: EventsService {
     private let database = Firestore.firestore()
     private let disposeBag = DisposeBag()
     private let loadedEventsObservable = BehaviorSubject<[Event]>(value: [])
+    private let favoriteEventsObservable = BehaviorSubject<[Event]>(value: [])
     
     var loadedEvents: Observable<[Event]> {
         return loadedEventsObservable.asObservable()
+    }
+    
+    var favoriteEvents: Observable<[Event]> {
+        return favoriteEventsObservable.asObservable()
+    }
+    
+    init() {
+        database.collection("/users").document("1").collection("favorites").addSnapshotListener { snapshot, error in
+            if let snapshot = snapshot {
+                let events = snapshot.documents.compactMap { try? $0.data(as: Event.self) }
+                self.favoriteEventsObservable.onNext(events)
+            }
+        }
     }
     
     func loadEvents() -> Single<[EventType: [Event]]> {
@@ -51,6 +65,18 @@ class EventsServiceImpl: EventsService {
             }).disposed(by: self.disposeBag)
             
             return Disposables.create()
+        }
+    }
+    
+    func toggleFavorite(event: Event) {
+        let docRef = database.collection("/users").document("1").collection("favorites").document("\(event.id ?? "")")
+        
+        docRef.getDocument { querySnapshot, error in
+            if let querySnapshot = querySnapshot, querySnapshot.exists {
+                docRef.delete()
+            } else {
+                try? self.database.collection("/users").document("1").collection("favorites").document("\(event.id ?? "")").setData(from: event)
+            }
         }
     }
     

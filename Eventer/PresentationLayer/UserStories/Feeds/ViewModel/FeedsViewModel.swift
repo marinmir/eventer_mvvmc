@@ -56,13 +56,13 @@ final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
                 
                 if selectedTagsIds.isEmpty {
                     if let promotedEvents = events[.promoted] {
-                        sections.append(.promotedEvents(promotedEvents))
+                        sections.append(.promotedEvents(promotedEvents.map { EventCardViewModel(event: $0, didTapLike: self.didTapLike) }))
                     }
                     if let popularEvents = events[.popular] {
-                        sections.append(.popularEvents(popularEvents))
+                        sections.append(.popularEvents(popularEvents.map { EventCardViewModel(event: $0, didTapLike: self.didTapLike) }))
                     }
                     if let weekendEvents = events[.thisWeek] {
-                        sections.append(.weekendEvents(weekendEvents))
+                        sections.append(.weekendEvents(weekendEvents.map { EventCardViewModel(event: $0, didTapLike: self.didTapLike) }))
                     }
                 } else {
                     if let promotedEvents = events[.promoted] {
@@ -72,7 +72,7 @@ final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
                         }
                         
                         if !filteredEvents.isEmpty {
-                            sections.append(.promotedEvents(filteredEvents))
+                            sections.append(.promotedEvents(filteredEvents.map { EventCardViewModel(event: $0, didTapLike: self.didTapLike) }))
                         }
                     }
                     if let popularEvents = events[.popular] {
@@ -82,7 +82,7 @@ final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
                         }
                         
                         if !filteredEvents.isEmpty {
-                            sections.append(.popularEvents(filteredEvents))
+                            sections.append(.popularEvents(filteredEvents.map { EventCardViewModel(event: $0, didTapLike: self.didTapLike) }))
                         }
                     }
                     if let weekendEvents = events[.thisWeek] {
@@ -92,13 +92,17 @@ final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
                         }
                         
                         if !filteredEvents.isEmpty {
-                            sections.append(.weekendEvents(filteredEvents))
+                            sections.append(.weekendEvents(filteredEvents.map { EventCardViewModel(event: $0, didTapLike: self.didTapLike) }))
                         }
                     }
                 }
                 
                 self.tableSectionsRelay.accept(sections)
             }).disposed(by: disposeBag)
+    }
+    
+    private func didTapLike(on event: Event) {
+        eventsService.toggleFavorite(event: event)
     }
 }
 
@@ -132,11 +136,11 @@ extension FeedsViewModel: FeedsViewModelBindable {
         
         switch section {
             case .popularEvents(let events):
-                onEventDetailsRequested?(events[index])
+                onEventDetailsRequested?(events[index].event)
             case .promotedEvents(let events):
-                onEventDetailsRequested?(events[index])
+                onEventDetailsRequested?(events[index].event)
             case .weekendEvents(let events):
-                onEventDetailsRequested?(events[index])
+                onEventDetailsRequested?(events[index].event)
             default:
                 break
         }

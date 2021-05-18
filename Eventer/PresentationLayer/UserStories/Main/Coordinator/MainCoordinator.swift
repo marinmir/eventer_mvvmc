@@ -71,7 +71,7 @@ final class MainCoordinator: BaseCoordinator<Void> {
                 UINavigationController(rootViewController: feedsModule.view),
                 mapModule.view,
                 createEventModule.view,
-                favouritesModule.view,
+                UINavigationController(rootViewController: favouritesModule.view),
                 profileModule.view
             ]
 

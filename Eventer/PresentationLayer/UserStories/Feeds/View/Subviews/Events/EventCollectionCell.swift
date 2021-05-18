@@ -28,7 +28,7 @@ class EventCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with event: Event) {
+    func configure(with event: EventCardViewModel) {
         eventCard.configure(event)
     }
     

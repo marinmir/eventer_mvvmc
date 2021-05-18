@@ -20,6 +20,7 @@
 		0079F10D2607F795006A4A1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0079F10B2607F795006A4A1E /* Localizable.strings */; };
 		0079F1102607F881006A4A1E /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079F10F2607F881006A4A1E /* Strings+Generated.swift */; };
 		0079F1132607FE6E006A4A1E /* FeedsSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079F1122607FE6E006A4A1E /* FeedsSectionViewModel.swift */; };
+		007E1C972654602B00181BCD /* FavoriteEventCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007E1C962654602B00181BCD /* FavoriteEventCellView.swift */; };
 		0080A7DE26095E1100EDE378 /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0080A7DD26095E1100EDE378 /* EventsService.swift */; };
 		0080A7E126095E2200EDE378 /* EventsServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0080A7E026095E2200EDE378 /* EventsServiceImpl.swift */; };
 		0080A7E4260963F600EDE378 /* ServicesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0080A7E3260963F600EDE378 /* ServicesAssembly.swift */; };
@@ -121,6 +122,7 @@
 		0079F10C2607F795006A4A1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Localizable.strings; sourceTree = "<group>"; };
 		0079F10F2607F881006A4A1E /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		0079F1122607FE6E006A4A1E /* FeedsSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsSectionViewModel.swift; sourceTree = "<group>"; };
+		007E1C962654602B00181BCD /* FavoriteEventCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEventCellView.swift; sourceTree = "<group>"; };
 		0080A7DD26095E1100EDE378 /* EventsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
 		0080A7E026095E2200EDE378 /* EventsServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsServiceImpl.swift; sourceTree = "<group>"; };
 		0080A7E3260963F600EDE378 /* ServicesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesAssembly.swift; sourceTree = "<group>"; };
@@ -259,6 +261,14 @@
 				0079F10B2607F795006A4A1E /* Localizable.strings */,
 			);
 			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		007E1C952654601700181BCD /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				007E1C962654602B00181BCD /* FavoriteEventCellView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		00DF258A25F6CD9D009ADFFE /* SearchBar */ = {
@@ -847,6 +857,7 @@
 		EACAD84147744CDB40F8A144 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				007E1C952654601700181BCD /* Subviews */,
 				8B8DFD32D864AD3C963B4C3E /* FavouritesViewController.swift */,
 				E304F524E3606946CE1F4D47 /* FavouritesView.swift */,
 			);
@@ -1084,6 +1095,7 @@
 				E611726537AA67DA8D3A4CEC /* FavouritesViewController.swift in Sources */,
 				00BF2FAB26238A58002E60A3 /* EventFullSizeCard.swift in Sources */,
 				0EF5974425A7D62600B8458B /* TagCollectionCell.swift in Sources */,
+				007E1C972654602B00181BCD /* FavoriteEventCellView.swift in Sources */,
 				0EF5971925A7CC0D00B8458B /* EventCardView.swift in Sources */,
 				C720252B7CF88F89E00553F8 /* FavouritesView.swift in Sources */,
 				324B85E3E9D96012855330B6 /* FavouritesViewModel.swift in Sources */,

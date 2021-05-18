@@ -50,3 +50,6 @@
 "filter.price.to" = "До";
 "filter.apply" = "Применить";
 "filter.reset" = "Сбросить";
+
+// FAVORITES
+"favorites.title" = "Избранное";

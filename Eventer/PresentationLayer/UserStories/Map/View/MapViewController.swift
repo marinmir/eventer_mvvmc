@@ -62,8 +62,9 @@ extension MapViewController: MKMapViewDelegate {
         guard let eventAnnotation = view.annotation as? EventAnnotation else {
             return
         }
-        
-        let eventViewModel = EventCardViewModel(event: eventAnnotation.event)
+        // shame, shame, SHAAAAMEEE!!!
+        let service = EventsServiceImpl()
+        let eventViewModel = EventCardViewModel(event: eventAnnotation.event, didTapLike: service.toggleFavorite)
         eventDetails.configure(with: eventViewModel)
         
         self.view.addSubview(eventDetails)

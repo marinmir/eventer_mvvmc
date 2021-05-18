@@ -10,9 +10,9 @@ import Swinject
 
 final class FavouritesModuleAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(FavouritesViewModel.self) { _ in
-            // replace '_' with 'resolver' and inject dependencies if necessary
-            return FavouritesViewModel()
+        container.register(FavouritesViewModel.self) { resolver in
+            let eventsService = resolver.resolve(EventsService.self)!
+            return FavouritesViewModel(eventsService: eventsService)
         }
 
         container.register(FavouritesModule.self) { resolver in

@@ -11,6 +11,8 @@ import RxSwift
 
 protocol EventsService {
     var loadedEvents: Observable<[Event]> { get }
+    var favoriteEvents: Observable<[Event]> { get }
     
     func loadEvents() -> Single<[EventType: [Event]]>
+    func toggleFavorite(event: Event)
 }

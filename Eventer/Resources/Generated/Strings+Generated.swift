@@ -28,6 +28,11 @@ internal enum L10n {
     }
   }
 
+  internal enum Favorites {
+    /// Favorites
+    internal static let title = L10n.tr("Localizable", "favorites.title")
+  }
+
   internal enum Feeds {
     /// Getting new events...
     internal static let refreshTitle = L10n.tr("Localizable", "feeds.refresh_title")

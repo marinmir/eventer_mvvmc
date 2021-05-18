@@ -42,7 +42,7 @@ class EventCardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(_ event: Event) {
+    func configure(_ event: EventCardViewModel) {
         if let titleImage = event.titleImage {
             titleImageView.loadImage(url: titleImage)
         } else {
@@ -50,16 +50,17 @@ class EventCardView: UIView {
         }
 
         titleLabel.text = event.title
-
-        if let time = event.dateTime {
-            placeLabel.text = "\(event.place ?? ""), \(CustomDateFormatter.getTime(from: time))"
-            dateView.configure(dateTime: time)
-        }
         
-        if let visitors = event.visitors {
+        placeLabel.text = "\(event.location), \(event.time)"
+        dateView.configure(dateTime: event.pureDate)
+        
+        if let visitors = event.visitorsPreview {
             visitorsPreview.configure(visitors: visitors)
         }
         
+        likeButton.didTap.emit(onNext: {
+            event.onTapLike()
+        }).disposed(by: disposeBag)
     }
 
     // MARK: - Private methods
@@ -90,9 +91,6 @@ class EventCardView: UIView {
         addSubview(visitorsPreview)
 
         likeButton.translatesAutoresizingMaskIntoConstraints = false
-        likeButton.didTap.emit(onNext: {
-            
-        }).disposed(by: disposeBag)
         addSubview(likeButton)
 
         NSLayoutConstraint.activate([
