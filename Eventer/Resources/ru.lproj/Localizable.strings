@@ -53,3 +53,12 @@
 
 // FAVORITES
 "favorites.title" = "Избранное";
+
+// CREATE EVENT
+"createEvent.screenTitle" = "Создать событие";
+"createEvent.title" = "Название";
+"createEvent.date" = "Дата & Время";
+"createEvent.cost" = "Цена, ₽";
+"createEvent.image" = "Титульное изображение";
+"createEvent.location" = "Место";
+"createEvent.create" = "Создать";

@@ -54,7 +54,7 @@ class FavoriteEventCellView: UITableViewCell {
         contentView.addSubview(titleImageView)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.numberOfLines = 1
+        titleLabel.numberOfLines = 2
         titleLabel.lineBreakMode = .byTruncatingTail
         titleLabel.font = .boldSystemFont(ofSize: 20)
         titleLabel.textAlignment = .left
@@ -96,6 +96,7 @@ class FavoriteEventCellView: UITableViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: titleImageView.centerYAnchor, constant: -28),
             titleLabel.heightAnchor.constraint(equalToConstant: 20),
+            titleLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 44),
 
             costLabel.leadingAnchor.constraint(equalTo: titleImageView.trailingAnchor, constant: 8),
             costLabel.centerYAnchor.constraint(equalTo: titleImageView.centerYAnchor),

@@ -50,6 +50,7 @@ final class MainCoordinator: BaseCoordinator<Void> {
             mapModule.view.tabBarItem = mapTabItem
 
             let createEventModule = resolver.resolve(CreateEventModule.self)!
+            createEventModule.output.onLocationChangeRequested = onPickLocationRequested
             let createEventTabItem = UITabBarItem(title: nil,
                                                   image: Asset.TabBars.createEvent.image,
                                                   selectedImage: Asset.SelectedTabBars.selectedCreateEvent.image)
@@ -87,6 +88,15 @@ final class MainCoordinator: BaseCoordinator<Void> {
             
             coordinate(to: eventDetailsCoordinator)
         }
+    }
+    
+    private func onPickLocationRequested() {
+        guard let controller = tabBarController?.selectedViewController else {
+            return
+        }
+        
+        let coordinator = PickLocationCoordinator(viewController: controller)
+        coordinate(to: coordinator)
     }
     
     private func onFiltersRequested(activeFilters: [FeedFilter]) {

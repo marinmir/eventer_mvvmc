@@ -11,6 +11,23 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
 
+  internal enum CreateEvent {
+    /// Cost, ₽
+    internal static let cost = L10n.tr("Localizable", "createEvent.cost")
+    /// Create
+    internal static let create = L10n.tr("Localizable", "createEvent.create")
+    /// Date & Time
+    internal static let date = L10n.tr("Localizable", "createEvent.date")
+    /// Title image
+    internal static let image = L10n.tr("Localizable", "createEvent.image")
+    /// Location
+    internal static let location = L10n.tr("Localizable", "createEvent.location")
+    /// Create event
+    internal static let screenTitle = L10n.tr("Localizable", "createEvent.screenTitle")
+    /// Title
+    internal static let title = L10n.tr("Localizable", "createEvent.title")
+  }
+
   internal enum Event {
     /// About
     internal static let about = L10n.tr("Localizable", "event.about")

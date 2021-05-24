@@ -11,6 +11,8 @@ import InoMvvmc
 
 protocol CreateEventModuleInput: AnyObject {}
 
-protocol CreateEventModuleOutput: AnyObject {}
+protocol CreateEventModuleOutput: AnyObject {
+    var onLocationChangeRequested: (() -> Void)? { get set }
+}
 
 final class CreateEventModule: BaseModule<CreateEventModuleInput, CreateEventModuleOutput> {}

@@ -1,22 +1,22 @@
 //
-//  CreateEventViewController.swift
+//  PickLocationViewController.swift
 //  Eventer
 //
-//  Created by Ярослав Магин on 08/01/2021.
+//  Created by Ярослав Магин on 25/05/2021.
 //  Copyright © 2021 Marinmir Ltd. All rights reserved.
 //
 
 import UIKit
 
-final class CreateEventViewController: UIViewController {
+final class PickLocationViewController: UIViewController {
 
     // MARK: - Private properties
 
-    private let viewModel: CreateEventViewModelBindable
+    private let viewModel: PickLocationViewModelBindable
 
     // MARK: - Initializers
 
-    init(viewModel: CreateEventViewModelBindable) {
+    init(viewModel: PickLocationViewModelBindable) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -29,21 +29,15 @@ final class CreateEventViewController: UIViewController {
     // MARK: - Public methods
 
     override func loadView() {
-        let view = CreateEventView()
+        super.loadView()
+
+        let view = PickLocationView()
         view.bind(to: viewModel)
 
         self.view = view
-        
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onBackgroundTap))
-
-        view.addGestureRecognizer(tapRecognizer)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    @objc private func onBackgroundTap() {
-        view.endEditing(true)
     }
 }
