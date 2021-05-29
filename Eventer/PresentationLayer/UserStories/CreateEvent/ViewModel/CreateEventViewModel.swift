@@ -6,6 +6,7 @@
 //  Copyright © 2021 Marinmir Ltd. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 import RxCocoa
 import RxSwift
@@ -18,6 +19,7 @@ protocol CreateEventViewModelInput {
     var cost: Binder<Double> { get }
     var image: Binder<UIImage> { get }
     var didTapCreate: Binder<Void> { get }
+    var location: Binder<PickedPinViewModel> { get }
     
     func toggleTag(_ tagViewModel: TagViewModel)
     func onLocationChange()
@@ -26,6 +28,7 @@ protocol CreateEventViewModelInput {
 /// Describes view model's output streams needed to update UI
 protocol CreateEventViewModelOutput {
     var tags: Driver<[TagViewModel]> { get }
+    var address: Signal<String> { get }
 }
 
 protocol CreateEventViewModelBindable: CreateEventViewModelInput & CreateEventViewModelOutput {}
@@ -39,8 +42,18 @@ final class CreateEventViewModel: CreateEventModuleInput & CreateEventModuleOutp
     private let timeRelay = PublishRelay<Date>()
     private let costRelay = PublishRelay<Double>()
     private let imageRelay = PublishRelay<UIImage>()
+    private let locationRelay = PublishRelay<PickedPinViewModel>()
+    private let addressRelay = PublishRelay<String>()
     private let tapCreateRelay = PublishRelay<Void>()
     private let tagsRelay = BehaviorRelay<[TagViewModel]>(value: Tags.tags.map { TagViewModel(tag: $0) })
+    
+    init() {
+        locationRelay
+            .map({$0.address ?? ""})
+            .filter({!$0.isEmpty})
+            .bind(to: addressRelay)
+            .disposed(by: disposeBag)
+    }
     
 }
 
@@ -65,6 +78,14 @@ extension CreateEventViewModel: CreateEventViewModelBindable {
     
     var image: Binder<UIImage> {
         return Binder(imageRelay) { $0.accept($1) }
+    }
+    
+    var location: Binder<PickedPinViewModel> {
+        return Binder(locationRelay) { $0.accept($1)}
+    }
+    
+    var address: Signal<String> {
+        return addressRelay.asSignal()
     }
     
     var tags: Driver<[TagViewModel]> {

@@ -62,3 +62,8 @@
 "createEvent.image" = "Title image";
 "createEvent.location" = "Location";
 "createEvent.create" = "Create";
+
+// PICK LOCATION
+"pickLocation.title" = "Pick location";
+"pickLocation.cancel" = "Cancel";
+"pickLocation.accept" = "Accept";

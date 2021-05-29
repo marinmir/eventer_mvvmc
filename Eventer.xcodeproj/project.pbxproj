@@ -11,6 +11,9 @@
 		0005AA862651AD7E00701F02 /* PriceFilterTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0005AA852651AD7E00701F02 /* PriceFilterTableCell.swift */; };
 		002800862653180D0033B433 /* EventLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002800852653180D0033B433 /* EventLocation.swift */; };
 		0028008926531D040033B433 /* EventAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028008826531D040033B433 /* EventAnnotation.swift */; };
+		00318942266166B700CEF72C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00318941266166B700CEF72C /* LocationManager.swift */; };
+		0031894526619DD600CEF72C /* PickedPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0031894426619DD600CEF72C /* PickedPinViewModel.swift */; };
+		003189482661A8B700CEF72C /* PickedPinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003189472661A8B700CEF72C /* PickedPinAnnotation.swift */; };
 		004C255C263FEA950011EAEF /* BubblesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C255B263FEA950011EAEF /* BubblesCollectionView.swift */; };
 		004C255F263FEB050011EAEF /* BubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C255E263FEB050011EAEF /* BubbleViewCell.swift */; };
 		004C2562263FEDB00011EAEF /* BubbleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C2561263FEDB00011EAEF /* BubbleViewModel.swift */; };
@@ -121,6 +124,9 @@
 		0005AA852651AD7E00701F02 /* PriceFilterTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFilterTableCell.swift; sourceTree = "<group>"; };
 		002800852653180D0033B433 /* EventLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocation.swift; sourceTree = "<group>"; };
 		0028008826531D040033B433 /* EventAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAnnotation.swift; sourceTree = "<group>"; };
+		00318941266166B700CEF72C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		0031894426619DD600CEF72C /* PickedPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedPinViewModel.swift; sourceTree = "<group>"; };
+		003189472661A8B700CEF72C /* PickedPinAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedPinAnnotation.swift; sourceTree = "<group>"; };
 		004C255B263FEA950011EAEF /* BubblesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesCollectionView.swift; sourceTree = "<group>"; };
 		004C255E263FEB050011EAEF /* BubbleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleViewCell.swift; sourceTree = "<group>"; };
 		004C2561263FEDB00011EAEF /* BubbleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleViewModel.swift; sourceTree = "<group>"; };
@@ -251,6 +257,14 @@
 				0005AA852651AD7E00701F02 /* PriceFilterTableCell.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		00318940266166A500CEF72C /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				00318941266166B700CEF72C /* LocationManager.swift */,
+			);
+			path = LocationManager;
 			sourceTree = "<group>";
 		};
 		004C255A263FE9C00011EAEF /* Bubbles */ = {
@@ -449,6 +463,7 @@
 		0EF5972325A7D0B100B8458B /* BusinessLogicLayer */ = {
 			isa = PBXGroup;
 			children = (
+				00318940266166A500CEF72C /* LocationManager */,
 				0EF5972425A7D0B100B8458B /* EventsDataSource */,
 				0080A7E3260963F600EDE378 /* ServicesAssembly.swift */,
 			);
@@ -529,7 +544,6 @@
 				A770933D7F7A8CA59D8F201C /* PickLocationModule.swift */,
 				B31ABDC91B2C666038A06757 /* PickLocationModuleAssembly.swift */,
 			);
-			name = Module;
 			path = Module;
 			sourceTree = "<group>";
 		};
@@ -576,7 +590,6 @@
 			children = (
 				FFEB1DA80BD98C9A699CB163 /* PickLocationCoordinator.swift */,
 			);
-			name = Coordinator;
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
@@ -585,8 +598,8 @@
 			children = (
 				C011202C2F4A46BE827DB38A /* PickLocationViewController.swift */,
 				3CCB0CB9B8FF4494FAEEBA90 /* PickLocationView.swift */,
+				003189472661A8B700CEF72C /* PickedPinAnnotation.swift */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -688,8 +701,8 @@
 			isa = PBXGroup;
 			children = (
 				B968DB6D7BF2CF2E13F15B38 /* PickLocationViewModel.swift */,
+				0031894426619DD600CEF72C /* PickedPinViewModel.swift */,
 			);
-			name = ViewModel;
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
@@ -865,7 +878,6 @@
 				57ACDF0E9F1279624A33A126 /* ViewModel */,
 				223A4005FF56D9298CE4A335 /* Coordinator */,
 			);
-			name = PickLocation;
 			path = PickLocation;
 			sourceTree = "<group>";
 		};
@@ -1149,7 +1161,9 @@
 				002800862653180D0033B433 /* EventLocation.swift in Sources */,
 				00C77B3D265A8BDB004B49E1 /* TagInputView.swift in Sources */,
 				0028008926531D040033B433 /* EventAnnotation.swift in Sources */,
+				00318942266166B700CEF72C /* LocationManager.swift in Sources */,
 				C09970E1D129E05F6EF8A3D5 /* FeedsViewController.swift in Sources */,
+				003189482661A8B700CEF72C /* PickedPinAnnotation.swift in Sources */,
 				004C255C263FEA950011EAEF /* BubblesCollectionView.swift in Sources */,
 				3BEA35A967DBB6F650D56BC6 /* FeedsView.swift in Sources */,
 				0EF5972225A7D02500B8458B /* CustomDateFormatter.swift in Sources */,
@@ -1206,6 +1220,7 @@
 				004C255F263FEB050011EAEF /* BubbleViewCell.swift in Sources */,
 				8A9AAFF1AFD7BC0F4F50D1F1 /* SearchResultsCoordinator.swift in Sources */,
 				0EB3028D748AD922DAC05FC8 /* EventDetailsModule.swift in Sources */,
+				0031894526619DD600CEF72C /* PickedPinViewModel.swift in Sources */,
 				D58DD247367C32EA2F4C7C24 /* EventDetailsModuleAssembly.swift in Sources */,
 				292B2B282853E3E5B553FA9C /* EventDetailsViewController.swift in Sources */,
 				5E6F9E453C80113F642BDB09 /* EventDetailsView.swift in Sources */,

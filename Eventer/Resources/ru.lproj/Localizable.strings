@@ -62,3 +62,8 @@
 "createEvent.image" = "Титульное изображение";
 "createEvent.location" = "Место";
 "createEvent.create" = "Создать";
+
+// PICK LOCATION
+"pickLocation.title" = "Выбрать место";
+"pickLocation.cancel" = "Отменить";
+"pickLocation.accept" = "Принять";

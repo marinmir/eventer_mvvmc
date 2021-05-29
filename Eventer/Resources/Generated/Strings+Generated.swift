@@ -112,6 +112,15 @@ internal enum L10n {
     }
   }
 
+  internal enum PickLocation {
+    /// Accept
+    internal static let accept = L10n.tr("Localizable", "pickLocation.accept")
+    /// Cancel
+    internal static let cancel = L10n.tr("Localizable", "pickLocation.cancel")
+    /// Pick location
+    internal static let title = L10n.tr("Localizable", "pickLocation.title")
+  }
+
   internal enum Search {
     /// Search for...
     internal static let placeholder = L10n.tr("Localizable", "search.placeholder")

@@ -6,6 +6,7 @@
 //  Copyright © 2021 Marinmir Ltd. All rights reserved.
 //
 
+import Contacts
 import MapKit
 import RxCocoa
 import RxSwift
@@ -18,7 +19,8 @@ final class PickLocationView: UIView {
 
     private let disposeBag = DisposeBag()
     private let mapView = MKMapView()
-
+    private var viewModel: PickLocationViewModelBindable?
+    
     // MARK: - Initializers
 
     init() {
@@ -36,7 +38,16 @@ final class PickLocationView: UIView {
     // MARK: - Public methods
 
     func bind(to viewModel: PickLocationViewModelBindable) {
-        // Bindings UI controls to view model's input/output
+        viewModel.userLocation.drive(onNext: { location in
+            self.mapView.setRegion(MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000), animated: true)
+        }).disposed(by: disposeBag)
+        
+        viewModel.activePlacemark.emit(onNext: { placemark in
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.mapView.addAnnotation(PickedPinAnnotation(viewModel: placemark))
+        }).disposed(by: disposeBag)
+        
+        self.viewModel = viewModel
     }
 
     // MARK: - Private methods
@@ -48,7 +59,8 @@ final class PickLocationView: UIView {
         
         let touch = sender.location(in: mapView)
         let coords = mapView.convert(touch, toCoordinateFrom: mapView)
-        print(coords)
+        
+        viewModel?.onLocationTapped(CLLocation(latitude: coords.latitude, longitude: coords.longitude))
     }
     
     private func setupViews() {

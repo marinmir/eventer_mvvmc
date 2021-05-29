@@ -14,7 +14,7 @@ protocol PickLocationModuleInput: AnyObject {}
 
 protocol PickLocationModuleOutput: AnyObject {
     var onClosed: (() -> Void)? { get set }
-    var onLocationSelected: ((CLLocation) -> Void)? { get set }
+    var onLocationSelected: ((PickedPinViewModel) -> Void)? { get set }
 }
 
 final class PickLocationModule: BaseModule<PickLocationModuleInput, PickLocationModuleOutput> {}

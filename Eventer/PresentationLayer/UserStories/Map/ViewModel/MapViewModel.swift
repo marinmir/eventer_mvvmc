@@ -28,14 +28,15 @@ final class MapViewModel: NSObject, MapModuleInput & MapModuleOutput {
     private let disposeBag = DisposeBag()
     private let userLocationRelay = BehaviorRelay<CLLocation>(value: CLLocation())
     private let mapEventsRelay = BehaviorRelay<[Event]>(value: [])
-    private let locationManager = CLLocationManager()
     private let eventsService: EventsService
+    private let locationManager: LocationManager
     
-    init(eventsService: EventsService) {
+    init(eventsService: EventsService, locationManager: LocationManager) {
         self.eventsService = eventsService
+        self.locationManager = locationManager
         super.init()
         
-        locationManager.delegate = self
+        locationManager.userLocation.drive(userLocationRelay).disposed(by: disposeBag)
         eventsService.loadedEvents.bind(to: mapEventsRelay).disposed(by: disposeBag)
     }
 }
@@ -52,11 +53,7 @@ extension MapViewModel: MapViewModelBindable {
     }
     
     func onViewDidLoad() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestLocation()
-        }
+        locationManager.enableLocationServices()
     }
 }
 

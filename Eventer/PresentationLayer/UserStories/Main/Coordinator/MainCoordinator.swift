@@ -91,11 +91,21 @@ final class MainCoordinator: BaseCoordinator<Void> {
     }
     
     private func onPickLocationRequested() {
-        guard let controller = tabBarController?.selectedViewController else {
+        guard let controller = tabBarController?.selectedViewController as? CreateEventViewController else {
             return
         }
         
         let coordinator = PickLocationCoordinator(viewController: controller)
+        
+        coordinator.onComplete = { result in
+            switch result {
+                case .closed:
+                    break
+                case .location(let location):
+                    controller.onAcceptedLocation(location)
+            }
+        }
+        
         coordinate(to: coordinator)
     }
     

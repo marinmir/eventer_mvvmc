@@ -29,15 +29,37 @@ final class PickLocationViewController: UIViewController {
     // MARK: - Public methods
 
     override func loadView() {
-        super.loadView()
-
         let view = PickLocationView()
         view.bind(to: viewModel)
 
         self.view = view
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        title = L10n.PickLocation.title
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: L10n.PickLocation.cancel,
+            style: .plain,
+            target: self,
+            action: #selector(onCancel)
+        )
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: L10n.PickLocation.accept,
+            style: .plain,
+            target: self,
+            action: #selector(onAccept)
+        )
+    }
+    
+    @objc private func onCancel() {
+        viewModel.onCancel()
+    }
+    
+    @objc private func onAccept() {
+        viewModel.onAccept()
     }
 }

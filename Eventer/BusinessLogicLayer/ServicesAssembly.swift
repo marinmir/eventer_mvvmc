@@ -14,5 +14,9 @@ final class ServicesAssembly: Assembly {
         container.register(EventsService.self) { _ in
             return EventsServiceImpl()
         }.inObjectScope(.container)
+        
+        container.register(LocationManager.self) { _ in
+            return LocationManagerImpl()
+        }.inObjectScope(.container)
     }
 }

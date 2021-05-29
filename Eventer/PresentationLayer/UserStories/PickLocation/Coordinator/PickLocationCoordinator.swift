@@ -12,7 +12,7 @@ import Swinject
 
 enum PickLocationCoordinatorResult {
     case closed
-    case location(CLLocation)
+    case location(PickedPinViewModel)
 }
 
 final class PickLocationCoordinator: BaseCoordinator<PickLocationCoordinatorResult> {
@@ -31,6 +31,19 @@ final class PickLocationCoordinator: BaseCoordinator<PickLocationCoordinatorResu
 	override func start() {
         let module = resolver.resolve(PickLocationModule.self)!
         
-        presentingController.present(module.view, animated: true)
+        module.output.onClosed = {
+            module.view.dismiss(animated: true)
+            self.onComplete?(.closed)
+        }
+        
+        module.output.onLocationSelected = { location in
+            module.view.dismiss(animated: true)
+            self.onComplete?(.location(location))
+        }
+        
+        presentingController.present(
+            UINavigationController(rootViewController: module.view),
+            animated: true
+        )
 	}
 }

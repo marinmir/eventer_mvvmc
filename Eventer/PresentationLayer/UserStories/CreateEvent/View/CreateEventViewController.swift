@@ -6,9 +6,10 @@
 //  Copyright © 2021 Marinmir Ltd. All rights reserved.
 //
 
+import CoreLocation
 import UIKit
 
-final class CreateEventViewController: UIViewController {
+final class CreateEventViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - Private properties
 
@@ -34,6 +35,16 @@ final class CreateEventViewController: UIViewController {
 
         self.view = view
         
+        view.onImagePickerNeeded = {
+            let imagePicker = UIImagePickerController()
+            imagePicker.allowsEditing = true
+            imagePicker.mediaTypes = ["public.image"]
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.delegate = self
+            
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onBackgroundTap))
 
         view.addGestureRecognizer(tapRecognizer)
@@ -43,7 +54,26 @@ final class CreateEventViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    func onAcceptedLocation(_ location: PickedPinViewModel) {
+        viewModel.location.onNext(location)
+    }
+    
     @objc private func onBackgroundTap() {
         view.endEditing(true)
+    }
+}
+
+extension CreateEventViewController: UIImagePickerControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else {
+                    return
+                }
+        (view as? CreateEventView)?.updateImage(image)
+        viewModel.image.onNext(image)
+        picker.dismiss(animated: true, completion: nil)
     }
 }

@@ -12,7 +12,8 @@ final class MapModuleAssembly: Assembly {
     func assemble(container: Container) {
         container.register(MapViewModel.self) { resolver in
             let eventsService = resolver.resolve(EventsService.self)!
-            return MapViewModel(eventsService: eventsService)
+            let locationManager = resolver.resolve(LocationManager.self)!
+            return MapViewModel(eventsService: eventsService, locationManager: locationManager)
         }
 
         container.register(MapModule.self) { resolver in

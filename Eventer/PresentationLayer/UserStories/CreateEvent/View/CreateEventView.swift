@@ -13,6 +13,8 @@ import UIKit
 
 final class CreateEventView: UIView {
 
+    var onImagePickerNeeded: (() -> Void)?
+    
     // MARK: - Private properties
 
     private let disposeBag = DisposeBag()
@@ -23,8 +25,10 @@ final class CreateEventView: UIView {
     private let titleTextField = FormInputField()
     private let dateTextField = FormInputField()
     private let costTextField = FormInputField()
+    private let titleImageTextField = FormInputField()
     private let locationTextField = FormInputField()
     private let tagsView = TagsInputView()
+    private let imageView = UIImageView()
     
     private let buttonContainer = UIView()
     private let btnCreate: UIButton = {
@@ -56,9 +60,17 @@ final class CreateEventView: UIView {
 
     // MARK: - Public methods
 
+    func updateImage(_ image: UIImage) {
+        imageView.image = image
+    }
+    
     func bind(to viewModel: CreateEventViewModelBindable) {
         viewModel.tags.drive(onNext: { tags in
             self.tagsView.setTags(tags)
+        }).disposed(by: disposeBag)
+        
+        viewModel.address.emit(onNext: { address in
+            self.locationTextField.textField.text = address
         }).disposed(by: disposeBag)
         
         datePicker.rx.date.subscribe(onNext: { date in
@@ -82,6 +94,13 @@ final class CreateEventView: UIView {
                 self.locationTextField.endEditing(true)
                 viewModel.onLocationChange()
             }).disposed(by: disposeBag)
+        
+        titleImageTextField.textField.rx.controlEvent(.editingDidBegin)
+            .subscribe(onNext: { _ in
+                self.titleImageTextField.endEditing(true)
+                
+                self.onImagePickerNeeded?()
+            })
         
         tagsView.didToggleTag = { tag in
             viewModel.toggleTag(tag)
@@ -124,6 +143,16 @@ final class CreateEventView: UIView {
         costTextField.titleLabel.text = L10n.CreateEvent.cost
         stack.addArrangedSubview(costTextField)
         
+        titleImageTextField.titleLabel.text = L10n.CreateEvent.image
+        titleImageTextField.textField.placeholder = L10n.CreateEvent.image
+        stack.addArrangedSubview(titleImageTextField)
+        
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 10
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        titleImageTextField.addSubview(imageView)
+        
         locationTextField.titleLabel.text = L10n.CreateEvent.location
         stack.addArrangedSubview(locationTextField)
         
@@ -160,6 +189,17 @@ final class CreateEventView: UIView {
             make.width.equalToSuperview()
         }
         
+        titleImageTextField.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+        }
+        
+        imageView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview().inset(24)
+            make.width.equalTo(52)
+            make.height.equalTo(52)
+        }
+        
         tagsView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(44)
@@ -175,3 +215,4 @@ final class CreateEventView: UIView {
         }
     }
 }
+

@@ -10,9 +10,9 @@ import Swinject
 
 final class PickLocationModuleAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(PickLocationViewModel.self) { _ in
-            // replace '_' with 'resolver' and inject dependencies if necessary
-            return PickLocationViewModel()
+        container.register(PickLocationViewModel.self) { resolver in
+            let locationManager = resolver.resolve(LocationManager.self)!
+            return PickLocationViewModel(locationManager: locationManager)
         }
 
         container.register(PickLocationModule.self) { resolver in
