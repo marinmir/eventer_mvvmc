@@ -7,6 +7,7 @@
 //
 
 import CoreLocation
+import RxSwift
 import UIKit
 
 final class CreateEventViewController: UIViewController, UINavigationControllerDelegate {
@@ -14,7 +15,8 @@ final class CreateEventViewController: UIViewController, UINavigationControllerD
     // MARK: - Private properties
 
     private let viewModel: CreateEventViewModelBindable
-
+    private let disposeBag = DisposeBag()
+    
     // MARK: - Initializers
 
     init(viewModel: CreateEventViewModelBindable) {
@@ -52,6 +54,16 @@ final class CreateEventViewController: UIViewController, UINavigationControllerD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.createdEvent.emit(onNext: {
+            let alertController = UIAlertController(title: L10n.CreateEvent.Success.title, message: L10n.CreateEvent.Success.description, preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: L10n.General.ok, style: .default, handler: { _ in
+                alertController.dismiss(animated: true, completion: nil)
+            })
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
     }
     
     func onAcceptedLocation(_ location: PickedPinViewModel) {

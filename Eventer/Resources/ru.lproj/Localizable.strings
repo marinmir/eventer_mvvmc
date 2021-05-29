@@ -6,6 +6,10 @@
   Copyright © 2021 Мирошниченко Марина. All rights reserved.
 */
 
+// GENERAL
+"general.ok" = "ОК";
+"general.cancel" = "Отмена";
+
 // SEARCH
 "search.placeholder" = "Искать...";
 
@@ -62,6 +66,8 @@
 "createEvent.image" = "Титульное изображение";
 "createEvent.location" = "Место";
 "createEvent.create" = "Создать";
+"createEvent.success.title" = "Ура!";
+"createEvent.success.description" = "Вы успешно создали событие";
 
 // PICK LOCATION
 "pickLocation.title" = "Выбрать место";

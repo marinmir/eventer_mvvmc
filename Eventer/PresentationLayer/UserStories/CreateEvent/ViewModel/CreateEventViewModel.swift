@@ -29,6 +29,8 @@ protocol CreateEventViewModelInput {
 protocol CreateEventViewModelOutput {
     var tags: Driver<[TagViewModel]> { get }
     var address: Signal<String> { get }
+    var canCreateEvent: Driver<Bool> { get }
+    var createdEvent: Signal<Void> { get }
 }
 
 protocol CreateEventViewModelBindable: CreateEventViewModelInput & CreateEventViewModelOutput {}
@@ -45,14 +47,48 @@ final class CreateEventViewModel: CreateEventModuleInput & CreateEventModuleOutp
     private let locationRelay = PublishRelay<PickedPinViewModel>()
     private let addressRelay = PublishRelay<String>()
     private let tapCreateRelay = PublishRelay<Void>()
+    private let canCreateEventRelay = BehaviorRelay<Bool>(value: false)
+    private let createdEventRelay = PublishRelay<Void>()
     private let tagsRelay = BehaviorRelay<[TagViewModel]>(value: Tags.tags.map { TagViewModel(tag: $0) })
     
-    init() {
+    private let eventsService: EventsService
+    
+    init(eventsService: EventsService) {
+        self.eventsService = eventsService
+        
         locationRelay
             .map({$0.address ?? ""})
             .filter({!$0.isEmpty})
             .bind(to: addressRelay)
             .disposed(by: disposeBag)
+        
+        Observable.combineLatest(titleRelay.asObservable(),
+                                 dateRelay.asObservable(),
+                                 costRelay.asObservable(),
+                                 imageRelay.asObservable(),
+                                 locationRelay.asObservable()
+        ).subscribe(onNext: { title, date, cost, image, location in
+            self.canCreateEventRelay.accept(true)
+        }).disposed(by: disposeBag)
+        
+        Observable.combineLatest(titleRelay.asObservable(),
+                                 dateRelay.asObservable(),
+                                 costRelay.asObservable(),
+                                 imageRelay.asObservable(),
+                                 locationRelay.asObservable(),
+                                 tapCreateRelay.asObservable()
+        ).subscribe(onNext: { title, date, cost, image, location, _ in
+            self.eventsService.createEvent(
+                with: title,
+                image: image,
+                location: location,
+                date: date,
+                cost: cost,
+                tags: []
+            ).subscribe(onCompleted: {
+                self.createdEventRelay.accept(())
+            }).disposed(by: self.disposeBag)
+        }).disposed(by: disposeBag)
     }
     
 }
@@ -86,6 +122,14 @@ extension CreateEventViewModel: CreateEventViewModelBindable {
     
     var address: Signal<String> {
         return addressRelay.asSignal()
+    }
+    
+    var canCreateEvent: Driver<Bool> {
+        return canCreateEventRelay.asDriver()
+    }
+    
+    var createdEvent: Signal<Void> {
+        return createdEventRelay.asSignal()
     }
     
     var tags: Driver<[TagViewModel]> {

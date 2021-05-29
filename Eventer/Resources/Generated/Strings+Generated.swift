@@ -26,6 +26,12 @@ internal enum L10n {
     internal static let screenTitle = L10n.tr("Localizable", "createEvent.screenTitle")
     /// Title
     internal static let title = L10n.tr("Localizable", "createEvent.title")
+    internal enum Success {
+      /// You've successfully created event.
+      internal static let description = L10n.tr("Localizable", "createEvent.success.description")
+      /// Wohoo!
+      internal static let title = L10n.tr("Localizable", "createEvent.success.title")
+    }
   }
 
   internal enum Event {
@@ -110,6 +116,13 @@ internal enum L10n {
       /// Time of day
       internal static let title = L10n.tr("Localizable", "filter.timeOfDay.title")
     }
+  }
+
+  internal enum General {
+    /// Cancel
+    internal static let cancel = L10n.tr("Localizable", "general.cancel")
+    /// OK
+    internal static let ok = L10n.tr("Localizable", "general.ok")
   }
 
   internal enum PickLocation {

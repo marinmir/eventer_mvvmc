@@ -10,9 +10,9 @@ import Swinject
 
 final class CreateEventModuleAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(CreateEventViewModel.self) { _ in
-            // replace '_' with 'resolver' and inject dependencies if necessary
-            return CreateEventViewModel()
+        container.register(CreateEventViewModel.self) { resolver in
+            let eventsService = resolver.resolve(EventsService.self)!
+            return CreateEventViewModel(eventsService: eventsService)
         }
 
         container.register(CreateEventModule.self) { resolver in

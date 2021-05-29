@@ -65,6 +65,10 @@ final class CreateEventView: UIView {
     }
     
     func bind(to viewModel: CreateEventViewModelBindable) {
+        viewModel.canCreateEvent
+            .drive(btnCreate.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
         viewModel.tags.drive(onNext: { tags in
             self.tagsView.setTags(tags)
         }).disposed(by: disposeBag)

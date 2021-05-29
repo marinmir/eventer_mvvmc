@@ -13,6 +13,7 @@ import RxSwift
 
 class EventsServiceImpl: EventsService {
     private let database = Firestore.firestore()
+    private let storage = Storage.storage()
     private let disposeBag = DisposeBag()
     private let loadedEventsObservable = BehaviorSubject<[Event]>(value: [])
     private let favoriteEventsObservable = BehaviorSubject<[Event]>(value: [])
@@ -64,6 +65,51 @@ class EventsServiceImpl: EventsService {
                 single(.success(result))
             }).disposed(by: self.disposeBag)
             
+            return Disposables.create()
+        }
+    }
+    
+    func createEvent(
+        with title: String,
+        image: UIImage,
+        location: PickedPinViewModel,
+        date: Date,
+        cost: Double,
+        tags: [String]
+    ) -> Completable {
+        return Completable.create { completable in
+            let uuid = UUID().uuidString
+            let imagePath = "/events/\(uuid)/\(uuid).png"
+            
+            if let imageData = image.pngData() {
+                let ref = self.storage.reference()
+                let imageRef = ref.child(imagePath)
+                imageRef.putData(imageData)
+            }
+            
+            let event = Event(
+                id: uuid,
+                title: title,
+                place: location.address,
+                dateTime: date,
+                cost: cost,
+                description: "",
+                titleImage: imagePath,
+                visitors: nil,
+                tags: tags,
+                location: EventLocation(
+                    lat: location.location.coordinate.latitude,
+                    long: location.location.coordinate.longitude
+                )
+            )
+            let collectionRef = self.database.collection("/users").document("1").collection("my")
+            _ = try? collectionRef.addDocument(from: event) { error in
+                if error == nil {
+                    completable(.completed)
+                } else {
+                    completable(.error(error!))
+                }
+            }
             return Disposables.create()
         }
     }
