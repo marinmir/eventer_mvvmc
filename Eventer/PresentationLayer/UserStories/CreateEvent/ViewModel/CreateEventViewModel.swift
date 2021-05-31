@@ -86,6 +86,7 @@ final class CreateEventViewModel: CreateEventModuleInput & CreateEventModuleOutp
                 cost: cost,
                 tags: []
             ).subscribe(onCompleted: {
+                self.canCreateEventRelay.accept(false)
                 self.createdEventRelay.accept(())
             }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)

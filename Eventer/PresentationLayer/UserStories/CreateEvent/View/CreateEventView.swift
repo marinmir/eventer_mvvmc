@@ -39,6 +39,8 @@ final class CreateEventView: UIView {
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
         
+        
+        
         return button
     }()
     
@@ -66,7 +68,13 @@ final class CreateEventView: UIView {
     
     func bind(to viewModel: CreateEventViewModelBindable) {
         viewModel.canCreateEvent
-            .drive(btnCreate.rx.isEnabled)
+            .drive(onNext: { value in
+                self.btnCreate.isEnabled = value
+                let titleColor = value ? Asset.Colors.white.color : Asset.Colors.darkViolet.color
+                let backgroundColor = value ? Asset.Colors.darkViolet.color : Asset.Colors.lightLavender.color
+                self.btnCreate.setTitleColor(titleColor, for: .normal)
+                self.btnCreate.backgroundColor = backgroundColor
+            })
             .disposed(by: disposeBag)
         
         viewModel.tags.drive(onNext: { tags in
@@ -82,12 +90,12 @@ final class CreateEventView: UIView {
             self.dateTextField.textField.text = CustomDateFormatter.getEventDateString(from: date)
         }).disposed(by: disposeBag)
         
-        titleTextField.textField.rx.controlEvent(.valueChanged)
+        titleTextField.textField.rx.controlEvent(.editingDidEnd)
             .withLatestFrom(titleTextField.textField.rx.text.orEmpty)
             .bind(to: viewModel.title)
             .disposed(by: disposeBag)
         
-        costTextField.textField.rx.controlEvent(.valueChanged)
+        costTextField.textField.rx.controlEvent(.editingDidEnd)
             .withLatestFrom(costTextField.textField.rx.text.orEmpty)
             .map { Double($0) ?? 0 }
             .bind(to: viewModel.cost)

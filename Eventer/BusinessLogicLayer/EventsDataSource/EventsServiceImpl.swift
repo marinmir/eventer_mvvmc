@@ -103,7 +103,8 @@ class EventsServiceImpl: EventsService {
                 )
             )
             let collectionRef = self.database.collection("/users").document("1").collection("my")
-            _ = try? collectionRef.addDocument(from: event) { error in
+            
+            _ = try? collectionRef.document(uuid).setData(from: event) { error in
                 if error == nil {
                     completable(.completed)
                 } else {

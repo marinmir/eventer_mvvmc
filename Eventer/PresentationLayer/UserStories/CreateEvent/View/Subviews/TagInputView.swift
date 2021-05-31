@@ -46,10 +46,13 @@ class TagsInputView: UIView {
     
     // MARK: - Private methods
     private func setAppearance() {
+        isUserInteractionEnabled = true
+        
         tagsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         tagsCollectionView.delegate = self
         tagsCollectionView.dataSource = self
         tagsCollectionView.backgroundColor = .white
+        tagsCollectionView.allowsMultipleSelection = true
         tagsCollectionView.register(TagCollectionCell.self, forCellWithReuseIdentifier: TagCollectionCell.cellReuseIdentifier)
         addSubview(tagsCollectionView)
         
@@ -75,6 +78,8 @@ extension TagsInputView: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         cell.configure(with: tags[indexPath.row])
+        
+        
         return cell
     }
     

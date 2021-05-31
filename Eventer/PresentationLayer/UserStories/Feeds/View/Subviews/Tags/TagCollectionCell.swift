@@ -37,7 +37,7 @@ class TagCollectionCell: UICollectionViewCell {
         tagView.layer.cornerRadius = 20
         tagView.layer.masksToBounds = true
         clipsToBounds = false
-        addSubview(tagView)
+        contentView.addSubview(tagView)
         
         NSLayoutConstraint.activate([
             tagView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
