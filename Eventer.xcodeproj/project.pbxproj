@@ -55,7 +55,6 @@
 		0EF5971E25A7CD7A00B8458B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EF5971D25A7CD7A00B8458B /* GoogleService-Info.plist */; };
 		0EF5972225A7D02500B8458B /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5972125A7D02500B8458B /* CustomDateFormatter.swift */; };
 		0EF5972B25A7D0B100B8458B /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5972525A7D0B100B8458B /* EventType.swift */; };
-		0EF5972C25A7D0B100B8458B /* EventsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5972625A7D0B100B8458B /* EventsLoader.swift */; };
 		0EF5972D25A7D0B100B8458B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5972925A7D0B100B8458B /* Event.swift */; };
 		0EF5972E25A7D0B100B8458B /* Visitors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5972A25A7D0B100B8458B /* Visitors.swift */; };
 		0EF5974025A7D62600B8458B /* SearchResultsNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5973125A7D62600B8458B /* SearchResultsNotFoundView.swift */; };
@@ -116,6 +115,11 @@
 		E611726537AA67DA8D3A4CEC /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8DFD32D864AD3C963B4C3E /* FavouritesViewController.swift */; };
 		E8FBFB832EE4067B8D6A8F33 /* FeedsModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818312BF7EAA52F5605635C /* FeedsModuleAssembly.swift */; };
 		E97DD704D43F2FB9517B8367 /* MapModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42F69C23D1D21C580C63862 /* MapModuleAssembly.swift */; };
+		F82FCF732666B30F00358004 /* ProfileSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82FCF722666B30F00358004 /* ProfileSectionViewModel.swift */; };
+		F82FCF752666D16A00358004 /* AvatarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82FCF742666D16A00358004 /* AvatarViewModel.swift */; };
+		F82FCF782666D8BF00358004 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82FCF772666D8BF00358004 /* ProfileManager.swift */; };
+		F82FCF7B2666E6AE00358004 /* ProfileActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82FCF7A2666E6AE00358004 /* ProfileActionCell.swift */; };
+		F82FCF7D2666E6B900358004 /* ProfileAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82FCF7C2666E6B900358004 /* ProfileAvatarCell.swift */; };
 		FAE9734C9A0E18AE58614F35 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E8AD0119623378A71FE67 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -167,7 +171,6 @@
 		0EF5971D25A7CD7A00B8458B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0EF5972125A7D02500B8458B /* CustomDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		0EF5972525A7D0B100B8458B /* EventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
-		0EF5972625A7D0B100B8458B /* EventsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsLoader.swift; sourceTree = "<group>"; };
 		0EF5972925A7D0B100B8458B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0EF5972A25A7D0B100B8458B /* Visitors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visitors.swift; sourceTree = "<group>"; };
 		0EF5973125A7D62600B8458B /* SearchResultsNotFoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsNotFoundView.swift; sourceTree = "<group>"; };
@@ -232,6 +235,11 @@
 		D3B2620F8C4A61B3606AF992 /* MapViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D94A59F97DEE298790C73A56 /* EventDetailsModuleAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EventDetailsModuleAssembly.swift; sourceTree = "<group>"; };
 		E304F524E3606946CE1F4D47 /* FavouritesView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		F82FCF722666B30F00358004 /* ProfileSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSectionViewModel.swift; sourceTree = "<group>"; };
+		F82FCF742666D16A00358004 /* AvatarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewModel.swift; sourceTree = "<group>"; };
+		F82FCF772666D8BF00358004 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		F82FCF7A2666E6AE00358004 /* ProfileActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActionCell.swift; sourceTree = "<group>"; };
+		F82FCF7C2666E6B900358004 /* ProfileAvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAvatarCell.swift; sourceTree = "<group>"; };
 		FB43288DA9C26D74908AC202 /* SearchResultsCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchResultsCoordinator.swift; sourceTree = "<group>"; };
 		FD14D7C0D16D1E20114621F4 /* SearchResultsModule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchResultsModule.swift; sourceTree = "<group>"; };
 		FE4C3B050A83D2DFA79606D2 /* EventDetailsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
@@ -463,6 +471,7 @@
 		0EF5972325A7D0B100B8458B /* BusinessLogicLayer */ = {
 			isa = PBXGroup;
 			children = (
+				F82FCF762666D7FF00358004 /* ProfileManager */,
 				00318940266166A500CEF72C /* LocationManager */,
 				0EF5972425A7D0B100B8458B /* EventsDataSource */,
 				0080A7E3260963F600EDE378 /* ServicesAssembly.swift */,
@@ -475,7 +484,6 @@
 			children = (
 				0080A7DD26095E1100EDE378 /* EventsService.swift */,
 				0EF5972525A7D0B100B8458B /* EventType.swift */,
-				0EF5972625A7D0B100B8458B /* EventsLoader.swift */,
 				0080A7E026095E2200EDE378 /* EventsServiceImpl.swift */,
 			);
 			path = EventsDataSource;
@@ -606,6 +614,7 @@
 		2AEBFCF9F2801E00A8F5154D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F82FCF792666E68B00358004 /* Subviews */,
 				54E4752FC19733B39A463A57 /* ProfileViewController.swift */,
 				C87084A6B9812566DEC6C47F /* ProfileView.swift */,
 			);
@@ -693,6 +702,8 @@
 			isa = PBXGroup;
 			children = (
 				396905F5DAAE1E991FC67566 /* ProfileViewModel.swift */,
+				F82FCF722666B30F00358004 /* ProfileSectionViewModel.swift */,
+				F82FCF742666D16A00358004 /* AvatarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -978,6 +989,23 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		F82FCF762666D7FF00358004 /* ProfileManager */ = {
+			isa = PBXGroup;
+			children = (
+				F82FCF772666D8BF00358004 /* ProfileManager.swift */,
+			);
+			path = ProfileManager;
+			sourceTree = "<group>";
+		};
+		F82FCF792666E68B00358004 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				F82FCF7A2666E6AE00358004 /* ProfileActionCell.swift */,
+				F82FCF7C2666E6B900358004 /* ProfileAvatarCell.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1170,11 +1198,13 @@
 				0EF5972D25A7D0B100B8458B /* Event.swift in Sources */,
 				B843C36F6D5D7B3559D9BFAE /* FeedsViewModel.swift in Sources */,
 				0080A7E4260963F600EDE378 /* ServicesAssembly.swift in Sources */,
+				F82FCF752666D16A00358004 /* AvatarViewModel.swift in Sources */,
 				05DF6C0FF4BFB4DA038682E0 /* MapModule.swift in Sources */,
 				E97DD704D43F2FB9517B8367 /* MapModuleAssembly.swift in Sources */,
 				0EF5974825A7D62600B8458B /* EventListCell.swift in Sources */,
 				5B91F3016C3FB0AE3E20133A /* MapViewController.swift in Sources */,
 				256A2BB10AF8C71BDDBD91B0 /* MapView.swift in Sources */,
+				F82FCF782666D8BF00358004 /* ProfileManager.swift in Sources */,
 				0EF5974025A7D62600B8458B /* SearchResultsNotFoundView.swift in Sources */,
 				A3BAB6403050EB53B046352F /* MapViewModel.swift in Sources */,
 				913C9B2D36062C54A8F39DC4 /* CreateEventModule.swift in Sources */,
@@ -1192,10 +1222,12 @@
 				0EF5971A25A7CC0D00B8458B /* VisitorsPreview.swift in Sources */,
 				00C77B41265B087E004B49E1 /* FormInputField.swift in Sources */,
 				0EF5974625A7D62600B8458B /* TagsCell.swift in Sources */,
+				F82FCF7B2666E6AE00358004 /* ProfileActionCell.swift in Sources */,
 				004C2562263FEDB00011EAEF /* BubbleViewModel.swift in Sources */,
 				E611726537AA67DA8D3A4CEC /* FavouritesViewController.swift in Sources */,
 				00BF2FAB26238A58002E60A3 /* EventFullSizeCard.swift in Sources */,
 				0EF5974425A7D62600B8458B /* TagCollectionCell.swift in Sources */,
+				F82FCF7D2666E6B900358004 /* ProfileAvatarCell.swift in Sources */,
 				007E1C972654602B00181BCD /* FavoriteEventCellView.swift in Sources */,
 				0EF5971925A7CC0D00B8458B /* EventCardView.swift in Sources */,
 				C720252B7CF88F89E00553F8 /* FavouritesView.swift in Sources */,
@@ -1205,7 +1237,6 @@
 				1818C58716414109F5301629 /* ProfileModuleAssembly.swift in Sources */,
 				0080A7DE26095E1100EDE378 /* EventsService.swift in Sources */,
 				18F8BE2D7901E84FB3AC084B /* ProfileViewController.swift in Sources */,
-				0EF5972C25A7D0B100B8458B /* EventsLoader.swift in Sources */,
 				00BF2FAE262391BE002E60A3 /* LikeButton.swift in Sources */,
 				A7C48083EE2AA46E00E6D792 /* ProfileView.swift in Sources */,
 				9E2EBDF1B7D4EA4CF6D64DD1 /* ProfileViewModel.swift in Sources */,
@@ -1231,6 +1262,7 @@
 				136A9759CDEE9FB5C0DE306B /* FeedFiltersViewController.swift in Sources */,
 				4AC95D2CC96756FD513446EA /* FeedFiltersView.swift in Sources */,
 				A08127F1735162A6C3693360 /* FeedFiltersViewModel.swift in Sources */,
+				F82FCF732666B30F00358004 /* ProfileSectionViewModel.swift in Sources */,
 				1245DDD991B8B8D54E9EDB15 /* FeedFiltersCoordinator.swift in Sources */,
 				CD0159D8F02B2793197CC013 /* PickLocationModule.swift in Sources */,
 				3ADDD8C28E2EBC6FE5F21BF9 /* PickLocationModuleAssembly.swift in Sources */,

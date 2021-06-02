@@ -17,6 +17,7 @@ class EventsServiceImpl: EventsService {
     private let disposeBag = DisposeBag()
     private let loadedEventsObservable = BehaviorSubject<[Event]>(value: [])
     private let favoriteEventsObservable = BehaviorSubject<[Event]>(value: [])
+    private let profileManager: ProfileManager
     
     var loadedEvents: Observable<[Event]> {
         return loadedEventsObservable.asObservable()
@@ -26,13 +27,18 @@ class EventsServiceImpl: EventsService {
         return favoriteEventsObservable.asObservable()
     }
     
-    init() {
-        database.collection("/users").document("1").collection("favorites").addSnapshotListener { snapshot, error in
-            if let snapshot = snapshot {
-                let events = snapshot.documents.compactMap { try? $0.data(as: Event.self) }
-                self.favoriteEventsObservable.onNext(events)
+    init(profileManager: ProfileManager) {
+        self.profileManager = profileManager
+        
+        database.collection("/users")
+            .document(profileManager.uid)
+            .collection("favorites")
+            .addSnapshotListener { snapshot, error in
+                if let snapshot = snapshot {
+                    let events = snapshot.documents.compactMap { try? $0.data(as: Event.self) }
+                    self.favoriteEventsObservable.onNext(events)
+                }
             }
-        }
     }
     
     func loadEvents() -> Single<[EventType: [Event]]> {
@@ -102,7 +108,7 @@ class EventsServiceImpl: EventsService {
                     long: location.location.coordinate.longitude
                 )
             )
-            let collectionRef = self.database.collection("/users").document("1").collection("my")
+            let collectionRef = self.database.collection("/users").document(self.profileManager.uid).collection("my")
             
             _ = try? collectionRef.document(uuid).setData(from: event) { error in
                 if error == nil {
@@ -116,13 +122,22 @@ class EventsServiceImpl: EventsService {
     }
     
     func toggleFavorite(event: Event) {
-        let docRef = database.collection("/users").document("1").collection("favorites").document("\(event.id ?? "")")
+        let docRef = database
+            .collection("/users")
+            .document(profileManager.uid)
+            .collection("favorites")
+            .document("\(event.id ?? "")")
         
         docRef.getDocument { querySnapshot, error in
             if let querySnapshot = querySnapshot, querySnapshot.exists {
                 docRef.delete()
             } else {
-                try? self.database.collection("/users").document("1").collection("favorites").document("\(event.id ?? "")").setData(from: event)
+                try? self.database
+                    .collection("/users")
+                    .document(self.profileManager.uid)
+                    .collection("favorites")
+                    .document("\(event.id ?? "")")
+                    .setData(from: event)
             }
         }
     }

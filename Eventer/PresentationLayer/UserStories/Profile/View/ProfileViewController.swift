@@ -6,13 +6,17 @@
 //  Copyright © 2021 Marinmir Ltd. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 final class ProfileViewController: UIViewController {
 
     // MARK: - Private properties
 
+    private var sections = [ProfileSectionViewModel]()
     private let viewModel: ProfileViewModelBindable
+    private let disposeBag = DisposeBag()
 
     // MARK: - Initializers
 
@@ -35,9 +39,54 @@ final class ProfileViewController: UIViewController {
         view.bind(to: viewModel)
 
         self.view = view
+        
+        view.dataSource = self
+        view.delegate = self
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.sections.drive(onNext: { sections in
+            self.sections = sections
+        }).disposed(by: disposeBag)
+        
+        viewModel.onViewDidLoad()
+    }
+}
+
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch sections[section] {
+        case .avatar:
+            return 1
+        case .items(let items):
+            return items.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch sections[indexPath.section] {
+        case .avatar(let avatarViewModel):
+            let cell = ProfileAvatarCell()
+            
+            cell.configure(with: avatarViewModel)
+            
+            return cell
+        case .items(let items):
+            let cell = ProfileActionCell()
+            
+            cell.configure(with: items[indexPath.row])
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }

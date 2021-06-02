@@ -10,9 +10,10 @@ import Swinject
 
 final class ProfileModuleAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(ProfileViewModel.self) { _ in
-            // replace '_' with 'resolver' and inject dependencies if necessary
-            return ProfileViewModel()
+        container.register(ProfileViewModel.self) { resolver in
+            let eventsService = resolver.resolve(EventsService.self)!
+            let profileManager = resolver.resolve(ProfileManager.self)!
+            return ProfileViewModel(profileManager: profileManager, eventsService: eventsService)
         }
 
         container.register(ProfileModule.self) { resolver in

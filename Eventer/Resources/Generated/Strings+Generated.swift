@@ -134,6 +134,41 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "pickLocation.title")
   }
 
+  internal enum Profile {
+    /// Sign Out
+    internal static let logout = L10n.tr("Localizable", "profile.logout")
+    internal enum Avatar {
+      /// Name
+      internal static let name = L10n.tr("Localizable", "profile.avatar.name")
+      /// Rating
+      internal static let rating = L10n.tr("Localizable", "profile.avatar.rating")
+      internal enum Name {
+        /// No name
+        internal static let `default` = L10n.tr("Localizable", "profile.avatar.name.default")
+      }
+      internal enum Rating {
+        /// %.2f stars
+        internal static func stars(_ p1: Float) -> String {
+          return L10n.tr("Localizable", "profile.avatar.rating.stars", p1)
+        }
+      }
+    }
+    internal enum Events {
+      /// Organized
+      internal static let organized = L10n.tr("Localizable", "profile.events.organized")
+      /// Participate in
+      internal static let participate = L10n.tr("Localizable", "profile.events.participate")
+      /// Recommendations
+      internal static let recommendations = L10n.tr("Localizable", "profile.events.recommendations")
+    }
+    internal enum Info {
+      /// About
+      internal static let about = L10n.tr("Localizable", "profile.info.about")
+      /// Terms of Use
+      internal static let termsOfUse = L10n.tr("Localizable", "profile.info.termsOfUse")
+    }
+  }
+
   internal enum Search {
     /// Search for...
     internal static let placeholder = L10n.tr("Localizable", "search.placeholder")

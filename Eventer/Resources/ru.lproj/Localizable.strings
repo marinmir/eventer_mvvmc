@@ -73,3 +73,15 @@
 "pickLocation.title" = "Выбрать место";
 "pickLocation.cancel" = "Отменить";
 "pickLocation.accept" = "Принять";
+
+// PROFILE
+"profile.avatar.name" = "Имя";
+"profile.avatar.name.default" = "Нет имени";
+"profile.avatar.rating" = "Рейтинг";
+"profile.avatar.rating.stars" = "%.2f звезд";
+"profile.events.organized" = "Организовано";
+"profile.events.participate" = "Участвую";
+"profile.events.recommendations" = "Рекомендации";
+"profile.info.termsOfUse" = "Правила использования";
+"profile.info.about" = "О приложении";
+"profile.logout" = "Выйти";

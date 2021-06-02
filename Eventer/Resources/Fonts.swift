@@ -13,6 +13,10 @@ extension UIFont {
         return .boldSystemFont(ofSize: 18)
     }
     
+    static var h1NonBold: UIFont {
+        return .systemFont(ofSize: 18)
+    }
+    
     static var h2: UIFont {
         return .boldSystemFont(ofSize: 16)
     }

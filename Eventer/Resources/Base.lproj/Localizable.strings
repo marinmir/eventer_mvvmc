@@ -73,3 +73,15 @@
 "pickLocation.title" = "Pick location";
 "pickLocation.cancel" = "Cancel";
 "pickLocation.accept" = "Accept";
+
+// PROFILE
+"profile.avatar.name" = "Name";
+"profile.avatar.name.default" = "No name";
+"profile.avatar.rating" = "Rating";
+"profile.avatar.rating.stars" = "%.2f stars";
+"profile.events.organized" = "Organized";
+"profile.events.participate" = "Participate in";
+"profile.events.recommendations" = "Recommendations";
+"profile.info.termsOfUse" = "Terms of Use";
+"profile.info.about" = "About";
+"profile.logout" = "Sign Out";

@@ -11,8 +11,13 @@ import Swinject
 
 final class ServicesAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(EventsService.self) { _ in
-            return EventsServiceImpl()
+        container.register(ProfileManager.self) { _ in
+            return ProfileManagerImpl()
+        }.inObjectScope(.container)
+        
+        container.register(EventsService.self) { resolver in
+            let profileManager = resolver.resolve(ProfileManager.self)!
+            return EventsServiceImpl(profileManager: profileManager)
         }.inObjectScope(.container)
         
         container.register(LocationManager.self) { _ in

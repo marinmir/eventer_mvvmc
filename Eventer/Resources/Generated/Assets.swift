@@ -31,6 +31,7 @@ internal enum Asset {
   }
   internal static let crown = ImageAsset(name: "Crown")
   internal static let eventDefault = ImageAsset(name: "EventDefault")
+  internal static let profileDefault = ImageAsset(name: "ProfileDefault")
   internal static let sadSmile = ImageAsset(name: "SadSmile")
   internal enum SelectedTabBars {
     internal static let selectedCreateEvent = ImageAsset(name: "SelectedCreateEvent")
@@ -74,6 +75,7 @@ internal enum Asset {
     }
     internal static let filter = ImageAsset(name: "filter")
     internal static let searchGlass = ImageAsset(name: "search_glass")
+    internal static let star = ImageAsset(name: "star")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
