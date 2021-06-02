@@ -120,6 +120,9 @@
 		F82FCF782666D8BF00358004 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82FCF772666D8BF00358004 /* ProfileManager.swift */; };
 		F82FCF7B2666E6AE00358004 /* ProfileActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82FCF7A2666E6AE00358004 /* ProfileActionCell.swift */; };
 		F82FCF7D2666E6B900358004 /* ProfileAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82FCF7C2666E6B900358004 /* ProfileAvatarCell.swift */; };
+		F82FCF802667083D00358004 /* Recommender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82FCF7F2667083D00358004 /* Recommender.swift */; };
+		F82FCF82266709B300358004 /* RecommenderDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82FCF81266709B300358004 /* RecommenderDataSource.swift */; };
+		F82FCF84266709F900358004 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82FCF83266709F900358004 /* AppUser.swift */; };
 		FAE9734C9A0E18AE58614F35 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E8AD0119623378A71FE67 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -240,6 +243,9 @@
 		F82FCF772666D8BF00358004 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		F82FCF7A2666E6AE00358004 /* ProfileActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActionCell.swift; sourceTree = "<group>"; };
 		F82FCF7C2666E6B900358004 /* ProfileAvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAvatarCell.swift; sourceTree = "<group>"; };
+		F82FCF7F2667083D00358004 /* Recommender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommender.swift; sourceTree = "<group>"; };
+		F82FCF81266709B300358004 /* RecommenderDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommenderDataSource.swift; sourceTree = "<group>"; };
+		F82FCF83266709F900358004 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		FB43288DA9C26D74908AC202 /* SearchResultsCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchResultsCoordinator.swift; sourceTree = "<group>"; };
 		FD14D7C0D16D1E20114621F4 /* SearchResultsModule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchResultsModule.swift; sourceTree = "<group>"; };
 		FE4C3B050A83D2DFA79606D2 /* EventDetailsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
@@ -471,6 +477,7 @@
 		0EF5972325A7D0B100B8458B /* BusinessLogicLayer */ = {
 			isa = PBXGroup;
 			children = (
+				F82FCF7E2667082500358004 /* Recommender */,
 				F82FCF762666D7FF00358004 /* ProfileManager */,
 				00318940266166A500CEF72C /* LocationManager */,
 				0EF5972425A7D0B100B8458B /* EventsDataSource */,
@@ -504,6 +511,7 @@
 				0EF5972A25A7D0B100B8458B /* Visitors.swift */,
 				0079E5AF263ED971003744FF /* TimeOfDay.swift */,
 				002800852653180D0033B433 /* EventLocation.swift */,
+				F82FCF83266709F900358004 /* AppUser.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1006,6 +1014,15 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
+		F82FCF7E2667082500358004 /* Recommender */ = {
+			isa = PBXGroup;
+			children = (
+				F82FCF7F2667083D00358004 /* Recommender.swift */,
+				F82FCF81266709B300358004 /* RecommenderDataSource.swift */,
+			);
+			path = Recommender;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1174,6 +1191,7 @@
 				DACEBC4261B3C6E36212DF9C /* MainView.swift in Sources */,
 				0EF5974325A7D62600B8458B /* FeedsSectionHeaderView.swift in Sources */,
 				0005AA862651AD7E00701F02 /* PriceFilterTableCell.swift in Sources */,
+				F82FCF802667083D00358004 /* Recommender.swift in Sources */,
 				0EF5974725A7D62600B8458B /* EventCollectionCell.swift in Sources */,
 				00BF2FB126239DDE002E60A3 /* EventInfoField.swift in Sources */,
 				0079F1102607F881006A4A1E /* Strings+Generated.swift in Sources */,
@@ -1216,6 +1234,7 @@
 				0448EEA7FE0EE1C922E497EE /* CreateEventViewModel.swift in Sources */,
 				CDE7E8221AEEBDBC552F23B4 /* FavouritesModule.swift in Sources */,
 				0EF5974125A7D62600B8458B /* SearchResultCell.swift in Sources */,
+				F82FCF84266709F900358004 /* AppUser.swift in Sources */,
 				0080A7E126095E2200EDE378 /* EventsServiceImpl.swift in Sources */,
 				00F68D7C25A7C80C00259E4C /* Assets.swift in Sources */,
 				A6F938B1B806ADB8D630D7DD /* FavouritesModuleAssembly.swift in Sources */,
@@ -1254,6 +1273,7 @@
 				0031894526619DD600CEF72C /* PickedPinViewModel.swift in Sources */,
 				D58DD247367C32EA2F4C7C24 /* EventDetailsModuleAssembly.swift in Sources */,
 				292B2B282853E3E5B553FA9C /* EventDetailsViewController.swift in Sources */,
+				F82FCF82266709B300358004 /* RecommenderDataSource.swift in Sources */,
 				5E6F9E453C80113F642BDB09 /* EventDetailsView.swift in Sources */,
 				A92EC6DFA10984C35742E306 /* EventDetailsViewModel.swift in Sources */,
 				C5471CAF063AF5F4B2E67000 /* EventDetailsCoordinator.swift in Sources */,

@@ -21,3 +21,13 @@ struct Event: Codable {
     var tags: [String]?
     var location: EventLocation
 }
+
+extension Event: Hashable {
+    static func == (lhs: Event, rhs: Event) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id ?? "")
+    }
+}
