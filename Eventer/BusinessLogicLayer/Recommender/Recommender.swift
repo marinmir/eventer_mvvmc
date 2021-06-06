@@ -45,22 +45,34 @@ final class RecommenderImpl: Recommender {
             return
         }
         
-        var relativeRates = [Double](repeating: -1, count: users.count)
-        for (index, row) in weightMatrix.enumerated() where index != targetUserIndex {
-            let rate = rateVectors(weightMatrix[targetUserIndex], row)
-            relativeRates[index] = rate
+        var relativeRates = [[Double]](repeating: [Double](repeating: -1, count: uniqueEvents.count), count: users.count)
+
+        for index in 0..<weightMatrix[0].count - 1 where index != targetUserIndex {
+            let baseColumn = weightMatrix.compactMap({ $0[index]})
+            for otherIndex in index + 1..<weightMatrix[0].count {
+                let currentColumn = weightMatrix.compactMap({ $0[otherIndex]})
+                let rate = rateVectors(baseColumn, currentColumn)
+                relativeRates[index][otherIndex] = rate
+                relativeRates[otherIndex][index] = rate
+            }
         }
         
-        let topRecommendedRates = relativeRates.sorted(by: { $0 < $1 }).prefix(10)
+        var eventsToRecommend: [(Double, Event)] = []
         
-        let eventsIndices = topRecommendedRates.map { relativeRates.firstIndex(of: $0)! }
-        
-        var result = [Event]()
-        for eventIndex in eventsIndices {
-            result.append(uniqueEvents[eventIndex])
+        for (index, event) in uniqueEvents.enumerated() {
+            if user.favorites.contains(where: { $0.id == event.id }) || user.my.contains(where: { $0.id == event.id }) {
+                let eventRates = relativeRates[index]
+                for rate in eventRates {
+                    if rate > 0 {
+                        eventsToRecommend.append((rate, uniqueEvents[index]))
+                    }
+                }
+            }
         }
         
-        recommendedEventsSubject.onNext(result)
+        let finalEvents = eventsToRecommend.sorted(by: { $0.0 > $1.0 }).prefix(10).map { $0.1 }
+        
+        recommendedEventsSubject.onNext(finalEvents)
     }
     
     private func getUniqueEvents(users: [AppUser]) -> [Event] {
