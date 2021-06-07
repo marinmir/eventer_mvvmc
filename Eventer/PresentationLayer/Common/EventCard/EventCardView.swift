@@ -28,7 +28,7 @@ class EventCardView: UIView {
     private let placeLabel = UILabel()
     private let visitorsPreview = VisitorsPreview()
     private let likeButton = LikeButton()
-
+    
     private let disposeBag = DisposeBag()
     private let sideOffset: CGFloat = 10
 
@@ -92,7 +92,7 @@ class EventCardView: UIView {
 
         likeButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(likeButton)
-
+        
         NSLayoutConstraint.activate([
             titleImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -125,5 +125,5 @@ class EventCardView: UIView {
     private func didTapLike() {
         likeButton.isSelected.toggle()
     }
-
+    
 }

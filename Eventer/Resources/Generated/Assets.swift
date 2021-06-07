@@ -75,6 +75,7 @@ internal enum Asset {
     }
     internal static let filter = ImageAsset(name: "filter")
     internal static let searchGlass = ImageAsset(name: "search_glass")
+    internal static let share = ImageAsset(name: "share")
     internal static let star = ImageAsset(name: "star")
   }
 }

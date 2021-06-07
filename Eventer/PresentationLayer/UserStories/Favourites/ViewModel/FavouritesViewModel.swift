@@ -30,7 +30,11 @@ final class FavouritesViewModel: FavouritesModuleInput & FavouritesModuleOutput 
         
         eventsService.favoriteEvents
             .map({ array in
-                return array.map { EventCardViewModel(event: $0, didTapLike: eventsService.toggleFavorite) }
+                return array.map {
+                    EventCardViewModel(
+                        event: $0,
+                        didTapLike: eventsService.toggleFavorite,
+                        didTapParticipate: eventsService.toggleEventParticipation) }
             }).bind(to: eventsRelay)
             .disposed(by: disposeBag)
     }

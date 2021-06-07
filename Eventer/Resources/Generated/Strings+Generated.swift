@@ -43,8 +43,12 @@ internal enum L10n {
     internal static func going(_ p1: Int) -> String {
       return L10n.tr("Localizable", "event.going", p1)
     }
+    /// Not going
+    internal static let notParticipate = L10n.tr("Localizable", "event.notParticipate")
     /// No visitors
     internal static let noVisitors = L10n.tr("Localizable", "event.noVisitors")
+    /// I participate!
+    internal static let participate = L10n.tr("Localizable", "event.participate")
     internal enum Details {
       /// Organizer
       internal static let organizer = L10n.tr("Localizable", "event.details.organizer")

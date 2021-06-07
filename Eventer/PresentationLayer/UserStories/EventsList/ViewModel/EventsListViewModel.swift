@@ -27,7 +27,11 @@ final class EventsListViewModel: EventsListModuleInput & EventsListModuleOutput 
     
     init(eventsList: [Event], eventsService: EventsService) {
         self.eventsService = eventsService
-        eventsRelay = BehaviorRelay(value: eventsList.map { EventCardViewModel(event: $0, didTapLike: eventsService.toggleFavorite) })
+        eventsRelay = BehaviorRelay(value: eventsList.map {
+                                        EventCardViewModel(
+                                            event: $0,
+                                            didTapLike: eventsService.toggleFavorite,
+                                            didTapParticipate: eventsService.toggleEventParticipation) })
     }
 }
 

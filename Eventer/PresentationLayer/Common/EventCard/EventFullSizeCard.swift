@@ -18,6 +18,26 @@ final class EventFullSizeCard: UIView {
     private let topContainer = UIView()
     private let titleLabel = UILabel()
     private let likeButton = LikeButton()
+    private let shareButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.setBackgroundImage(Asset.UIKit.share.image, for: .normal)
+        
+        return button
+    }()
+    
+    private let participateButton: UIButton = {
+        let button = UIButton()
+        
+        button.setTitleColor(Asset.Colors.white.color, for: .normal)
+        button.backgroundColor = Asset.Colors.darkViolet.color
+        button.setTitle(L10n.Event.participate, for: .normal)
+        button.setTitle(L10n.Event.notParticipate, for: .selected)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
+        
+        return button
+    }()
     
     private let dateField = EventInfoField()
     private let placeField = EventInfoField()
@@ -29,6 +49,7 @@ final class EventFullSizeCard: UIView {
     private let descriptionText = UILabel()
     
     private let organizerInfo = EventOrganizerInfo()
+    private weak var event: EventCardViewModel?
     
     // MARK: - Initializers
     
@@ -46,6 +67,7 @@ final class EventFullSizeCard: UIView {
     // MARK: - Public methods
     
     func configure(with event: EventCardViewModel) {
+        self.event = event
         titleLabel.text = event.title
         
         dateField.configure(with:
@@ -99,8 +121,12 @@ final class EventFullSizeCard: UIView {
         titleLabel.font = .h1
         titleLabel.textColor = Asset.Colors.black.color
         
+        likeButton.addTarget(self, action: #selector(didTapParticipate), for: .touchUpInside)
+        shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
+        
         topContainer.addSubview(titleLabel)
         topContainer.addSubview(likeButton)
+        topContainer.addSubview(shareButton)
         contentStack.addArrangedSubview(topContainer)
         contentStack.setCustomSpacing(20, after: topContainer)
         
@@ -128,6 +154,8 @@ final class EventFullSizeCard: UIView {
         contentStack.setCustomSpacing(20, after: descriptionText)
         
         contentStack.addArrangedSubview(organizerInfo)
+        
+        contentStack.addArrangedSubview(participateButton)
     }
     
     private func setConstraints() {
@@ -153,5 +181,31 @@ final class EventFullSizeCard: UIView {
             make.top.bottom.equalToSuperview()
             make.trailing.equalToSuperview().offset(-32)
         }
+        
+        participateButton.snp.makeConstraints({ make in
+            make.height.equalTo(44)
+            make.centerX.equalToSuperview()
+        })
+        
+        shareButton.snp.makeConstraints { make in
+            make.trailing.equalTo(likeButton.snp.leading).offset(-16)
+            make.centerY.equalTo(likeButton)
+            make.width.equalTo(32)
+            make.height.equalTo(32)
+        }
+    }
+    
+    @objc private func didTapLike() {
+        likeButton.isSelected.toggle()
+        event?.onTapLike()
+    }
+    
+    @objc private func didTapParticipate() {
+        participateButton.isSelected.toggle()
+        event?.onTapParticipate()
+    }
+    
+    @objc private func didTapShare() {
+        print("Sharing")
     }
 }

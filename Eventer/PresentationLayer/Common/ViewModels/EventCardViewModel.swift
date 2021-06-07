@@ -11,6 +11,7 @@ import Foundation
 final class EventCardViewModel {
     // MARK: - Public properties
     var didTapLike: ((Event) -> Void)?
+    var didTapParticipate: ((Event) -> Void)?
     
     var title: String {
         return event.title ?? ""
@@ -82,12 +83,17 @@ final class EventCardViewModel {
     
     // MARK: - Initializers
     
-    init(event: Event, didTapLike: ((Event) -> Void)?) {
+    init(event: Event, didTapLike: ((Event) -> Void)?, didTapParticipate: ((Event) -> Void)?) {
         self.event = event
         self.didTapLike = didTapLike
+        self.didTapParticipate = didTapParticipate
     }
     
     func onTapLike() {
         didTapLike?(event)
+    }
+    
+    func onTapParticipate() {
+        didTapParticipate?(event)
     }
 }

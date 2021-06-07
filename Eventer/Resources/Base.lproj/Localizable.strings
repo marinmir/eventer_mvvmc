@@ -33,6 +33,8 @@
 "event.going" = "%i going";
 "event.noVisitors" = "No visitors";
 "event.about" = "About";
+"event.participate" = "I participate!";
+"event.notParticipate" = "Not going";
 
 // FILTERS
 "filter.title" = "Filters";

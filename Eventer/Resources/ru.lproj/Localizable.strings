@@ -33,6 +33,8 @@
 "event.going" = "%i идет";
 "event.noVisitors" = "Еще нет посетителей";
 "event.about" = "О событии";
+"event.participate" = "Я участвую!";
+"event.notParticipate" = "Не иду";
 
 // FILTERS
 "filter.title" = "Фильтры";

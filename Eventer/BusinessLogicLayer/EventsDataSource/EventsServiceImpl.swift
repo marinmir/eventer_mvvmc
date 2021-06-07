@@ -144,6 +144,27 @@ class EventsServiceImpl: EventsService {
         }
     }
     
+    func toggleEventParticipation(event: Event) {
+        let docRef = database
+            .collection("/users")
+            .document(profileManager.uid)
+            .collection("my")
+            .document("\(event.id ?? "")")
+        
+        docRef.getDocument { querySnapshot, error in
+            if let querySnapshot = querySnapshot, querySnapshot.exists {
+                docRef.delete()
+            } else {
+                try? self.database
+                    .collection("/users")
+                    .document(self.profileManager.uid)
+                    .collection("my")
+                    .document("\(event.id ?? "")")
+                    .setData(from: event)
+            }
+        }
+    }
+    
     private func loadFirebaseEvents(for path: String) -> Single<[Event]> {
         return Single.create { single in
             

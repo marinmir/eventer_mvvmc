@@ -64,7 +64,7 @@ extension MapViewController: MKMapViewDelegate {
         }
         // shame, shame, SHAAAAMEEE!!!
         let service = EventsServiceImpl(profileManager: ProfileManagerImpl(recommender: RecommenderImpl(dataSource: RecommenderDataSourceImpl())))
-        let eventViewModel = EventCardViewModel(event: eventAnnotation.event, didTapLike: service.toggleFavorite)
+        let eventViewModel = EventCardViewModel(event: eventAnnotation.event, didTapLike: service.toggleFavorite, didTapParticipate: service.toggleEventParticipation)
         eventDetails.configure(with: eventViewModel)
         
         self.view.addSubview(eventDetails)

@@ -23,4 +23,5 @@ protocol EventsService {
     ) -> Completable
     func loadEvents() -> Single<[EventType: [Event]]>
     func toggleFavorite(event: Event)
+    func toggleEventParticipation(event: Event)
 }

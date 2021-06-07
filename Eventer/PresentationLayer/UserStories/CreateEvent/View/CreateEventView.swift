@@ -39,8 +39,6 @@ final class CreateEventView: UIView {
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
         
-        
-        
         return button
     }()
     
