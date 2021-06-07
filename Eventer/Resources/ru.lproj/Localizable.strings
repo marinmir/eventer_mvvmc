@@ -85,3 +85,8 @@
 "profile.info.termsOfUse" = "Правила использования";
 "profile.info.about" = "О приложении";
 "profile.logout" = "Выйти";
+
+// EVENTS LIST
+"eventsList.recommended" = "Рекомендованные";
+"eventsList.organized" = "Организованные";
+"eventsList.participateIn" = "Участвую";

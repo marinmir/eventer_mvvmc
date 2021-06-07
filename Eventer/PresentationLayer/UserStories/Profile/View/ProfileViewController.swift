@@ -88,5 +88,32 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        
+        switch indexPath.section {
+        case 0:
+            break
+        case 1:
+            switch indexPath.row {
+            case 0:
+                viewModel.onActionTapped(.organized)
+            case 1:
+                viewModel.onActionTapped(.participateIn)
+            case 2:
+                viewModel.onActionTapped(.recommended)
+            default:
+                break
+            }
+        case 2:
+            switch indexPath.row {
+            case 0:
+                viewModel.onActionTapped(.termsOfUse)
+            case 1:
+                viewModel.onActionTapped(.about)
+            default:
+                break
+            }
+        default:
+            break
+        }
     }
 }

@@ -85,10 +85,12 @@ final class CreateEventView: UIView {
             self.locationTextField.textField.text = address
         }).disposed(by: disposeBag)
         
-        datePicker.rx.date.subscribe(onNext: { date in
-            viewModel.date.onNext(date)
-            self.dateTextField.textField.text = CustomDateFormatter.getEventDateString(from: date)
-        }).disposed(by: disposeBag)
+        datePicker.rx.date
+            .do(onNext: { date in
+                self.dateTextField.textField.text = CustomDateFormatter.getEventDateString(from: date)
+            })
+            .bind(to: viewModel.date)
+            .disposed(by: disposeBag)
         
         titleTextField.textField.rx.controlEvent(.editingDidEnd)
             .withLatestFrom(titleTextField.textField.rx.text.orEmpty)

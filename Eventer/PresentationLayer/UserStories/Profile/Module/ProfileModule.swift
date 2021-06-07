@@ -11,6 +11,8 @@ import InoMvvmc
 
 protocol ProfileModuleInput: AnyObject {}
 
-protocol ProfileModuleOutput: AnyObject {}
+protocol ProfileModuleOutput: AnyObject {
+    var onNavigationActionRequested: ((ProfileNavigationAction) -> Void)? { get set }
+}
 
 final class ProfileModule: BaseModule<ProfileModuleInput, ProfileModuleOutput> {}

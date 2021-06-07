@@ -10,9 +10,26 @@ import Foundation
 import RxCocoa
 import RxSwift
 
+enum ProfileNavigationAction {
+    case termsOfUse
+    case about
+    case recommended([Event])
+    case organized([Event])
+    case participateIn([Event])
+}
+
+enum ProfileCellAction {
+    case termsOfUse
+    case about
+    case recommended
+    case organized
+    case participateIn
+}
+
 /// Describes view model's input streams/single methods
 protocol ProfileViewModelInput {
     func onViewDidLoad()
+    func onActionTapped(_ action: ProfileCellAction)
 }
 
 /// Describes view model's output streams needed to update UI
@@ -23,6 +40,8 @@ protocol ProfileViewModelOutput {
 protocol ProfileViewModelBindable: ProfileViewModelInput & ProfileViewModelOutput {}
 
 final class ProfileViewModel: ProfileModuleInput & ProfileModuleOutput {
+    var onNavigationActionRequested: ((ProfileNavigationAction) -> Void)?
+    
     private let disposeBag = DisposeBag()
     private let sectionsRelay = BehaviorRelay<[ProfileSectionViewModel]>(value: [
         .avatar(AvatarViewModel(
@@ -46,24 +65,28 @@ final class ProfileViewModel: ProfileModuleInput & ProfileModuleOutput {
     private let profileManager: ProfileManager
     private let eventsService: EventsService
     
+    private var organizedEvents: [Event] = []
+    private var participateInEvents: [Event] = []
+    private var recommendedEvents: [Event] = []
+    
     init(profileManager: ProfileManager, eventsService: EventsService) {
         self.profileManager = profileManager
         self.eventsService = eventsService
         
-//        profileManager.organizedEvents.drive(onNext: { events in
-//            var sections = self.sectionsRelay.value
-//            
-//            switch sections[1] {
-//            case .items(let items):
-//                switch items[1] {
-//                case .plain(_, details: <#T##String?#>):
-//                    <#code#>
-//                default:
-//                    <#code#>
-//                }
-//            }
-//        }).disposed(by: disposeBag)
+        profileManager.organizedEvents.drive(onNext: { events in
+            self.organizedEvents = events
+        }).disposed(by: disposeBag)
+        
+        profileManager.participateInEvents.drive(onNext: { events in
+            self.participateInEvents = events
+        }).disposed(by: disposeBag)
+        
+        profileManager.recommendedEvents.drive(onNext: { events in
+            self.recommendedEvents = events
+        }).disposed(by: disposeBag)
     }
+    
+    
 }
 
 // MARK: - ProfileViewModelBindable implementation
@@ -75,5 +98,20 @@ extension ProfileViewModel: ProfileViewModelBindable {
     
     func onViewDidLoad() {
         
+    }
+    
+    func onActionTapped(_ action: ProfileCellAction) {
+        switch action {
+        case .about:
+            onNavigationActionRequested?(.about)
+        case .termsOfUse:
+            onNavigationActionRequested?(.termsOfUse)
+        case .recommended:
+            onNavigationActionRequested?(.recommended(recommendedEvents))
+        case .participateIn:
+            onNavigationActionRequested?(.participateIn(participateInEvents))
+        case .organized:
+            onNavigationActionRequested?(.organized(organizedEvents))
+        }
     }
 }

@@ -63,7 +63,7 @@ extension MapViewController: MKMapViewDelegate {
             return
         }
         // shame, shame, SHAAAAMEEE!!!
-        let service = EventsServiceImpl(profileManager: ProfileManagerImpl())
+        let service = EventsServiceImpl(profileManager: ProfileManagerImpl(recommender: RecommenderImpl(dataSource: RecommenderDataSourceImpl())))
         let eventViewModel = EventCardViewModel(event: eventAnnotation.event, didTapLike: service.toggleFavorite)
         eventDetails.configure(with: eventViewModel)
         

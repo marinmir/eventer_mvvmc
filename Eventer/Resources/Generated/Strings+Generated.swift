@@ -51,6 +51,15 @@ internal enum L10n {
     }
   }
 
+  internal enum EventsList {
+    /// Organized
+    internal static let organized = L10n.tr("Localizable", "eventsList.organized")
+    /// Participate in
+    internal static let participateIn = L10n.tr("Localizable", "eventsList.participateIn")
+    /// Recommended
+    internal static let recommended = L10n.tr("Localizable", "eventsList.recommended")
+  }
+
   internal enum Favorites {
     /// Favorites
     internal static let title = L10n.tr("Localizable", "favorites.title")

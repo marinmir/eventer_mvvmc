@@ -85,3 +85,8 @@
 "profile.info.termsOfUse" = "Terms of Use";
 "profile.info.about" = "About";
 "profile.logout" = "Sign Out";
+
+// EVENTS LIST
+"eventsList.recommended" = "Recommended";
+"eventsList.organized" = "Organized";
+"eventsList.participateIn" = "Participate in";

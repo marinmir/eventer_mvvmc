@@ -11,8 +11,18 @@ import Swinject
 
 final class ServicesAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(ProfileManager.self) { _ in
-            return ProfileManagerImpl()
+        container.register(RecommenderDataSource.self) { _ in
+            return RecommenderDataSourceImpl()
+        }
+        
+        container.register(Recommender.self) { resolver in
+            let dataSource = resolver.resolve(RecommenderDataSource.self)!
+            return RecommenderImpl(dataSource: dataSource)
+        }.inObjectScope(.container)
+        
+        container.register(ProfileManager.self) { resolver in
+            let recommender = resolver.resolve(Recommender.self)!
+            return ProfileManagerImpl(recommender: recommender)
         }.inObjectScope(.container)
         
         container.register(EventsService.self) { resolver in

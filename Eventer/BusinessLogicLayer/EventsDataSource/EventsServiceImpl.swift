@@ -37,6 +37,8 @@ class EventsServiceImpl: EventsService {
                 if let snapshot = snapshot {
                     let events = snapshot.documents.compactMap { try? $0.data(as: Event.self) }
                     self.favoriteEventsObservable.onNext(events)
+                } else if let error = error {
+                    print(error.localizedDescription)
                 }
             }
     }

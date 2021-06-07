@@ -9,7 +9,8 @@
 import Foundation
 
 struct AppUser: Decodable {
-    let id: Int
-    let my: [Event]
-    let favorites: [Event]
+    let id: String?
+    let my: [Event]?
+    let participateIn: [Event]?
+    let favorites: [Event]?
 }

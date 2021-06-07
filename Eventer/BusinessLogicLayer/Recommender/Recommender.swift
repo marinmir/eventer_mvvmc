@@ -28,14 +28,27 @@ final class RecommenderImpl: Recommender {
         return recommendedEventsSubject.asObservable()
     }
     
+    private let disposeBag = DisposeBag()
     private let dataSource: RecommenderDataSource
     private let recommendedEventsSubject = BehaviorSubject<[Event]>(value: [])
+    private let needUpdateRecommendations = PublishSubject<AppUser>()
     
     init(dataSource: RecommenderDataSource) {
         self.dataSource = dataSource
+        
+        dataSource.startup()
+        
+        Observable.combineLatest(dataSource.isReady.filter { $0 }, needUpdateRecommendations.asObservable())
+            .subscribe(onNext: { _, user in
+                self.calculateRecommendations(for: user)
+            }).disposed(by: disposeBag)
     }
     
     func updateRecommendations(for user: AppUser) {
+        needUpdateRecommendations.onNext(user)
+    }
+    
+    private func calculateRecommendations(for user: AppUser) {
         let users = dataSource.getUsers()
         let uniqueEvents = getUniqueEvents(users: users)
         
@@ -45,7 +58,11 @@ final class RecommenderImpl: Recommender {
             return
         }
         
-        var relativeRates = [[Double]](repeating: [Double](repeating: -1, count: uniqueEvents.count), count: users.count)
+        var relativeRates = [[Double]](
+            repeating: [Double](
+                repeating: -1, count: uniqueEvents.count
+            ), count: uniqueEvents.count
+        )
 
         for index in 0..<weightMatrix[0].count - 1 where index != targetUserIndex {
             let baseColumn = weightMatrix.compactMap({ $0[index]})
@@ -60,30 +77,37 @@ final class RecommenderImpl: Recommender {
         var eventsToRecommend: [(Double, Event)] = []
         
         for (index, event) in uniqueEvents.enumerated() {
-            if user.favorites.contains(where: { $0.id == event.id }) || user.my.contains(where: { $0.id == event.id }) {
-                let eventRates = relativeRates[index]
-                for rate in eventRates {
-                    if rate > 0 {
-                        eventsToRecommend.append((rate, uniqueEvents[index]))
-                    }
-                }
+            if (user.favorites != nil && user.favorites!.contains(where: { $0.id == event.id })) || (user.my != nil && user.my!.contains(where: { $0.id == event.id })) {
+                continue
+            }
+            
+            let eventRates = relativeRates[index]
+            for rate in eventRates where rate > 0 {
+                eventsToRecommend.append((rate, uniqueEvents[index]))
             }
         }
         
-        let finalEvents = eventsToRecommend.sorted(by: { $0.0 > $1.0 }).prefix(10).map { $0.1 }
+        var uniqueFinalEvents: Set<Event> = []
+        eventsToRecommend
+            .sorted(by: { $0.0 > $1.0 })
+            .prefix(10)
+            .map { $0.1 }
+            .forEach {
+                uniqueFinalEvents.insert($0)
+            }
         
-        recommendedEventsSubject.onNext(finalEvents)
+        recommendedEventsSubject.onNext(Array(uniqueFinalEvents))
     }
     
     private func getUniqueEvents(users: [AppUser]) -> [Event] {
         var uniqueEvents = Set<Event>()
         
         users.forEach { user in
-            user.favorites.forEach { event in
+            user.favorites?.forEach { event in
                 uniqueEvents.insert(event)
             }
             
-            user.my.forEach { event in
+            user.my?.forEach { event in
                 uniqueEvents.insert(event)
             }
         }
@@ -96,11 +120,11 @@ final class RecommenderImpl: Recommender {
         
         for (index, event) in events.enumerated() {
             var weight = 0
-            if user.favorites.first(where: { $0.id == event.id }) != nil {
+            if user.favorites?.first(where: { $0.id == event.id }) != nil {
                 weight += 1
             }
             
-            if user.my.first(where: { $0.id == event.id }) != nil {
+            if user.my?.first(where: { $0.id == event.id }) != nil {
                 weight += 2
             }
             

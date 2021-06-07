@@ -63,6 +63,7 @@ final class MainCoordinator: BaseCoordinator<Void> {
             favouritesModule.view.tabBarItem = favouritesTabItem
 
             let profileModule = resolver.resolve(ProfileModule.self)!
+            profileModule.output.onNavigationActionRequested = onProfileNavigationRequested
             let profileTabItem = UITabBarItem(title: nil,
                                               image: Asset.TabBars.profile.image,
                                               selectedImage: Asset.SelectedTabBars.selectedProfile.image)
@@ -73,7 +74,7 @@ final class MainCoordinator: BaseCoordinator<Void> {
                 mapModule.view,
                 createEventModule.view,
                 UINavigationController(rootViewController: favouritesModule.view),
-                profileModule.view
+                UINavigationController(rootViewController: profileModule.view)
             ]
 
             tabBarController.setViewControllers(tabBarList, animated: true)
@@ -123,6 +124,25 @@ final class MainCoordinator: BaseCoordinator<Void> {
             }
             
             coordinate(to: filtersCoordinator)
+        }
+    }
+    
+    private func onProfileNavigationRequested(_ action: ProfileNavigationAction) {
+        guard let navigationController = getActiveNavigationController() else {
+            return
+        }
+        switch action {
+        case .organized(let events):
+            let coordinator = EventsListCoordinator(title: L10n.EventsList.organized, events: events, navigationController: navigationController)
+            coordinate(to: coordinator)
+        case .participateIn(let events):
+            let coordinator = EventsListCoordinator(title: L10n.EventsList.participateIn, events: events, navigationController: navigationController)
+            coordinate(to: coordinator)
+        case .recommended(let events):
+            let coordinator = EventsListCoordinator(title: L10n.EventsList.recommended, events: events, navigationController: navigationController)
+            coordinate(to: coordinator)
+        default:
+            break
         }
     }
     

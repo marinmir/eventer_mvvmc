@@ -53,6 +53,12 @@ final class CreateEventViewModel: CreateEventModuleInput & CreateEventModuleOutp
     
     private let eventsService: EventsService
     
+    private var newEventTitle: String?
+    private var newEventDate: Date?
+    private var newEventCost: Double?
+    private var newEventImage: UIImage?
+    private var newEventLocation: PickedPinViewModel?
+    
     init(eventsService: EventsService) {
         self.eventsService = eventsService
         
@@ -68,28 +74,29 @@ final class CreateEventViewModel: CreateEventModuleInput & CreateEventModuleOutp
                                  imageRelay.asObservable(),
                                  locationRelay.asObservable()
         ).subscribe(onNext: { title, date, cost, image, location in
+            self.newEventTitle = title
+            self.newEventDate = date
+            self.newEventCost = cost
+            self.newEventImage = image
+            self.newEventLocation = location
             self.canCreateEventRelay.accept(true)
         }).disposed(by: disposeBag)
         
-        Observable.combineLatest(titleRelay.asObservable(),
-                                 dateRelay.asObservable(),
-                                 costRelay.asObservable(),
-                                 imageRelay.asObservable(),
-                                 locationRelay.asObservable(),
-                                 tapCreateRelay.asObservable()
-        ).subscribe(onNext: { title, date, cost, image, location, _ in
+        tapCreateRelay.subscribe(onNext: { _ in
             self.eventsService.createEvent(
-                with: title,
-                image: image,
-                location: location,
-                date: date,
-                cost: cost,
+                with: self.newEventTitle!,
+                image: self.newEventImage!,
+                location: self.newEventLocation!,
+                date: self.newEventDate!,
+                cost: self.newEventCost!,
                 tags: []
             ).subscribe(onCompleted: {
                 self.canCreateEventRelay.accept(false)
                 self.createdEventRelay.accept(())
             }).disposed(by: self.disposeBag)
+
         }).disposed(by: disposeBag)
+        
     }
     
 }
