@@ -45,6 +45,7 @@ final class BubblesCollectionView: UIView {
         
         bubblesCollection.dataSource = self
         bubblesCollection.delegate = self
+        bubblesCollection.allowsSelection = true
         bubblesCollection.register(BubbleViewCell.self, forCellWithReuseIdentifier: BubbleViewCell.reuseIdentifier)
         addSubview(bubblesCollection)
     }

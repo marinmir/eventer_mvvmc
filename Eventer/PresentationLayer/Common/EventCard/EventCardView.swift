@@ -28,6 +28,7 @@ class EventCardView: UIView {
     private let placeLabel = UILabel()
     private let visitorsPreview = VisitorsPreview()
     private let likeButton = LikeButton()
+    private var buttonSubscription: Disposable?
     
     private let disposeBag = DisposeBag()
     private let sideOffset: CGFloat = 10
@@ -42,6 +43,10 @@ class EventCardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        buttonSubscription?.dispose()
+    }
+    
     func configure(_ event: EventCardViewModel) {
         if let titleImage = event.titleImage {
             titleImageView.loadImage(url: titleImage)
@@ -54,13 +59,16 @@ class EventCardView: UIView {
         placeLabel.text = "\(event.location), \(event.time)"
         dateView.configure(dateTime: event.pureDate)
         
+        likeButton.isSelected = event.isFavorite
+        
         if let visitors = event.visitorsPreview {
             visitorsPreview.configure(visitors: visitors)
         }
         
-        likeButton.didTap.emit(onNext: {
+        buttonSubscription?.dispose()
+        buttonSubscription = likeButton.didTap.emit(onNext: {
             event.onTapLike()
-        }).disposed(by: disposeBag)
+        })
     }
 
     // MARK: - Private methods

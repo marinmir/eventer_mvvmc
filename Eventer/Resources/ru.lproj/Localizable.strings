@@ -35,6 +35,7 @@
 "event.about" = "О событии";
 "event.participate" = "Я участвую!";
 "event.notParticipate" = "Не иду";
+"event.share" = "Расскажите вашим друзьям о событии %@!";
 
 // FILTERS
 "filter.title" = "Фильтры";

@@ -27,7 +27,7 @@ final class EventFullSizeCard: UIView {
     }()
     
     private let participateButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         
         button.setTitleColor(Asset.Colors.white.color, for: .normal)
         button.backgroundColor = Asset.Colors.darkViolet.color
@@ -99,6 +99,8 @@ final class EventFullSizeCard: UIView {
         }
         
         descriptionText.text = event.eventDescription
+        
+        likeButton.isSelected = event.isFavorite
     }
     
     // MARK: - Private methods
@@ -121,8 +123,9 @@ final class EventFullSizeCard: UIView {
         titleLabel.font = .h1
         titleLabel.textColor = Asset.Colors.black.color
         
-        likeButton.addTarget(self, action: #selector(didTapParticipate), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
+        participateButton.addTarget(self, action: #selector(didTapParticipate), for: .touchUpInside)
         
         topContainer.addSubview(titleLabel)
         topContainer.addSubview(likeButton)
@@ -206,6 +209,13 @@ final class EventFullSizeCard: UIView {
     }
     
     @objc private func didTapShare() {
-        print("Sharing")
+        let message = L10n.Event.share(titleLabel.text!)
+        
+        if let link = NSURL(string: "http://yoururl.com") {
+            let objectsToShare: [Any] = [message, link]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            window?.rootViewController!.present(activityVC, animated: true, completion: nil)
+        }
     }
 }

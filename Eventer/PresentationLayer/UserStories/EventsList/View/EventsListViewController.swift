@@ -41,6 +41,7 @@ final class EventsListViewController: UIViewController {
         self.view = view
         
         view.dataSource = self
+        view.delegate = self
     }
 
     override func viewDidLoad() {
@@ -79,9 +80,17 @@ extension EventsListViewController: UICollectionViewDataSource {
         }
         
         cell.configure(with: events[indexPath.row])
+        cell.didTapCell = {
+            self.viewModel.onEventTap(index: indexPath.row)
+        }
         
         return cell
     }
-    
-    
+}
+
+extension EventsListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: false)
+        viewModel.onEventTap(index: indexPath.row)
+    }
 }

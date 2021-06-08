@@ -11,6 +11,8 @@ import InoMvvmc
 
 protocol EventsListModuleInput: AnyObject {}
 
-protocol EventsListModuleOutput: AnyObject {}
+protocol EventsListModuleOutput: AnyObject {
+    var onEventDetailsRequested: ((Event) -> Void)? { get set }
+}
 
 final class EventsListModule: BaseModule<EventsListModuleInput, EventsListModuleOutput> {}

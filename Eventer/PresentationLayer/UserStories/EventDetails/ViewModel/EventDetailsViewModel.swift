@@ -28,6 +28,7 @@ final class EventDetailsViewModel: EventDetailsModuleInput & EventDetailsModuleO
     init(event: Event, eventsService: EventsService) {
         eventDetails = EventCardViewModel(
             event: event,
+            isFavorite: eventsService.isFavorite(event),
             didTapLike: eventsService.toggleFavorite,
             didTapParticipate: eventsService.toggleEventParticipation
         )

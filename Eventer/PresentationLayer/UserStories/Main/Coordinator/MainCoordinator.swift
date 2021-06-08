@@ -57,6 +57,7 @@ final class MainCoordinator: BaseCoordinator<Void> {
             createEventModule.view.tabBarItem = createEventTabItem
 
             let favouritesModule = resolver.resolve(FavouritesModule.self)!
+            favouritesModule.output.onEventDetailsRequested = onEventDetailsRequested
             let favouritesTabItem = UITabBarItem(title: nil,
                                                  image: Asset.TabBars.favourites.image,
                                                  selectedImage: Asset.SelectedTabBars.selectedFavourites.image)
@@ -142,7 +143,7 @@ final class MainCoordinator: BaseCoordinator<Void> {
             let coordinator = EventsListCoordinator(title: L10n.EventsList.recommended, events: events, navigationController: navigationController)
             coordinate(to: coordinator)
         default:
-            break
+            UIApplication.shared.open(URL(string: "http://sapr.tti.sfedu.ru")!, options: [:], completionHandler: nil)
         }
     }
     

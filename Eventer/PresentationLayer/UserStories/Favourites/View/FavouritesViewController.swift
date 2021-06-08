@@ -78,5 +78,8 @@ extension FavouritesViewController: UITableViewDataSource {
 }
 
 extension FavouritesViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.onEventTapped(index: indexPath.row)
+    }
 }

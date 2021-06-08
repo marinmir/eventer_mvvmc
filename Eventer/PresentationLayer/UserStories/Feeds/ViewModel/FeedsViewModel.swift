@@ -56,16 +56,18 @@ final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
                 
                 if selectedTagsIds.isEmpty {
                     if let promotedEvents = events[.promoted] {
-                        sections.append(.promotedEvents(promotedEvents.map { EventCardViewModel(event: $0, didTapLike: self.didTapLike, didTapParticipate: eventsService.toggleEventParticipation) }))
+                        sections.append(.promotedEvents(promotedEvents.map { EventCardViewModel(event: $0,
+                                                                                                isFavorite: self.eventsService.isFavorite($0),
+                                                                                                didTapLike: self.didTapLike, didTapParticipate: eventsService.toggleEventParticipation) }))
                     }
                     if let popularEvents = events[.popular] {
-                        sections.append(.popularEvents(popularEvents.map { EventCardViewModel(event: $0,
+                        sections.append(.popularEvents(popularEvents.map { EventCardViewModel(event: $0, isFavorite: self.eventsService.isFavorite($0),
                                                                                               didTapLike: self.didTapLike,
                                                                                               didTapParticipate: eventsService.toggleEventParticipation) }))
                     }
                     if let weekendEvents = events[.thisWeek] {
                         sections.append(.weekendEvents(weekendEvents.map { EventCardViewModel(
-                                                        event: $0,
+                                                        event: $0, isFavorite: self.eventsService.isFavorite($0),
                                                         didTapLike: self.didTapLike,
                                                         didTapParticipate: eventsService.toggleEventParticipation) }))
                     }
@@ -77,7 +79,7 @@ final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
                         }
                         
                         if !filteredEvents.isEmpty {
-                            sections.append(.promotedEvents(filteredEvents.map { EventCardViewModel(event: $0, didTapLike: self.didTapLike,
+                            sections.append(.promotedEvents(filteredEvents.map { EventCardViewModel(event: $0, isFavorite: self.eventsService.isFavorite($0), didTapLike: self.didTapLike,
                                                                                                     didTapParticipate: eventsService.toggleEventParticipation) }))
                         }
                     }
@@ -88,7 +90,7 @@ final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
                         }
                         
                         if !filteredEvents.isEmpty {
-                            sections.append(.popularEvents(filteredEvents.map { EventCardViewModel(event: $0, didTapLike: self.didTapLike,
+                            sections.append(.popularEvents(filteredEvents.map { EventCardViewModel(event: $0, isFavorite: self.eventsService.isFavorite($0), didTapLike: self.didTapLike,
                                                                                                    didTapParticipate: eventsService.toggleEventParticipation) }))
                         }
                     }
@@ -99,7 +101,7 @@ final class FeedsViewModel: FeedsModuleInput & FeedsModuleOutput {
                         }
                         
                         if !filteredEvents.isEmpty {
-                            sections.append(.weekendEvents(filteredEvents.map { EventCardViewModel(event: $0, didTapLike: self.didTapLike,
+                            sections.append(.weekendEvents(filteredEvents.map { EventCardViewModel(event: $0, isFavorite: self.eventsService.isFavorite($0), didTapLike: self.didTapLike,
                                                                                                    didTapParticipate: eventsService.toggleEventParticipation) }))
                         }
                     }

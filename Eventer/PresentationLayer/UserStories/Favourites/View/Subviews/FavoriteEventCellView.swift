@@ -32,7 +32,6 @@ class FavoriteEventCellView: UITableViewCell {
     }
 
     func configure(with event: EventCardViewModel) {
-        //titleImageView.image = result.titleImage
         if let imageUrl = event.titleImage {
             titleImageView.loadImage(url: imageUrl)
         } else {
@@ -104,6 +103,7 @@ class FavoriteEventCellView: UITableViewCell {
             costLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 40),
 
             placeLabel.leadingAnchor.constraint(equalTo: costLabel.trailingAnchor, constant: 2),
+            placeLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             placeLabel.centerYAnchor.constraint(equalTo: costLabel.centerYAnchor),
             placeLabel.heightAnchor.constraint(equalToConstant: 18),
             placeLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 80),

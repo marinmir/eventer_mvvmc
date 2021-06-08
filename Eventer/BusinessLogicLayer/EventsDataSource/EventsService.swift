@@ -21,6 +21,7 @@ protocol EventsService {
         cost: Double,
         tags: [String]
     ) -> Completable
+    func isFavorite(_ event: Event) -> Bool
     func loadEvents() -> Single<[EventType: [Event]]>
     func toggleFavorite(event: Event)
     func toggleEventParticipation(event: Event)

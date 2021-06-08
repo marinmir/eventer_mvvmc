@@ -43,14 +43,14 @@ final class ProfileAvatarCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(avatarImage)
         
-        nameLabel.font = .p1
+        nameLabel.font = .h1NonBold
         nameLabel.textColor = Asset.Colors.black.color
         nameLabel.textAlignment = .center
         contentView.addSubview(nameLabel)
         
         contentView.addSubview(starImage)
         
-        ratingLabel.font = .p2
+        ratingLabel.font = .p1
         ratingLabel.textColor = Asset.Colors.black.color
         contentView.addSubview(ratingLabel)
     }

@@ -70,7 +70,7 @@ final class EventCardViewModel {
     }
     
     let event: Event
-    
+    var isFavorite: Bool
     // MARK: - Private properties
     
     private let dateFormatter: DateFormatter = {
@@ -83,10 +83,11 @@ final class EventCardViewModel {
     
     // MARK: - Initializers
     
-    init(event: Event, didTapLike: ((Event) -> Void)?, didTapParticipate: ((Event) -> Void)?) {
+    init(event: Event, isFavorite: Bool, didTapLike: ((Event) -> Void)?, didTapParticipate: ((Event) -> Void)?) {
         self.event = event
         self.didTapLike = didTapLike
         self.didTapParticipate = didTapParticipate
+        self.isFavorite = isFavorite
     }
     
     func onTapLike() {

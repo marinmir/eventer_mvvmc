@@ -35,6 +35,7 @@
 "event.about" = "About";
 "event.participate" = "I participate!";
 "event.notParticipate" = "Not going";
+"event.share" = "Tell your friends about %@ event!";
 
 // FILTERS
 "filter.title" = "Filters";

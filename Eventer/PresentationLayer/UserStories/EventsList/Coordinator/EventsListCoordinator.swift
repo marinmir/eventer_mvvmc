@@ -32,6 +32,11 @@ final class EventsListCoordinator: BaseCoordinator<Void> {
         
         module.view.title = title
         
+        module.output.onEventDetailsRequested = { event in
+            let coordinator = EventDetailsCoordinator(navigationController: self.navigationController, event: event)
+            self.coordinate(to: coordinator)
+        }
+        
         navigationController.pushViewController(module.view, animated: true)
 	}
 }

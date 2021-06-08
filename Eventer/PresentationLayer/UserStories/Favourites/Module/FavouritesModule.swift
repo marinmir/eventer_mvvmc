@@ -11,6 +11,8 @@ import InoMvvmc
 
 protocol FavouritesModuleInput: AnyObject {}
 
-protocol FavouritesModuleOutput: AnyObject {}
+protocol FavouritesModuleOutput: AnyObject {
+    var onEventDetailsRequested: ((Event) -> Void)? { get set }
+}
 
 final class FavouritesModule: BaseModule<FavouritesModuleInput, FavouritesModuleOutput> {}

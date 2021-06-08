@@ -10,7 +10,7 @@ import InoMvvmc
 import Swinject
 
 final class EventDetailsCoordinator: BaseCoordinator<Void> {
-	// Replace <Void> with some other result type if necessary
+	
     private let navigationController: UINavigationController
     private let event: Event
     

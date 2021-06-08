@@ -43,6 +43,14 @@ class EventsServiceImpl: EventsService {
             }
     }
     
+    func isFavorite(_ event: Event) -> Bool {
+        guard let events = try? favoriteEventsObservable.value() else {
+            return false
+        }
+        
+        return events.contains(where: { $0.id == event.id })
+    }
+    
     func loadEvents() -> Single<[EventType: [Event]]> {
         return Single.create { single in
             

@@ -49,6 +49,10 @@ internal enum L10n {
     internal static let noVisitors = L10n.tr("Localizable", "event.noVisitors")
     /// I participate!
     internal static let participate = L10n.tr("Localizable", "event.participate")
+    /// Tell your friends about %@ event!
+    internal static func share(_ p1: Any) -> String {
+      return L10n.tr("Localizable", "event.share", String(describing: p1))
+    }
     internal enum Details {
       /// Organizer
       internal static let organizer = L10n.tr("Localizable", "event.details.organizer")

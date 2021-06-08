@@ -23,6 +23,16 @@ final class EventsListView: UIView {
         }
     }
     
+    var delegate: UICollectionViewDelegate? {
+        get {
+            return eventsCollection.delegate
+        }
+        
+        set {
+            eventsCollection.delegate = newValue
+        }
+    }
+    
     // MARK: - Private properties
 
     private let eventsCollection: UICollectionView = {
@@ -30,7 +40,7 @@ final class EventsListView: UIView {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 16
         layout.itemSize = CGSize(width: 260, height: 230)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 15, bottom: 16, right: 15)
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
     private let disposeBag = DisposeBag()
@@ -62,6 +72,7 @@ final class EventsListView: UIView {
     // MARK: - Private methods
 
     private func setupViews() {
+        eventsCollection.allowsSelection = true
         eventsCollection.backgroundColor = .white
         eventsCollection.register(EventCollectionCell.self, forCellWithReuseIdentifier: EventCollectionCell.cellReuseIdentifier)
         addSubview(eventsCollection)

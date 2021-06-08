@@ -11,7 +11,9 @@ import RxCocoa
 import RxSwift
 
 /// Describes view model's input streams/single methods
-protocol EventsListViewModelInput {}
+protocol EventsListViewModelInput {
+    func onEventTap(index: Int)
+}
 
 /// Describes view model's output streams needed to update UI
 protocol EventsListViewModelOutput {
@@ -21,6 +23,8 @@ protocol EventsListViewModelOutput {
 protocol EventsListViewModelBindable: EventsListViewModelInput & EventsListViewModelOutput {}
 
 final class EventsListViewModel: EventsListModuleInput & EventsListModuleOutput {
+    var onEventDetailsRequested: ((Event) -> Void)?
+    
     private let disposeBag = DisposeBag()
     private let eventsRelay: BehaviorRelay<[EventCardViewModel]>
     private let eventsService: EventsService
@@ -30,6 +34,7 @@ final class EventsListViewModel: EventsListModuleInput & EventsListModuleOutput 
         eventsRelay = BehaviorRelay(value: eventsList.map {
                                         EventCardViewModel(
                                             event: $0,
+                                            isFavorite: eventsService.isFavorite($0),
                                             didTapLike: eventsService.toggleFavorite,
                                             didTapParticipate: eventsService.toggleEventParticipation) })
     }
@@ -40,5 +45,10 @@ final class EventsListViewModel: EventsListModuleInput & EventsListModuleOutput 
 extension EventsListViewModel: EventsListViewModelBindable {
     var events: Driver<[EventCardViewModel]> {
         return eventsRelay.asDriver()
+    }
+    
+    func onEventTap(index: Int) {
+        let events = eventsRelay.value
+        onEventDetailsRequested?(events[index].event)
     }
 }

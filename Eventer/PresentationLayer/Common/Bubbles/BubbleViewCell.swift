@@ -55,13 +55,13 @@ final class BubbleViewCell: UICollectionViewCell {
         layer.masksToBounds = true
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(imageView)
+        contentView.addSubview(imageView)
 
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.isUserInteractionEnabled = false
         nameLabel.font = UIFont.boldSystemFont(ofSize: 20)
         nameLabel.sizeToFit()
-        addSubview(nameLabel)        
+        contentView.addSubview(nameLabel)        
     }
     
     private func setConstraints() {
