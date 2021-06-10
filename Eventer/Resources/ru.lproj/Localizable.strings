@@ -10,6 +10,11 @@
 "general.ok" = "ОК";
 "general.cancel" = "Отмена";
 
+// LOGIN
+"login.phone" = "Введите номер телефона";
+"login.sendCode" = "Отправить код";
+"login.skip" = "Пропустить";
+
 // SEARCH
 "search.placeholder" = "Искать...";
 

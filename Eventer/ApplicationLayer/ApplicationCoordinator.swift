@@ -25,8 +25,14 @@ class ApplicationCoordinator: BaseCoordinator<Void> {
     }
 
     override func start() {
-        let coordinator = MainCoordinator()
+        let loginCoordinator = LoginCoordinator()
 
-        coordinate(to: coordinator)
+        loginCoordinator.onComplete = { _ in
+            let coordinator = MainCoordinator()
+
+            self.coordinate(to: coordinator)
+        }
+
+        coordinate(to: loginCoordinator)
     }
 }

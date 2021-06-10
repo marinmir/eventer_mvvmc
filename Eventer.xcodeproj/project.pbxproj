@@ -41,6 +41,7 @@
 		0448EEA7FE0EE1C922E497EE /* CreateEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C084B673B11617522BB746 /* CreateEventViewModel.swift */; };
 		0472576DF647FBE021EA41AD /* FeedFiltersModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47271A0D53DCABFC47A5E4DD /* FeedFiltersModuleAssembly.swift */; };
 		05DF6C0FF4BFB4DA038682E0 /* MapModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE76309394C8E4C90E524E5 /* MapModule.swift */; };
+		07E8D06FB9540DFAD9EE638E /* LoginModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F468B442E7966597DEA80 /* LoginModule.swift */; };
 		0B62AC1BB472A1A1E0DEE604 /* FeedsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C152FB27F44D14D3981F790A /* FeedsModule.swift */; };
 		0BB696D7667F948CE65E8617 /* EventsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E9873892FC5CA186E429EF /* EventsListViewModel.swift */; };
 		0E2C5EFC3FC1F1010DFE6777 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE968EF75ADE9F7673C045DA /* CreateEventViewController.swift */; };
@@ -82,8 +83,10 @@
 		32A06FFEF920A0330EEF03C9 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA540CA6167277ED27E1637 /* EventsListView.swift */; };
 		3ADDD8C28E2EBC6FE5F21BF9 /* PickLocationModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31ABDC91B2C666038A06757 /* PickLocationModuleAssembly.swift */; };
 		3BEA35A967DBB6F650D56BC6 /* FeedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2BE4AA492E62C9EBC2791 /* FeedsView.swift */; };
+		40012FA2144A367277DBABE2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98A0E23E39525F93EF51DB7 /* LoginView.swift */; };
 		402B4A6C9FCA3444075992C4 /* EventsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3B03F65B6EF0333CC0C11 /* EventsListViewController.swift */; };
 		40729A55B193C6D58E1BAC87 /* CreateEventModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5EFDEBCFFFE7718F3DE2C6 /* CreateEventModuleAssembly.swift */; };
+		456107AF4FE3E240D902D77A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0C26684F707656E4B64A09 /* LoginViewModel.swift */; };
 		4815B180AECD536D30CA5D20 /* EventsListModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D7B050DD8F844671CA9C25 /* EventsListModuleAssembly.swift */; };
 		4869EDC3BA710C7AFD2A906C /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8BC6B1E6EB6C077ADAD1BC /* SearchResultsViewController.swift */; };
 		48F6E27309199118B90F32C2 /* Pods_Eventer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C6D8ECB8BAED3AD38C9E019 /* Pods_Eventer.framework */; };
@@ -101,6 +104,7 @@
 		9E2EBDF1B7D4EA4CF6D64DD1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396905F5DAAE1E991FC67566 /* ProfileViewModel.swift */; };
 		9ED1E7DDF9DE803C34AE24CF /* PickLocationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB1DA80BD98C9A699CB163 /* PickLocationCoordinator.swift */; };
 		A08127F1735162A6C3693360 /* FeedFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BA9246E208C288544FC026 /* FeedFiltersViewModel.swift */; };
+		A1944F1C8312F5AD9E87CDCD /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074DCA63E2AA23F7E53459D /* LoginCoordinator.swift */; };
 		A3BAB6403050EB53B046352F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87A898B3ABDE66A62769DC0 /* MapViewModel.swift */; };
 		A6F938B1B806ADB8D630D7DD /* FavouritesModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19FFA05EED91AACD77BC63 /* FavouritesModuleAssembly.swift */; };
 		A7C48083EE2AA46E00E6D792 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87084A6B9812566DEC6C47F /* ProfileView.swift */; };
@@ -109,10 +113,12 @@
 		AE08CB25101FFC974E30FCA0 /* FeedFiltersModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3707C43F1B53A80AA33B55FD /* FeedFiltersModule.swift */; };
 		B843C36F6D5D7B3559D9BFAE /* FeedsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976CADDE26CCEC2072F3FA2 /* FeedsViewModel.swift */; };
 		B8540EE16ECAD2FB457BB950 /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ED380AC6D8915D5BE0E37D /* SearchResultsViewModel.swift */; };
+		B994AA3489EE8D46ACF754D2 /* LoginModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EB79ECF901BF9C91D0AFDB /* LoginModuleAssembly.swift */; };
 		BF8E13E3EB5E61A9B07B61BF /* PickLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C011202C2F4A46BE827DB38A /* PickLocationViewController.swift */; };
 		C09970E1D129E05F6EF8A3D5 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACCFCF898E18515F2B6356B /* FeedsViewController.swift */; };
 		C5471CAF063AF5F4B2E67000 /* EventDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB81349310BC30041827B8 /* EventDetailsCoordinator.swift */; };
 		C720252B7CF88F89E00553F8 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E304F524E3606946CE1F4D47 /* FavouritesView.swift */; };
+		CB062829CDDB45D53C3FF917 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679B831E8D353D4E82002040 /* LoginViewController.swift */; };
 		CD0159D8F02B2793197CC013 /* PickLocationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A770933D7F7A8CA59D8F201C /* PickLocationModule.swift */; };
 		CDE7E8221AEEBDBC552F23B4 /* FavouritesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBDFA940461114D92C69E97 /* FavouritesModule.swift */; };
 		D1096D7BBCED935E1B792775 /* SearchResultsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD14D7C0D16D1E20114621F4 /* SearchResultsModule.swift */; };
@@ -214,6 +220,7 @@
 		5FC7D202A45F371FBF2FA0BF /* FeedFiltersView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedFiltersView.swift; sourceTree = "<group>"; };
 		6306D413957137717DE30585 /* MainModule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModule.swift; sourceTree = "<group>"; };
 		64D89FD51A03082A6B17B72B /* MapView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		679B831E8D353D4E82002040 /* LoginViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6818312BF7EAA52F5605635C /* FeedsModuleAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedsModuleAssembly.swift; sourceTree = "<group>"; };
 		683E8AD0119623378A71FE67 /* MainCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		6B8AD707160589ABD9E9EF92 /* FeedFiltersCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedFiltersCoordinator.swift; sourceTree = "<group>"; };
@@ -237,14 +244,17 @@
 		BE2A3D9051F8BE2CE4115CCA /* Pods-Eventer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventer.release.xcconfig"; path = "Target Support Files/Pods-Eventer/Pods-Eventer.release.xcconfig"; sourceTree = "<group>"; };
 		C011202C2F4A46BE827DB38A /* PickLocationViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PickLocationViewController.swift; sourceTree = "<group>"; };
 		C0852413CF4BE24F88CB50A7 /* ProfileModule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileModule.swift; sourceTree = "<group>"; };
+		C0EB79ECF901BF9C91D0AFDB /* LoginModuleAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginModuleAssembly.swift; sourceTree = "<group>"; };
 		C152FB27F44D14D3981F790A /* FeedsModule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedsModule.swift; sourceTree = "<group>"; };
 		C1C084B673B11617522BB746 /* CreateEventViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreateEventViewModel.swift; sourceTree = "<group>"; };
 		C246BAE4FFB83D4D5C37E6F4 /* CreateEventView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		C42F69C23D1D21C580C63862 /* MapModuleAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MapModuleAssembly.swift; sourceTree = "<group>"; };
 		C87084A6B9812566DEC6C47F /* ProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C8BA9246E208C288544FC026 /* FeedFiltersViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedFiltersViewModel.swift; sourceTree = "<group>"; };
+		C98A0E23E39525F93EF51DB7 /* LoginView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CE968EF75ADE9F7673C045DA /* CreateEventViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		CFBDFA940461114D92C69E97 /* FavouritesModule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavouritesModule.swift; sourceTree = "<group>"; };
+		D074DCA63E2AA23F7E53459D /* LoginCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		D3B2620F8C4A61B3606AF992 /* MapViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D94A59F97DEE298790C73A56 /* EventDetailsModuleAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EventDetailsModuleAssembly.swift; sourceTree = "<group>"; };
 		E2F3B03F65B6EF0333CC0C11 /* EventsListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EventsListViewController.swift; sourceTree = "<group>"; };
@@ -258,8 +268,10 @@
 		F82FCF7F2667083D00358004 /* Recommender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommender.swift; sourceTree = "<group>"; };
 		F82FCF81266709B300358004 /* RecommenderDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommenderDataSource.swift; sourceTree = "<group>"; };
 		F82FCF83266709F900358004 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		FB0C26684F707656E4B64A09 /* LoginViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FB43288DA9C26D74908AC202 /* SearchResultsCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchResultsCoordinator.swift; sourceTree = "<group>"; };
 		FD14D7C0D16D1E20114621F4 /* SearchResultsModule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchResultsModule.swift; sourceTree = "<group>"; };
+		FE0F468B442E7966597DEA80 /* LoginModule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginModule.swift; sourceTree = "<group>"; };
 		FE4C3B050A83D2DFA79606D2 /* EventDetailsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
 		FFEB1DA80BD98C9A699CB163 /* PickLocationCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PickLocationCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -377,6 +389,15 @@
 				00F68D7B25A7C80C00259E4C /* Assets.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		05A7F4339715F6C449CE37BB /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D074DCA63E2AA23F7E53459D /* LoginCoordinator.swift */,
+			);
+			name = Coordinator;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		0765036D0E7DA2F2AA411BB8 /* Module */ = {
@@ -599,6 +620,7 @@
 				0C21F5565E1FEB26245ECF81 /* FeedFilters */,
 				B01302349CAFBDA76124EF1D /* PickLocation */,
 				DCF505C6617AD399B4926A6F /* EventsList */,
+				2FCDB931319914B56D5B1A2A /* Login */,
 			);
 			path = UserStories;
 			sourceTree = "<group>";
@@ -632,6 +654,16 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		223A667CBDD7BD3A9A28832C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				679B831E8D353D4E82002040 /* LoginViewController.swift */,
+				C98A0E23E39525F93EF51DB7 /* LoginView.swift */,
+			);
+			name = View;
+			path = View;
+			sourceTree = "<group>";
+		};
 		22FC9ACF912C1967CCF23FAA /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,6 +682,18 @@
 				C87084A6B9812566DEC6C47F /* ProfileView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2FCDB931319914B56D5B1A2A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7B2231563527C30117935DAB /* Module */,
+				223A667CBDD7BD3A9A28832C /* View */,
+				8C932904DB0BF391E6ED5EFD /* ViewModel */,
+				05A7F4339715F6C449CE37BB /* Coordinator */,
+			);
+			name = Login;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		2FCDE6C66771D177B7A4871E /* Feeds */ = {
@@ -835,6 +879,16 @@
 			path = SearchResults;
 			sourceTree = "<group>";
 		};
+		7B2231563527C30117935DAB /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				FE0F468B442E7966597DEA80 /* LoginModule.swift */,
+				C0EB79ECF901BF9C91D0AFDB /* LoginModuleAssembly.swift */,
+			);
+			name = Module;
+			path = Module;
+			sourceTree = "<group>";
+		};
 		82DCD5BA67335D6464A6D6B1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -850,6 +904,15 @@
 				FE4C3B050A83D2DFA79606D2 /* EventDetailsView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8C932904DB0BF391E6ED5EFD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FB0C26684F707656E4B64A09 /* LoginViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		949C671006C9A63D271F83D4 /* ViewModel */ = {
@@ -1359,6 +1422,12 @@
 				32A06FFEF920A0330EEF03C9 /* EventsListView.swift in Sources */,
 				0BB696D7667F948CE65E8617 /* EventsListViewModel.swift in Sources */,
 				6BDEA9A851D551FFC07B8ECD /* EventsListCoordinator.swift in Sources */,
+				07E8D06FB9540DFAD9EE638E /* LoginModule.swift in Sources */,
+				B994AA3489EE8D46ACF754D2 /* LoginModuleAssembly.swift in Sources */,
+				CB062829CDDB45D53C3FF917 /* LoginViewController.swift in Sources */,
+				40012FA2144A367277DBABE2 /* LoginView.swift in Sources */,
+				456107AF4FE3E240D902D77A /* LoginViewModel.swift in Sources */,
+				A1944F1C8312F5AD9E87CDCD /* LoginCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -142,6 +142,15 @@ internal enum L10n {
     internal static let ok = L10n.tr("Localizable", "general.ok")
   }
 
+  internal enum Login {
+    /// Enter your phone number
+    internal static let phone = L10n.tr("Localizable", "login.phone")
+    /// Send code
+    internal static let sendCode = L10n.tr("Localizable", "login.sendCode")
+    /// Skip
+    internal static let skip = L10n.tr("Localizable", "login.skip")
+  }
+
   internal enum PickLocation {
     /// Accept
     internal static let accept = L10n.tr("Localizable", "pickLocation.accept")

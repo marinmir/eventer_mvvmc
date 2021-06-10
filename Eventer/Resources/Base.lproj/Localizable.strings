@@ -10,6 +10,11 @@
 "general.ok" = "OK";
 "general.cancel" = "Cancel";
 
+// LOGIN
+"login.phone" = "Enter your phone number";
+"login.sendCode" = "Send code";
+"login.skip" = "Skip";
+
 // SEARCH
 "search.placeholder" = "Search for...";
 
