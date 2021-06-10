@@ -35,6 +35,7 @@ final class EventFullSizeCard: UIView {
         button.setTitle(L10n.Event.notParticipate, for: .selected)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
+        button.tintColor = .clear
         
         return button
     }()

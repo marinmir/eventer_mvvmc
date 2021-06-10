@@ -156,7 +156,7 @@ class EventsServiceImpl: EventsService {
         let docRef = database
             .collection("/users")
             .document(profileManager.uid)
-            .collection("my")
+            .collection("participateIn")
             .document("\(event.id ?? "")")
         
         docRef.getDocument { querySnapshot, error in
@@ -166,7 +166,7 @@ class EventsServiceImpl: EventsService {
                 try? self.database
                     .collection("/users")
                     .document(self.profileManager.uid)
-                    .collection("my")
+                    .collection("participateIn")
                     .document("\(event.id ?? "")")
                     .setData(from: event)
             }
