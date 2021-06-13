@@ -10,10 +10,16 @@ import Foundation
 
 enum CustomDateFormatter {
     // MARK: - Properties
-    private static let dateFormatter = DateFormatter()
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+
+        formatter.locale = .current
+
+        return formatter
+    }()
 
     private static var `default`: DateFormatter {
-        dateFormatter.dateFormat = "MMM d, h:mm a"
+        dateFormatter.dateFormat = "MMM d, HH:mm"
         return dateFormatter
     }
 

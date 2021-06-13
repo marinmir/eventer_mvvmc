@@ -74,8 +74,12 @@
 "createEvent.image" = "Титульное изображение";
 "createEvent.location" = "Место";
 "createEvent.create" = "Создать";
+"createEvent.descriptionText" = "Описание";
 "createEvent.success.title" = "Ура!";
 "createEvent.success.description" = "Вы успешно создали событие";
+"createEvent.etype" = "Тип";
+"createEvent.etype.private" = "Приватное";
+"createEvent.etype.public" = "Публичное";
 
 // PICK LOCATION
 "pickLocation.title" = "Выбрать место";

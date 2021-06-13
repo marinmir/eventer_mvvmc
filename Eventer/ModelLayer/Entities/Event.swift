@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum SingleEventType {
+    case `public`
+    case `private`
+}
+
 struct Event: Codable {
     // MARK: - Properties
     var id: String?
@@ -18,8 +23,18 @@ struct Event: Codable {
     var description: String?
     var titleImage: String?
     var visitors: Visitors?
+    var rawType: Int?
     var tags: [String]?
     var location: EventLocation
+
+    var type: SingleEventType {
+        switch rawType {
+        case 1:
+            return .private
+        default:
+            return .public
+        }
+    }
 }
 
 extension Event: Hashable {

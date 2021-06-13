@@ -23,11 +23,13 @@ final class CreateEventView: UIView {
     private let stack = UIStackView()
     private let formTitleLabel = UILabel()
     private let titleTextField = FormInputField()
+    private let descriptionTextField = FormInputField()
     private let dateTextField = FormInputField()
     private let costTextField = FormInputField()
     private let titleImageTextField = FormInputField()
     private let locationTextField = FormInputField()
     private let tagsView = TagsInputView()
+    private let typesView = BubblesCollectionView()
     private let imageView = UIImageView()
     
     private let buttonContainer = UIView()
@@ -78,7 +80,11 @@ final class CreateEventView: UIView {
         viewModel.tags.drive(onNext: { tags in
             self.tagsView.setTags(tags)
         }).disposed(by: disposeBag)
-        
+
+        viewModel.types.drive(onNext: { types in
+            self.typesView.configure(with: types)
+        }).disposed(by: disposeBag)
+
         viewModel.address.emit(onNext: { address in
             self.locationTextField.textField.text = address
         }).disposed(by: disposeBag)
@@ -143,7 +149,12 @@ final class CreateEventView: UIView {
         titleTextField.textField.autocapitalizationType = .words
         titleTextField.textField.placeholder = L10n.CreateEvent.title
         stack.addArrangedSubview(titleTextField)
-        
+
+        descriptionTextField.titleLabel.text = L10n.CreateEvent.descriptionText
+        descriptionTextField.textField.autocapitalizationType = .sentences
+        descriptionTextField.textField.placeholder = L10n.CreateEvent.descriptionText
+        stack.addArrangedSubview(descriptionTextField)
+
         datePicker.datePickerMode = .dateAndTime
         dateTextField.titleLabel.text = L10n.CreateEvent.date
         dateTextField.textField.inputView = datePicker
@@ -169,6 +180,7 @@ final class CreateEventView: UIView {
         stack.addArrangedSubview(locationTextField)
         
         stack.addArrangedSubview(tagsView)
+        stack.addArrangedSubview(typesView)
         
         btnCreate.setTitle(L10n.CreateEvent.create, for: .normal)
         buttonContainer.addSubview(btnCreate)
@@ -216,7 +228,12 @@ final class CreateEventView: UIView {
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(44)
         }
-        
+
+        typesView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(80)
+        }
+
         buttonContainer.snp.makeConstraints { make in
             make.height.equalTo(44)
         }
@@ -227,4 +244,3 @@ final class CreateEventView: UIView {
         }
     }
 }
-

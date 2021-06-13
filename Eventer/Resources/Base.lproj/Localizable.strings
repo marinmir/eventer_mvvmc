@@ -74,6 +74,10 @@
 "createEvent.image" = "Title image";
 "createEvent.location" = "Location";
 "createEvent.create" = "Create";
+"createEvent.etype" = "Type";
+"createEvent.descriptionText" = "Description";
+"createEvent.etype.private" = "Private";
+"createEvent.etype.public" = "Public";
 "createEvent.success.title" = "Wohoo!";
 "createEvent.success.description" = "You've successfully created event.";
 

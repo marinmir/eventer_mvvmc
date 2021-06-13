@@ -18,6 +18,10 @@ internal enum L10n {
     internal static let create = L10n.tr("Localizable", "createEvent.create")
     /// Date & Time
     internal static let date = L10n.tr("Localizable", "createEvent.date")
+    /// Description
+    internal static let descriptionText = L10n.tr("Localizable", "createEvent.descriptionText")
+    /// Type
+    internal static let etype = L10n.tr("Localizable", "createEvent.etype")
     /// Title image
     internal static let image = L10n.tr("Localizable", "createEvent.image")
     /// Location
@@ -26,6 +30,12 @@ internal enum L10n {
     internal static let screenTitle = L10n.tr("Localizable", "createEvent.screenTitle")
     /// Title
     internal static let title = L10n.tr("Localizable", "createEvent.title")
+    internal enum Etype {
+      /// Private
+      internal static let `private` = L10n.tr("Localizable", "createEvent.etype.private")
+      /// Public
+      internal static let `public` = L10n.tr("Localizable", "createEvent.etype.public")
+    }
     internal enum Success {
       /// You've successfully created event.
       internal static let description = L10n.tr("Localizable", "createEvent.success.description")

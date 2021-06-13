@@ -28,6 +28,7 @@ protocol CreateEventViewModelInput {
 /// Describes view model's output streams needed to update UI
 protocol CreateEventViewModelOutput {
     var tags: Driver<[TagViewModel]> { get }
+    var types: Driver<[BubbleViewModel]> { get }
     var address: Signal<String> { get }
     var canCreateEvent: Driver<Bool> { get }
     var createdEvent: Signal<Void> { get }
@@ -50,6 +51,19 @@ final class CreateEventViewModel: CreateEventModuleInput & CreateEventModuleOutp
     private let canCreateEventRelay = BehaviorRelay<Bool>(value: false)
     private let createdEventRelay = PublishRelay<Void>()
     private let tagsRelay = BehaviorRelay<[TagViewModel]>(value: Tags.tags.map { TagViewModel(tag: $0) })
+    private let typesRelay = BehaviorRelay<[BubbleViewModel]>(value: [
+                                                                BubbleViewModel(
+                                                                    image: Asset.UIKit.TagsImages.unselPublic.image,
+                                                                    selectedImage: Asset.UIKit.SelectedTagsImages.selectedPublic.image,
+                                                                    text: L10n.CreateEvent.Etype.public ,
+                                                                    isSelected: true
+                                                                ),
+                                                                BubbleViewModel(
+                                                                    image: Asset.UIKit.TagsImages.unselPrivate.image,
+                                                                    selectedImage: Asset.UIKit.SelectedTagsImages.selectedPrivate.image,
+                                                                    text: L10n.CreateEvent.Etype.private
+                                                                )]
+    )
     
     private let eventsService: EventsService
     
@@ -143,7 +157,11 @@ extension CreateEventViewModel: CreateEventViewModelBindable {
     var tags: Driver<[TagViewModel]> {
         return tagsRelay.asDriver()
     }
-    
+
+    var types: Driver<[BubbleViewModel]> {
+        return typesRelay.asDriver()
+    }
+
     var didTapCreate: Binder<Void> {
         return Binder(tapCreateRelay) { $0.accept($1) }
     }
