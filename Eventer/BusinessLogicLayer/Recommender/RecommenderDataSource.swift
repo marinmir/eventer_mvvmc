@@ -47,7 +47,7 @@ final class RecommenderDataSourceImpl: RecommenderDataSource {
                     self.isReadyRelay.onNext(true)
                 }
                 
-                self.isReadyRelay.onNext(true)
+                //self.isReadyRelay.onNext(true)
             }
     }
     

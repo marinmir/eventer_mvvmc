@@ -66,6 +66,20 @@ final class ProfileManagerImpl: ProfileManager {
             .bind(to: self.recommendedEventsRelay)
             .disposed(by: self.disposeBag)
         
+        database.collection("users").document(self.uid).collection("my").addSnapshotListener { snapshot, error in
+            if snapshot != nil, error == nil {
+                self.update()
+            }
+        }
+        
+        database.collection("users").document(self.uid).collection("favorites").addSnapshotListener { snapshot, error in
+            if snapshot != nil, error == nil {
+                self.update()
+            }
+        }
+    }
+    
+    private func update() {
         DispatchQueue.global(qos: .background).async {
             self.group.enter()
             self.database.collection("users").document(self.uid)
@@ -115,7 +129,7 @@ final class ProfileManagerImpl: ProfileManager {
                 }
         }
         
-        group.notify(queue: DispatchQueue.global(qos: .background)) {
+        self.group.notify(queue: DispatchQueue.global(qos: .background)) {
             self.user = AppUser(
                 id: self.uid,
                 my: self.organizedEventsRelay.value,

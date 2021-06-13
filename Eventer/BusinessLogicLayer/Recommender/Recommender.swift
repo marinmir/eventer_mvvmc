@@ -54,7 +54,8 @@ final class RecommenderImpl: Recommender {
         
         let weightMatrix = calculateWeightMatrix(for: users, using: uniqueEvents)
         
-        guard let targetUserIndex = users.firstIndex(where: { $0.id == user.id }) else {
+        guard let targetUserIndex = users.firstIndex(where: { $0.id == user.id }),
+              !uniqueEvents.isEmpty else {
             return
         }
         
