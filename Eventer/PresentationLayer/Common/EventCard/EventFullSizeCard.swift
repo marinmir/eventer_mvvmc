@@ -123,6 +123,8 @@ final class EventFullSizeCard: UIView {
         
         titleLabel.font = .h1
         titleLabel.textColor = Asset.Colors.black.color
+        titleLabel.numberOfLines = 2
+        titleLabel.lineBreakMode = .byWordWrapping
         
         likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
@@ -179,6 +181,7 @@ final class EventFullSizeCard: UIView {
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(likeButton.snp.centerY)
             make.leading.equalToSuperview()
+            make.width.equalToSuperview().offset(-120)
         }
         
         likeButton.snp.makeConstraints { make in

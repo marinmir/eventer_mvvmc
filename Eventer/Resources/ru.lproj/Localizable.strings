@@ -31,6 +31,7 @@
 "tags.music" = "Музыка";
 "tags.sport" = "Спорт";
 "tags.society" = "Общество";
+"tags.education" = "Образование";
 
 // EVENT DETAILS
 "event.details.organizer" = "Организатор";

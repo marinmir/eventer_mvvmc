@@ -60,6 +60,7 @@ internal enum Asset {
     internal enum SelectedTagsImages {
       internal static let selectedArt = ImageAsset(name: "SelectedArt")
       internal static let selectedCinema = ImageAsset(name: "SelectedCinema")
+      internal static let selectedEducation = ImageAsset(name: "SelectedEducation")
       internal static let selectedFood = ImageAsset(name: "SelectedFood")
       internal static let selectedMusic = ImageAsset(name: "SelectedMusic")
       internal static let selectedPrivate = ImageAsset(name: "SelectedPrivate")
@@ -70,6 +71,7 @@ internal enum Asset {
     internal enum TagsImages {
       internal static let art = ImageAsset(name: "Art")
       internal static let cinema = ImageAsset(name: "Cinema")
+      internal static let education = ImageAsset(name: "Education")
       internal static let food = ImageAsset(name: "Food")
       internal static let music = ImageAsset(name: "Music")
       internal static let society = ImageAsset(name: "Society")

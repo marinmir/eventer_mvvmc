@@ -38,5 +38,7 @@ class Tags {
                         Tag(id: "society",
                             image: Asset.UIKit.TagsImages.society.image,
                             selectedImage: Asset.UIKit.SelectedTagsImages.selectedSociety.image,
-                            name: L10n.Tags.society)]
+                            name: L10n.Tags.society),
+                        Tag(id: "education", image: Asset.UIKit.TagsImages.education.image, selectedImage: Asset.UIKit.SelectedTagsImages.selectedEducation.image, name: L10n.Tags.education)
+                        ]
 }

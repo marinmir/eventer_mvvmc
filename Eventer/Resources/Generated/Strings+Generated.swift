@@ -215,6 +215,8 @@ internal enum L10n {
     internal static let art = L10n.tr("Localizable", "tags.art")
     /// Cinema
     internal static let cinema = L10n.tr("Localizable", "tags.cinema")
+    /// Education
+    internal static let education = L10n.tr("Localizable", "tags.education")
     /// Food
     internal static let food = L10n.tr("Localizable", "tags.food")
     /// Music
